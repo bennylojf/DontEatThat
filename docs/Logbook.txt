@@ -1,8 +1,8 @@
 October 1:
 
-Kenton, Alex - front end: developed home page using HTML
-Adil, Charn, Benny - backend: set up domain using Go Daddy C Panel and Xftp
+Kenton, Alex - front end: developed home page using HTML (2)
+Adil, Charn, Benny - backend: set up domain using Go Daddy C Panel and Xftp (2)
 
 October 4:
 
-Benny - changed home page - pushed content down from top to middle
+Benny - changed home page - pushed content down from top to middle (1)

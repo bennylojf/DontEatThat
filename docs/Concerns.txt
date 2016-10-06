@@ -1,0 +1,8 @@
+Concerns:
+Number of hours is too low, should have approximately 250
+No names on documents – add names 
+Use cases need to be fixed:
+	Titles on use cases 
+	Include actor, scenario 
+Think about how we can give suggestions to the user 
+Read cocomo
