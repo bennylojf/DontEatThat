@@ -15,8 +15,13 @@
 
     <h2>Please Enter Food Items</h2>
       <form>
-        <input type="text" name="item1">
-        <input type="text" name="item2"><br><br>
+        <input type="text" name="item1"
+			value = "Enter food item 1"
+			onFocus="this.value=''"> 
+        <input type="text" name="item2"
+			value = "Enter food item 2"
+			onFocus="this.value=''">
+			<br><br>
       </form>
         <button type="button" class="btn btn-primary">Compare</button>
         <button type="button" class="btn btn-warning">Reset</button>
