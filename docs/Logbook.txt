@@ -6,3 +6,7 @@ Adil, Charn, Benny - backend: set up domain using Go Daddy C Panel and Xftp (2)
 October 4:
 
 Benny - changed home page - pushed content down from top to middle (1)
+
+Octover 7:
+
+Alex - Added bootstrap install files and bootstrap "include" in index.html (1)
