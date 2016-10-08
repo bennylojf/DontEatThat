@@ -11,3 +11,4 @@ Octover 7:
 
 Alex - Added bootstrap install files and bootstrap "include" in index.html (1)
 Benny - Set up a database for users and a database for foods (1.5), tried to fix issue #4 (0.25)
+Alex - Created css stylesheet to add padding to html elements (.5)
