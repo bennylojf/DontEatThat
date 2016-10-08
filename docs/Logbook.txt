@@ -17,3 +17,5 @@ October 8:
 
 Charn - Created higher resolution logo (.5)
 Kenton - Revision of product vision (4)
+Adil - Database, queries (2)
+Charn - Usecases and requirements (2.5)
