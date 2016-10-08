@@ -10,3 +10,4 @@ Benny - changed home page - pushed content down from top to middle (1)
 Octover 7:
 
 Alex - Added bootstrap install files and bootstrap "include" in index.html (1)
+Benny - Set up a database for users and a database for foods (1.5)
