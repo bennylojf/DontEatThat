@@ -7,7 +7,7 @@ October 4:
 
 Benny - changed home page - pushed content down from top to middle (1)
 
-October 7:
+October 7: 
 
 Alex - Added bootstrap install files and bootstrap "include" in index.html (1)
 Benny - Set up a database for users and a database for foods (1.5), tried to fix issue #4 (0.25)
@@ -19,3 +19,8 @@ Charn - Created higher resolution logo (.5)
 Kenton - Revision of product vision (4)
 Adil - Database, queries (2)
 Charn - Usecases and requirements (2.5)
+Benny, Alex - Database, queries, responses (4)
+
+October 11:
+Alex, Benny, Kenton, Charn - Updated product vision (4)
+Adil - updated product vision (1.5)
