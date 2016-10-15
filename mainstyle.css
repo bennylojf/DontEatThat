@@ -10,3 +10,17 @@ p {
 input {
     padding: 5px;
 }
+
+.disclaimer-style {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.reset-button {
+	margin-left: 10px;
+	margin-bottom: 5px;
+}
+
+.compare-button {
+	margin-top: 10px;
+}
