@@ -41,18 +41,22 @@
             <img class="img-responsive" src="res/logo.jpg">          
                 <h2>Please Enter Food Items</h2>
                 <form>
-               		<input type="text" name="item1"
-                           placeholder="Enter food item 1"
-                       	   onFocus="this.value=''">
+                	<div>
+               			<input type="text" name="item1"
+                           	   placeholder="Enter food item 1"
+                       	       onFocus="this.value=''">
                     
-                	<input type="text" name="item2"
-                       	   placeholder="Enter food item 2"
-                       	   onFocus="this.value=''">
+                		<input type="text" name="item2"
+                       	       placeholder="Enter food item 2"
+                       	       onFocus="this.value=''">
+                	</div>
+                	<div>
+                		<button type="button" class="btn btn-primary compare-button">Compare</button>
+                	</div>
+                	<div>
+                		<button type="reset" class="btn btn-danger clear-button">Clear Choices</button>
+               		</div>
                 </form>
-                <div>
-                	<button type="button" class="btn btn-primary compare-button">Compare</button>
-                </div>
-                <button type="button" class="btn btn-danger clear-button">Clear Choices</button>
         </div>
     </div>
     <!-- End of logo, input fields and buttons -->
