@@ -16,11 +16,14 @@ input {
 	padding-bottom: 10px;
 }
 
-.reset-button {
-	margin-left: 10px;
-	margin-bottom: 5px;
+.clear-button {
+	margin-top: 30px;
 }
 
 .compare-button {
 	margin-top: 10px;
+}
+
+.copyright-disclaimer {
+	margin-top: 60px;
 }
