@@ -29,3 +29,4 @@ Oct 15:
 Charn - Created top menubar (5)
 Kenton - Fixed logo in navbar, added clear selections functionality, added css to buttons,
 added disclaimer (4)
+Charn- Created grey logo for menu bar (.5)
