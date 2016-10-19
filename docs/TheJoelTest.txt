@@ -1,0 +1,21 @@
+The Joel Test
+
+1. Do you use source control?
+Yes, we use Git. Initially, we were using a public repository, but moved to a private repository.
+
+2. Can you make a build in one step?
+We only need to upload our source files to the web host server.
+
+3. Do you make daily builds?
+Currently, we only meet once a week.
+
+4. Do you have a bug database?
+
+
+5. Do you fix bugs before writing new code?
+Yes. For example, we ran into a problem where the web page was not aligned. We fixed it immediatley before proceeding further.
+
+6. Do you have an up-to-date schedule?
+
+
+7. Do you have a spec?
