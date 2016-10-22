@@ -35,8 +35,10 @@ input {
 
 .food1 {
 	margin-right: 10px;
+	margin-left: 10px;
 }
 
 .food2 {
 	margin-left: 10px;
+	margin-right: 10px;
 }
