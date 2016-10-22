@@ -2,11 +2,14 @@
 <body>
 
 <?php
+
+$configs = include('../config/config.php');
+
 // Reference: http://www.w3schools.com/php/php_mysql_select.asp
-$username = "group14";
-$password = "Cpen&321";
-$host = "localhost";
-$dbname = "Group14DB";
+$username = $configs['database_username'];
+$password = $configs['database_password'];
+$host = $configs['host'];
+$dbname = $configs['database_name'];
 $input1 = $_GET["item1"];
 $input2 = $_GET["item2"];
 
