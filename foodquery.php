@@ -10,6 +10,7 @@ $username = $configs['database_username'];
 $password = $configs['database_password'];
 $host = $configs['host'];
 $dbname = $configs['database_name'];
+
 $input1 = $_GET["item1"];
 $input2 = $_GET["item2"];
 
@@ -35,4 +36,5 @@ $conn->close();
 ?>
 
 </body>
+
 </html>
