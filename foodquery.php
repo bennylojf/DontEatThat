@@ -1,11 +1,14 @@
+<!DOCTYPE html>
+<body>
+
 <?php
 // Reference: http://www.w3schools.com/php/php_mysql_select.asp
 $username = "group14";
 $password = "Cpen&321";
 $host = "localhost";
 $dbname = "Group14DB";
-$input1 = 'Apple';
-$input2 = 'orange';
+$input1 = $_GET["item1"];
+$input2 = $_GET["item2"];
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -27,3 +30,6 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
+
+</body>
+</html>
