@@ -25,5 +25,10 @@ input {
 }
 
 .copyright-disclaimer {
-	margin-top: 60px;
+	margin-top: 100px;
+}
+
+.title-style {
+	width: 50%;
+	height: 50%;
 }

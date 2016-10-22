@@ -12,13 +12,13 @@
 </head>
 
 <body>
-	<!-- Navbar setup -->
+    <!-- Navbar setup -->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-        	<!-- DET Logo on navbar -->
+            <!-- DET Logo on navbar -->
             <div class="navbar-header">
                 <a href="index.html">
-                	<img class="navbar-brand img-responsive" src="res/greylogo.png">
+                    <img class="navbar-brand img-responsive" src="res/greylogo.png">
                 </a>
             </div>
             <!-- End of DET Logo on navbar -->
@@ -34,24 +34,21 @@
         </div>
     </nav>
     <!-- End of navbar setup -->
-
     <!-- Beginning of logo, input fields and buttons -->
     <div align="center" style="padding-top: 5%;">
         <div class="container-fluid">
-            <img class="img-responsive" src="res/logo.jpg">          
+            <img class="img-responsive title-style" src="res/logo.jpg">          
                 <h2>Please Enter Food Items</h2>
-                <form>
+                <form action="send_foods.php">
                 	<div>
                			<input type="text" name="item1"
-                           	   placeholder="Enter food item 1"
-                       	       onFocus="this.value=''">
+                           	   placeholder="Enter food item 1">
                     
                 		<input type="text" name="item2"
-                       	       placeholder="Enter food item 2"
-                       	       onFocus="this.value=''">
+                       	       placeholder="Enter food item 2">
                 	</div>
                 	<div>
-                		<button type="button" class="btn btn-primary compare-button">Compare</button>
+                		<button type="submit" class="btn btn-primary compare-button">Compare</button>
                 	</div>
                 	<div>
                 		<button type="reset" class="btn btn-danger clear-button">Clear Choices</button>
