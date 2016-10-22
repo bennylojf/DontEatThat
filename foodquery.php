@@ -3,7 +3,7 @@
 $username = "group14";
 $password = "Cpen&321";
 $host = "localhost";
-$dbname = "Food";
+$dbname = "Group14DB";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -12,7 +12,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT Name, Sugar, Salt, Fat FROM foods";
+$sql = "SELECT Name, Sugar, Salt, Fat FROM Food";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
