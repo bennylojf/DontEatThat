@@ -21,13 +21,13 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT Name, Sugar, Salt, Fat FROM Food WHERE (Name = '$input1' OR Name = '$input2')";
+$sql = "SELECT Shrt_Desc, Sugar_Tot_g, Sodium_mg, Cholestrl_mg FROM Food WHERE (Shrt_Desc = '$input1' OR Shrt_Desc = '$input2')";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "Food: " . $row["Name"]. ", Sugar: " . $row["Sugar"]. ", Salt: " . $row["Salt"]. ", Fat: " . $row["Fat"]. "<br>";
+        echo "Food: " . $row["Shrt_Desc"]. ", Sugar: " . $row["Sugar_Tot_g"]. ", Salt: " . $row["Sodium_mg"]. ", Cholesterol: " . $row["Cholestrl_mg"]. "<br>";
     }
 } else {
     echo "0 results";
