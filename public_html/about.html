@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Don't Eat That</title>
+    <title>About</title>
     <meta charset="utf-8">
     <!-- Ensure proper rendering on mobile -->
     <meta name="viewport" content="width=device-width, intial-scale=1">
@@ -13,44 +13,33 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <!-- Script used to import navbar -->
-    <script>
-    $(document).ready(function() {
-        $("#header").load("header.html");
-    });
-    </script>
-    <!-- Script used to import footer -->
-    <script>
-    $(document).ready(function() {
-        $("#footer").load("footer.html");
-    });
-    </script>
+    <!-- Custom jquery functions -->
+    <script src="jquery/jQueryFunctions.js"></script>
 </head>
 
 <body>
     <div id="header"></div>
 
-    <!-- Beginning of logo, input fields and buttons -->
-    <div align="left" style="padding-top: 2%;">
+    <!-- Beginning of About content -->
+    <div align="center" style="padding-top: 2%;">
         <div class="container-fluid">
-            <div align="center">
 			<h2>About Don't Eat That!</h2>
-			</div>
-			<p class="about-description">
+			<p align="left" class="about-description">
                	This web application was originally developed for a group project in CPEN 321 - Software Engineering. The idea for this
 				web application came from the book "Eat This, Not That!". The book is a nutritional guide that compares foods from the 
 				same genre and recommends the healthier choices. However, we felt that the book had several shortcomings. First, the book
 				had a rather limited selection of foods, with approximately 12 per genre. All the choices were displayed together, making it 
-				difficult for a user to compare two choices side by side. <br><br>
-				
+				difficult for a user to compare two choices side by side.
+			</p>
+            <p align="left" class="about-description">	
 				Don't Eat That! was developed to allow a user to compare a wide variety of foods side by side. The Web Application displays
 				the nutritional information of the user's inputs and also recommends the healthier choice for the user's needs. 
 			</p>	
         </div>
     </div>
-    <!-- End of logo, input fields and buttons -->
+    <!-- End of About content -->
 
     <div id="footer"></div>
-<body>
+</body>
             
 </html>
