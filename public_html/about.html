@@ -6,72 +6,51 @@
     <!-- Ensure proper rendering on mobile -->
     <meta name="viewport" content="width=device-width, intial-scale=1">
     <!-- Bootstrap -->
-	<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Link to an external style sheet -->
-	<link rel="stylesheet" type="text/css" href="mainstyle.css">
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link to an external style sheet -->
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <!-- Script used to import navbar -->
+    <script>
+    $(document).ready(function() {
+        $("#header").load("header.html");
+    });
+    </script>
+    <!-- Script used to import footer -->
+    <script>
+    $(document).ready(function() {
+        $("#footer").load("footer.html");
+    });
+    </script>
 </head>
 
 <body>
-	<!-- Navbar setup -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-        	<!-- DET Logo on navbar -->
-            <div class="navbar-header">
-                <a href="index.html">
-                	<img class="navbar-brand img-responsive" src="res/greylogo.png">
-                </a>
-            </div>
-            <!-- End of DET Logo on navbar -->
-            <ul class="nav navbar-nav">
-                <li><a href="about.html">About</a></li>
-                <li><a href="feedback.html">Feedback</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-        </div>
-    </nav>
-    <!-- End of navbar setup -->
+    <div id="header"></div>
 
     <!-- Beginning of logo, input fields and buttons -->
     <div align="left" style="padding-top: 2%;">
         <div class="container-fluid">
             <div align="center">
-			<h2>
-			About Don't Eat That!
-			</h2>
+			<h2>About Don't Eat That!</h2>
 			</div>
-			<div style = "padding-top: 3%;">
-			<div style = "padding-left: 3%;">
-			<div style = "padding-right: 3%;">
-			<font size = "3">
+			<p class="about-description">
                	This web application was originally developed for a group project in CPEN 321 - Software Engineering. The idea for this
 				web application came from the book "Eat This, Not That!". The book is a nutritional guide that compares foods from the 
 				same genre and recommends the healthier choices. However, we felt that the book had several shortcomings. First, the book
 				had a rather limited selection of foods, with approximately 12 per genre. All the choices were displayed together, making it 
-				difficult for a user to compare two choices side by side. 
+				difficult for a user to compare two choices side by side. <br><br>
 				
 				Don't Eat That! was developed to allow a user to compare a wide variety of foods side by side. The Web Application displays
 				the nutritional information of the user's inputs and also recommends the healthier choice for the user's needs. 
-			</font>	
-			</div>
-			</div>
-			</div>
+			</p>	
         </div>
     </div>
     <!-- End of logo, input fields and buttons -->
 
-    <!-- Beginning of copyright and disclaimer -->
-    <div align="center" class="container-fluid copyright-disclaimer">
-    	<div class="well well-sm">
-    	Disclaimer: This web application does not replace a dietitian. 
-    	It only serves as a quick guide to healthier food choices.
-		</div>
-    	<p>&copy; 2016 Don't Eat That!, Inc. WTFPL</p>
-    </div>
-    <!-- End of copyright and disclaimer -->
+    <div id="footer"></div>
 <body>
             
 </html>

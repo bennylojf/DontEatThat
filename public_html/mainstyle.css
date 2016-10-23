@@ -21,7 +21,7 @@ input {
 }
 
 .compare-button {
-	margin-top: 10px;
+	margin-top: 20px;
 }
 
 .copyright-disclaimer {
@@ -41,4 +41,9 @@ input {
 .food2 {
 	margin-left: 30px;
 	margin-right: 30px;
+}
+
+.about-description {
+	padding-left: 20%;
+	padding-right: 20%;
 }
