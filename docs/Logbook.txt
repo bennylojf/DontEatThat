@@ -38,3 +38,6 @@ Alex - Wrote config.PHP (2) and Python script to update web server files (1)
 Kenton - Resized and edited main page (1), Connected front to back end (1), Made navbar compatible with mobile devices (1.5), added jquery script to import header and footer (1)
 Charn - Wrote log in HTML (1.5), set up about, sign up, and register pages (1), working on sign up page (1)
 Adil - Populated database, troubleshooting incorrectly spelled searched, designing queries (3)
+
+Oct 23:
+Kenton - Added jquery scripts to separate file, refactored code in html files (1)
