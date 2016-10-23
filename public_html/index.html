@@ -12,41 +12,24 @@
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <!-- Script used to import navbar -->
+    <script>
+    $(document).ready(function() {
+        $("#header").load("header.html");
+    });
+    </script>
+    <!-- Script used to import footer -->
+    <script>
+    $(document).ready(function() {
+        $("#footer").load("footer.html");
+    });
+    </script>
 </head>
 
 <body>
-    <!-- Navbar setup -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <!-- DET Logo on navbar -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#theNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="index.html">
-                    <img class="navbar-brand img-responsive" src="res/greylogo.png">
-                </a>
-            </div>
-            <!-- End of DET Logo on navbar -->
-            <div class="navbar-collapse collapse" id="theNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="feedback.html">Feedback</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a data-toggle="modal" href="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- End of navbar setup -->
-
-
+    <div id="header"></div>
+    
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -74,7 +57,7 @@
     <div align="center" style="padding-top: 5%;">
         <div class="container-fluid">
             <img class="img-responsive title-style" src="res/logo.jpg">          
-                <h2>Please Enter Food Items</h2>
+                <h2 style="font-size: 3vw;">Please Enter Food Items</h2>
                 <form class="form-inline" action="foodquery.php">
                 	<div>
                         <div class="form-group food1">
@@ -97,15 +80,6 @@
     </div>
     <!-- End of logo, input fields and buttons -->
 
-    <!-- Beginning of copyright and disclaimer -->
-    <div align="center" class="container-fluid copyright-disclaimer">
-    	<div class="well well-sm">
-    	Disclaimer: This web application does not replace a dietition. 
-    	It only serves as a quick guide to healthier food choices.
-    	</div>
-    	<p>&copy; 2016 Don't Eat That!, Inc. WTFPL</p>
-    </div>
-    <!-- End of copyright and disclaimer -->
-<body>
-            
+    <div id="footer"></div>
+</body>
 </html>
