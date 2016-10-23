@@ -35,6 +35,6 @@ Alex, Benny - Design document (2), Connect to database (1.5)
 Oct 22:
 Benny - Wrote PHP scripts to query food database and insert to user data (3) and wrote About page HTML (1)
 Alex - Wrote config.PHP (2) and Python script to update web server files (1)
-Kenton - Resized and edited main page (1), Connected front to back end (1), Made navbar compatible with mobile devices (1.5)
+Kenton - Resized and edited main page (1), Connected front to back end (1), Made navbar compatible with mobile devices (1.5), added jquery script to import header and footer (1)
 Charn - Wrote log in HTML (1.5), set up about, sign up, and register pages (1), working on sign up page (1)
 Adil - Populated database, troubleshooting incorrectly spelled searched, designing queries (3)
