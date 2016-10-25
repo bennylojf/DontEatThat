@@ -1,34 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Sign Up</title>
-    <meta charset="utf-8">
-    <!-- Ensure proper rendering on mobile -->
-    <meta name="viewport" content="width=device-width, intial-scale=1">
-    <!-- Bootstrap -->
-    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Link to an external style sheet -->
-    <link rel="stylesheet" type="text/css" href="mainstyle.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <!-- Custom jquery functions -->
-    <script src="jquery/jQueryFunctions.js"></script>
-</head>
-
-<body>
-    <div id="header"></div>
-
-    <!-- Beginning of Sign Up content -->
-    <div align="center" style="padding-top: 5%;">
-        <div class="container-fluid">
-                <h2>SignUp</h2>
-        </div>
-    </div>
-    <!-- End of Sign Up content -->
-
-    <div id="footer"></div>    
-</body>
+    <head>
+        <meta charset="utf-8">
+            <!-- Ensure proper rendering on mobile -->
+            <meta name="viewport" content="width=device-width, intial-scale=1">
+                <!-- Bootstrap -->
+                <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+                    <!-- Link to an external style sheet -->
+                    <link rel="stylesheet" type="text/css" href="mainstyle.css">
+                        <!-- jQuery library -->
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                        <!-- Latest compiled JavaScript -->
+                        <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+                        <!-- Custom jquery functions -->
+                        <script src="jquery/jQueryFunctions.js"></script>
+    </head>
+    
+    <body>
+        <div id="header"></div>
+        <!-- Reference: http://bootsnipp.com/snippets/DVXQa
+         http://www.w3schools.com/bootstrap/bootstrap_forms_inputs.asp
+         http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_input_height2&stacked=h
+         http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_input_height&stacked=h
+         http://www.w3schools.com/bootstrap/bootstrap_forms_inputs.asp
+         -->
+        
+        <div style="padding-left: 5%;">
+            <div class="container-fluid">
+                <form class = "form-horizontal" role = "form">
+                    <h2>Registration Form</h2>
+                    <div style="padding-left: 5%;">
+                        <div class="form-group form-group-lg">
+                            <label class="col-sm-2 control-label" for="lg">First Name</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" id="lg" placeholder ="First Name">
+                                    </div>
+                        </div>
+                        <div class="form-group form-group-lg">
+                            <label class="col-sm-2 control-label" for="lg">Last Name</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" id="lg" placeholder ="Last Name">
+                                    </div>
+                        </div>
+                        
+                        <div class="form-group form-group-lg">
+                            <label class="col-sm-2 control-label" for="lg">Username</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" id="lg" placeholder ="Username">
+                                    </div>
+                        </div>
+                        <div class="form-group form-group-lg">
+                            <label class="col-sm-2 control-label" for="lg">Password</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" id="lg" placeholder ="Password">
+                                    </div>
+                        </div>
+                        
+                        <div class="form-group form-group-lg">
+                            <label class="col-sm-2 control-label" for="lg">Gender</label>
+                            <div class="col-sm-2">
+                                <!--<input class="form-control" type="text" id="lg" placeholder ="Gender">-->
+                                <select class="form-control" id="sel1">
+                                    <option></option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="form-group form-group-lg">
+                            <label class="col-sm-2 control-label" for="lg">Age</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" id="lg" placeholder ="Age">
+                                    </div>
+                        </div>
+                        
+                        <div class="form-group form-group-lg">
+                            <label class="col-sm-2 control-label" for="lg">Height</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" id="lg" placeholder ="Heigt">
+                                    </div>
+                        </div>
+                        
+                        <div class="form-group form-group-lg">
+                            <label class="col-sm-2 control-label" for="lg">Weight</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" id="lg" placeholder ="Weight">
+                                    </div>
+                        </div>
+                        
+                        <div class="form-group form-group-lg">
+                            <label class="col-sm-2 control-label" for="lg">Meal Preference</label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="">High calorie
+                                    </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="">Low calorie
+                                    </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="">High Sugar
+                                    </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="">Low Sugar
+                                    </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="">High Salt
+                                    </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="">Low Salt
+                                    </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group form-group-lg">
+                        <div class="col-sm-9 col-sm-offset-9">
+                            <button type="submit" class="bbtn btn-primary btn-lg">Register</button>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+            <!--End of Form-->
             
+            <!-- Beginning of copyright and disclaimer -->
+            <div align="center" class="container-fluid copyright-disclaimer">
+                <div class="well well-sm">
+                    Disclaimer: This web application does not replace a dietition. 
+                    It only serves as a quick guide to healthier food choices.
+                </div>
+                <p>&copy; 2016 Don't Eat That!, Inc. WTFPL</p>
+            </div>
+            <!-- End of copyright and disclaimer -->
+            <body>
+                
 </html>
