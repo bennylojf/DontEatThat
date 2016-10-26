@@ -15,7 +15,7 @@ $db = new mysqli($dbHost,$dbUsername,$dbPassword,$dbName);
 //get search term
 $searchTerm = $_GET['term'];
 //get matched data from skills table
-$query = $db->query("SELECT * FROM Food WHERE Shrt_Desc LIKE '%".$searchTerm."%'");
+$query = $db->query("SELECT * FROM Food WHERE Shrt_Desc LIKE '%".$searchTerm."%' LIMIT 5");
 while ($row = $query->fetch_assoc()) {
     $data[] = $row['Shrt_Desc'];
 }
