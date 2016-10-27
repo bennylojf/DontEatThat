@@ -42,3 +42,6 @@ Adil - Populated database, troubleshooting incorrectly spelled searched, designi
 Oct 23:
 Kenton - Added jquery scripts to separate file, refactored code in html files (1)
 Alex - Improved php query (2)
+
+Oct 26:
+Benny - Changed autocomplete to show fewer suggestions and implemented contact form email functionality (2.5)
