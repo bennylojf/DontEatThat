@@ -43,5 +43,8 @@ Oct 23:
 Kenton - Added jquery scripts to separate file, refactored code in html files (1)
 Alex - Improved php query (2)
 
+Oct 25:
+Alex - Added autocomplete with JQuery (3)
+
 Oct 26:
-Benny - Changed autocomplete to show fewer suggestions and implemented contact form email functionality (2.5)
+Benny - Changed autocomplete to show fewer suggestions, started How It Works, and implemented contact form email functionality (3)
