@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <!-- Ensure proper rendering on mobile -->
+            <meta name="viewport" content="width=device-width, intial-scale=1">
+                <!-- Bootstrap -->
+                <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+                    <!-- Link to an external style sheet -->
+                    <link rel="stylesheet" type="text/css" href="mainstyle.css">
+                        <!-- jQuery library -->
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                        <!-- Latest compiled JavaScript -->
+                        <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+                        <!-- Custom jquery functions -->
+                        <script src="jquery/jQueryFunctions.js"></script>
+    </head>
+    
+    <body>
+        <div id="header"></div>
+        <!-- Reference: http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_table_basic&stacked=h
+         -->
+        
+        <div style="padding-left: 5%;padding-right:5%;">
+            <div class="container-fluid">
+               <h2>Results</h2>
+               <div align="center" style="padding-top: 2%;">
+               <table class = "table">
+                   <thead>
+                       <tr>
+                           <th>Item</th>
+                           <th>Serving Size</th>
+                           <th>Calories</th>
+                           <th>Fat</th>
+                           <th>Sugar</th>
+                           <th>Sodium</th>
+                        </tr>
+                    </tread>
+                    <tbody>
+                        <!-- change the inputs to global variables that contain the information-->
+                        <tr>
+                            <td class="col-md-2">Item1</td>
+                            <td class="col-md-2">Serving Size</td>
+                            <td class="col-md-2">Calories</td>
+                            <td class="col-md-2">Fat</td>
+                            <td class="col-md-2">Sugar</th>
+                            <td> Sodium </td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <!-- change the inputs to global variables that contain the information-->
+                        <tr>
+                            <td class="col-md-2">Item2</td>
+                            <td class="col-md-2">Serving Size</td>
+                            <td class="col-md-2">Calories</td>
+                            <td class="col-md-2">Fat</td>
+                            <td class="col-md-2">Sugar</th>
+                                <td> Sodium </td>
+                        </tr>
+                    </tbody>
+                  </table>
+                  </div>
+             </div>
+        </div>
+        <div align="center" style="padding-top: 2%;">
+            <a href= "index.html" type="submit" class="btn btn-primary compare-button">Change Food Items</a>
+        </div>
+        <div id="footer"></div>
+  </body>
+</html>
