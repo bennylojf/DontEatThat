@@ -2,110 +2,44 @@
 <body>
 
 <?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL,"https://api.nutritionix.com/v1_1/search");
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-$configs = include('../config/config.php');
+// Get the firs thing the user entered. 
+// Make sure to properly escape spaces
+$searchTerm = $_GET["item1"];
+$searchTerm = preg_replace('/\s+/', '', $searchTerm);
 
-// Reference: http://www.w3schools.com/php/php_mysql_select.asp
-$username = $configs['database_username'];
-$password = $configs['database_password'];
-$host = $configs['host'];
-$dbname = $configs['database_name'];
+$postfields = array(
+    'appId' => '85d9b48b&appKey=cef6f64a7162d6c58a7d38af1a6962fd&query=$searchTerm',
+    'fields' => 'item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat' 
+);
 
-$input1 = $_GET["item1"];
-$input2 = $_GET["item2"];
+curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
 
-if($input1 != '') {
-    $sql1 = "SELECT Shrt_Desc, Sugar_Tot_g, Sodium_mg, Cholestrl_mg FROM Food WHERE Shrt_Desc LIKE '%$input1%'";
-    $result = $conn->query($sql1);
-    
-    if ($result->num_rows > 0) {
-        // output data of each row
-        $numitems = 1;
-        $totalSugar_g = 0;
-        $totalSalt_mg = 0;
-        $totalCholestrl_mg = 0;
+$response = curl_exec ($ch);
 
-        while($row = $result->fetch_assoc()) {
-            if($row['Sugar_Tot_g'] != null) {
-                $totalSugar_g = $totalSugar_g + $row['Sugar_Tot_g'];
-            }
-            if($row['Sodium_mg'] != null) {
-                $totalSalt_mg = $totalSalt_mg + $row['Sodium_mg'];
-            }
-            if($row['Cholestrl_mg'] != null) {
-                $totalCholestrl_mg = $totalCholestrl_mg + $row['Cholestrl_mg'];
-            }
 
-            $numitems = $numitems + 1;
-        }
+print $response;
 
-        $averageSugar_g = $totalSugar_g / $numitems;
-        $averageSalt_mg = $totalSalt_mg / $numitems;
-        $averageCholestrl_mg = $totalCholestrl_mg / $numitems;
+print '<br>---------------------<br>';
 
-        echo "Food: " . $input1 . ", Sugar: " . $averageSugar_g. ", Salt: " . $averageSalt_mg. ", Cholesterol: " . $averageCholestrl_mg. "<br>";
-    } 
-    
-    else {
-        echo "0 results" . "<br>";
-    }
-} 
+// Now check the second item
+$searchTerm = $_GET["item2"];
+$searchTerm = preg_replace('/\s+/', '', $searchTerm);
 
-else {
-    echo "Enter a food <br>";
-}
+curl_setopt($ch, CURLOPT_POSTFIELDS,
+        "appId=85d9b48b&appKey=cef6f64a7162d6c58a7d38af1a6962fd&query=$searchTerm");
 
-echo "-----------------------------------<br>";
+$response = curl_exec ($ch);
 
-if($input2 != '') {
-    $sql2 = "SELECT Shrt_Desc, Sugar_Tot_g, Sodium_mg, Cholestrl_mg FROM Food WHERE Shrt_Desc LIKE '%$input2%'";
-    $result = $conn->query($sql2);
-    
-    if ($result->num_rows > 0) {
-        // output data of each row
-        $numitems = 1;
-        $totalSugar_g = 0;
-        $totalSalt_mg = 0;
-        $totalCholestrl_mg = 0;
+print $response;
 
-        while($row = $result->fetch_assoc()) {
-            if($row['Sugar_Tot_g'] != null) {
-                $totalSugar_g = $totalSugar_g + $row['Sugar_Tot_g'];
-            }
-            if($row['Sodium_mg'] != null) {
-                $totalSalt_mg = $totalSalt_mg + $row['Sodium_mg'];
-            }
-            if($row['Cholestrl_mg'] != null) {
-                $totalCholestrl_mg = $totalCholestrl_mg + $row['Cholestrl_mg'];
-            }
 
-            $numitems = $numitems + 1;
-        }
-
-        $averageSugar_g = $totalSugar_g / $numitems;
-        $averageSalt_mg = $totalSalt_mg / $numitems;
-        $averageCholestrl_mg = $totalCholestrl_mg / $numitems;
-
-        echo "Food: " . $input2 . ", Sugar: " . $averageSugar_g. ", Salt: " . $averageSalt_mg. ", Cholesterol: " . $averageCholestrl_mg. "<br>";
-    } 
-    
-    else {
-        echo "0 results" . "<br>";
-    }
-} 
-
-else {
-    echo "Enter a food <br>";
-}
-
-$conn->close();
+curl_close ($ch);
 ?>
 
 </body>
