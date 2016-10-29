@@ -48,3 +48,6 @@ Alex - Added autocomplete with JQuery (3)
 
 Oct 26:
 Benny - Changed autocomplete to show fewer suggestions, started How It Works, and implemented contact form email functionality (3)
+
+Oct 28:
+Kenton Ma - Test Plan Document (3.5)

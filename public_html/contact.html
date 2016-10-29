@@ -1,6 +1,6 @@
-<html>
+<!DOCTYPE html>
 <!-- Reference: https://bootstrapious.com/p/how-to-build-a-working-bootstrap-contact-form -->
-
+<html lang="en">
 <head>
     <title>Contact &#8226; Don't Eat That!</title>
     <meta charset="utf-8">
@@ -16,41 +16,38 @@
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <!-- Custom jquery functions -->
     <script src="jquery/jQueryFunctions.js"></script>
+    <!-- Script to send email -->
+    <script src="contact.js"></script>
+    <!-- Safari Validation Script -->
+    <script src="js/formValidator.js"></script>
 </head>
 
 <body>
     <div id="header"></div>
 
     <div class="container">
-
         <div class="row">
-
             <div class="col-lg-8 col-lg-offset-2">
-
-                <h2>Contact</h2>
-                <p>
-                    We are here to answer any questions you may have about our services. Please use the form below and we'll respspond as soon as we can. Also if you want us to add any new food items to our database please let us know and we'll try our best to add it to
+                <h2 style="padding-left: 0;">Contact</h2>
+                <p style="padding-left: 0;">
+                    We are here to answer any questions you may have about our services. Please use the form below and we'll respond as soon as we can. Also, if you want us to add any new food items to our database please let us know and we'll try our best to add it to
                     the database for you.
                 </p>
-
                 <form id="contact-form" method="post" action="contact.php" role="form">
-
                     <div class="messages"></div>
-
                     <div class="controls">
-
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="form_name">First name</label>
-                                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your first name" required="required" data-error="Firstname is required.">
+                                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your first name" required="true" data-error="Firstname is required.">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="form_lastname">Last name</label>
-                                    <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your last name" required="required" data-error="Lastname is required.">
+                                    <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your last name" required="true" data-error="Lastname is required.">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -59,7 +56,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="form_email">Email</label>
-                                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email" required="required" data-error="Valid email is required.">
+                                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email" required="true" data-error="Valid email is required.">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -68,7 +65,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="form_message">Message</label>
-                                    <textarea id="form_message" name="message" class="form-control" placeholder="Your message" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                                    <textarea id="form_message" name="message" class="form-control" placeholder="Your message" rows="4" required="true" data-error="Please, leave us a message."></textarea>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -78,21 +75,15 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <p class="text-muted">All fields are required.</p>
+                                <p style="padding-left: 0;" class="text-muted">All fields are required.</p>
                             </div>
                         </div>
                     </div>
-
                 </form>
-
             </div>
-
         </div>
-
     </div>
 
-    <script src="validator.js"></script>
-    <script src="contact.js"></script>
     <div id="footer"></div>
 
 </body>
