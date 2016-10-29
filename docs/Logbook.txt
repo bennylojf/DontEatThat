@@ -51,3 +51,8 @@ Benny - Changed autocomplete to show fewer suggestions, started How It Works, an
 
 Oct 28:
 Kenton Ma - Test Plan Document (3.5)
+
+Oct 29:
+Kenton Ma - Resolved UI issues, added notifications incase user does not enter information into required fields, and start researching for food recommendation algorithm (3)
+
+Charn - Prototyped results page, and started research (3)
