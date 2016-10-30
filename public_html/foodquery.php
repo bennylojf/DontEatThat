@@ -1,47 +1,27 @@
-<!DOCTYPE html>
-<body>
+<?php 
 
-<?php
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL,"https://api.nutritionix.com/v1_1/search");
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+require_once('../lib/fat-secret-php/src/Client.php');
+require_once('../lib/fat-secret-php/src/OAuthBase.php');
+require_once('../lib/fat-secret-php/src/FatSecretException.php');
 
-// Get the firs thing the user entered. 
-// Make sure to properly escape spaces
-$searchTerm = $_GET["item1"];
-$searchTerm = preg_replace('/\s+/', '', $searchTerm);
+$consumer_key = "e8f1ee8aeb2640d2831349c9e2d63334"; 
+$secret_key = "68a6ee2e74034474a625a5dfdf2546d1"; 
 
-$postfields = array(
-    'appId' => '85d9b48b&appKey=cef6f64a7162d6c58a7d38af1a6962fd&query=$searchTerm',
-    'fields' => 'item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat' 
-);
+$searchTerm1 = $_GET['item1'];
+$searchTerm2 = $_GET['item2'];
+//$searchTerm1 = preg_replace('/\s+/', '%20', $searchTerm1);
+//$searchTerm2 = preg_replace('/\s+/', '%20', $searchTerm2);
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
+$client = new \Adcuz\FatSecret\Client($consumer_key, $secret_key);
+$client->SetMaxResults(1);
 
+$queryResponseString = $client->SearchFood($searchTerm1, false, false, 1);
 
-$response = curl_exec ($ch);
+$json = json_encode($queryResponseString);
 
+$info = json_decode($json, true);
 
-print $response;
+echo "<br>ID: ";
+echo $info["foods"]["food"]["food_id"];
 
-print '<br>---------------------<br>';
-
-// Now check the second item
-$searchTerm = $_GET["item2"];
-$searchTerm = preg_replace('/\s+/', '', $searchTerm);
-
-curl_setopt($ch, CURLOPT_POSTFIELDS,
-        "appId=85d9b48b&appKey=cef6f64a7162d6c58a7d38af1a6962fd&query=$searchTerm");
-
-$response = curl_exec ($ch);
-
-print $response;
-
-
-curl_close ($ch);
 ?>
-
-</body>
-
-</html>
