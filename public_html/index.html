@@ -6,35 +6,15 @@
     <!-- Ensure proper rendering on mobile -->
     <meta name="viewport" content="width=device-width, intial-scale=1">
     <!-- Bootstrap -->
-    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Link to an external style sheet -->
-    <link rel="stylesheet" type="text/css" href="mainstyle.css">
+	<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Link to an external style sheet -->
+	<link rel="stylesheet" type="text/css" href="mainstyle.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <!-- Custom jquery functions -->
     <script src="jquery/jQueryFunctions.js"></script>
-
-    <!-- Autocomplete scripts -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script>
-    $(function() {
-        $( "#theFirstFood" ).autocomplete({
-            source: 'search.php'
-        });
-    });
-    </script>
-    <script>
-    $(function() {
-        $( "#theSecondFood" ).autocomplete({
-            source: 'search.php'
-        });
-    });
-    </script>
-
 </head>
 
 <body>
@@ -46,7 +26,7 @@
             <img class="img-responsive title-style" src="res/logo.jpg">          
                 <h2 style="font-size: 3vw;">Please Enter Food Items</h2>
                 <form class="form-inline" action="foodquery.php">
-                    <div>
+                	<div>
                         <div class="form-group food1">
                			<input class="form-control" type="text" name="item1"
                            	   placeholder="Enter food item 1" size="40" required="true">
@@ -55,13 +35,13 @@
                 		<input class="form-control" type="text" name="item2"
                        	       placeholder="Enter food item 2" size="40" required="true">
                         </div>
-                    </div>
-                    <div>
-                        <button type="submit" class="btn btn-primary compare-button">Compare</button>
-                    </div>
-                    <div>
-                        <button type="reset" class="btn btn-danger clear-button">Clear Choices</button>
-               	    </div>
+                	</div>
+                	<div>
+                		<button type="submit" class="btn btn-primary compare-button">Compare</button>
+                	</div>
+                	<div>
+                		<button type="reset" class="btn btn-danger clear-button">Clear Choices</button>
+               		</div>
                 </form>
         </div>
     </div>

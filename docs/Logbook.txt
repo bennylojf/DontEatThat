@@ -51,8 +51,9 @@ Benny - Changed autocomplete to show fewer suggestions, started How It Works, an
 
 Oct 28:
 Kenton Ma - Test Plan Document (3.5)
+Benny, Alex - Attempted to connect to FatSecret and NutritionIX API's (7)
 
 Oct 29:
 Kenton Ma - Resolved UI issues, added notifications incase user does not enter information into required fields, and start researching for food recommendation algorithm (3)
-
 Charn - Prototyped results page, and started research (3)
+Alex - using fat-secret-php library instead of manually creating querys (2)
