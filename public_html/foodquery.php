@@ -15,7 +15,21 @@ $client->SetMaxResults(1);
 
 $searchResult = $client->SearchFood($searchTerm1, false, false, 1);
 
-echo "<br>ID: ";
-echo $searchResult["foods"]["food"]["food_id"];
+$foodID = $searchResult["foods"]["food"]["food_id"];
+
+$rawFoodData = $client->GetFood($foodID);
+
+$foodData = array(
+    "food_id" => $rawFoodData["food"]["food_id"],
+    "food_name" => $rawFoodData["food"]["food_name"],
+    "metric_serving_unit" => $rawFoodData["food"]["servings"]["serving"][0]["metric_serving_unit"],
+    "metric_serving_amount" => $rawFoodData["food"]["servings"]["serving"][0]["metric_serving_amount"],
+    "cholesterol" => $rawFoodData["food"]["servings"]["serving"][0]["cholesterol"],
+    "calories" => $rawFoodData["food"]["servings"]["serving"][0]["calories"],
+    "fat" => $rawFoodData["food"]["servings"]["serving"][0]["fat"],
+    "protein" => $rawFoodData["food"]["servings"]["serving"][0]["protein"],
+    "sodium" => $rawFoodData["food"]["servings"]["serving"][0]["sodium"],
+    "carbohydrate" => $rawFoodData["food"]["servings"]["serving"][0]["carbohyrate"]
+);
 
 ?>

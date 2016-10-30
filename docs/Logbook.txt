@@ -57,3 +57,6 @@ Oct 29:
 Kenton Ma - Resolved UI issues, added notifications incase user does not enter information into required fields, and start researching for food recommendation algorithm (3)
 Charn - Prototyped results page, and started research (3)
 Alex - using fat-secret-php library instead of manually creating querys (2)
+
+Oct 30:
+Alex - added code to grab relevant information about food (1)
