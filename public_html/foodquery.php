@@ -25,9 +25,12 @@ $foodID = $searchResult["foods"]["food"]["food_id"];
 $rawFoodData = $client->GetFood($foodID);
 $foodData2 = getRelevantData($rawFoodData);
 
-var_dump($foodData1);
-echo "<br>";
-var_dump($foodData2);
+// Return the data as an associative array
+return array(
+    $foodData1,
+    $foodData2
+);
+
 
 function getRelevantData($rawFoodData) {
     return array(
@@ -35,12 +38,13 @@ function getRelevantData($rawFoodData) {
         "food_name" => $rawFoodData["food"]["food_name"],
         "metric_serving_unit" => $rawFoodData["food"]["servings"]["serving"][0]["metric_serving_unit"],
         "metric_serving_amount" => $rawFoodData["food"]["servings"]["serving"][0]["metric_serving_amount"],
-        "cholesterol" => $rawFoodData["food"]["servings"]["serving"][0]["cholesterol"],
-        "calories" => $rawFoodData["food"]["servings"]["serving"][0]["calories"],
-        "fat" => $rawFoodData["food"]["servings"]["serving"][0]["fat"],
-        "protein" => $rawFoodData["food"]["servings"]["serving"][0]["protein"],
-        "sodium" => $rawFoodData["food"]["servings"]["serving"][0]["sodium"],
-        "carbohydrate" => $rawFoodData["food"]["servings"]["serving"][0]["carbohydrate"]
+        "cholesterol" => $rawFoodData["food"]["servings"]["serving"][0]["cholesterol"], //mg
+        "calories" => $rawFoodData["food"]["servings"]["serving"][0]["calories"], // kcal
+        "fat" => $rawFoodData["food"]["servings"]["serving"][0]["fat"], // grams
+        "protein" => $rawFoodData["food"]["servings"]["serving"][0]["protein"], // grams
+        "sodium" => $rawFoodData["food"]["servings"]["serving"][0]["sodium"], // mg
+        "carbohydrate" => $rawFoodData["food"]["servings"]["serving"][0]["carbohydrate"], // grams
+        "sugar" => $rawFoodData["food"]["servings"]["serving"][0]["sugar"] // grams
     );
 }
 

@@ -23,6 +23,8 @@
 </script><!-- Custom jquery functions -->
 
   <script src="jquery/jQueryFunctions.js" type="text/javascript">
+
+  <script src="foodquery.php">
 </script>
 
   <title></title>
@@ -55,41 +57,42 @@
             </tr>
           </thead>
 
-          <tbody>
-            <!-- change the inputs to global variables that contain the information-->
-
-            <tr>
-              <td class="col-md-2">Item1</td>
-
-              <td class="col-md-2">Serving Size</td>
-
-              <td class="col-md-2">Calories</td>
-
-              <td class="col-md-2">Fat</td>
-
-              <td class="col-md-2">Sugar</td>
-
-              <td>Sodium</td>
-            </tr>
-          </tbody>
-
-          <tbody>
-            <!-- change the inputs to global variables that contain the information-->
-
-            <tr>
-              <td class="col-md-2">Item2</td>
-
-              <td class="col-md-2">Serving Size</td>
-
-              <td class="col-md-2">Calories</td>
-
-              <td class="col-md-2">Fat</td>
-
-              <td class="col-md-2">Sugar</td>
-
-              <td>Sodium</td>
-            </tr>
-          </tbody>
+            <?php
+                $resultData = include('foodquery.php');
+                echo '
+                <tbody>
+                  <tr>
+                    <td class="col-md-2">' . $resultData[0]['food_name'] . '</td>
+      
+                    <td class="col-md-2">' . $resultData[0]['metric_serving_amount'] . ' ' . $resultData[0]['metric_serving_unit'] . '</td>
+      
+                    <td class="col-md-2">' . $resultData[0]['calories'] . ' kcal</td>
+      
+                    <td class="col-md-2">' . $resultData[0]['fat'] . ' g</td>
+      
+                    <td class="col-md-2">' . $resultData[0]['sugar']  . ' g</td>
+      
+                    <td>' . $resultData[0]['sodium'] . ' mg</td>
+                  </tr>
+                </tbody>
+      
+                <tbody>
+                  <tr>
+                    <td class="col-md-2">' . $resultData[1]['food_name'] . '</td>
+      
+                    <td class="col-md-2">' . $resultData[1]['metric_serving_amount'] . ' ' . $resultData[0]['metric_serving_unit'] . '</td>
+      
+                    <td class="col-md-2">' . $resultData[1]['calories'] . ' kcal</td>
+      
+                    <td class="col-md-2">' . $resultData[1]['fat'] . ' g</td>
+      
+                    <td class="col-md-2">' . $resultData[1]['sugar']  . ' g</td>
+      
+                    <td>' . $resultData[1]['sodium'] . ' mg</td>
+                  </tr>
+                </tbody>
+               '
+            ?>
         </table>
       </div>
     </div>
