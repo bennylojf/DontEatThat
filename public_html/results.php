@@ -2,6 +2,7 @@
 
 <html lang="en">
 <head>
+   <title>Results &#8226; Don't Eat That!</title>
   <meta name="generator" content=
   "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
   <meta charset="utf-8"><!-- Ensure proper rendering on mobile -->
