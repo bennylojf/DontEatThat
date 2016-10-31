@@ -62,3 +62,6 @@ Oct 30:
 Alex - added code to grab relevant information about food (1)
 Alex - used config.php to store keys (.5)
 Alex - displayed results in results.php (1.5)
+
+Oct 31:
+Alex - fixed null query bug (1)
