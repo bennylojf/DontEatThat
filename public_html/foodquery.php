@@ -3,10 +3,10 @@
 require_once('../lib/fat-secret-php/src/Client.php');
 require_once('../lib/fat-secret-php/src/OAuthBase.php');
 require_once('../lib/fat-secret-php/src/FatSecretException.php');
-require_once('../config/config.php');
+$config = include('../config/config.php');
 
-$consumer_key = "e8f1ee8aeb2640d2831349c9e2d63334"; 
-$secret_key = "68a6ee2e74034474a625a5dfdf2546d1"; 
+$consumer_key = $config['consumer_key']; 
+$secret_key = $config['secret_key'];
 
 $searchTerm1 = $_GET['item1'];
 $searchTerm2 = $_GET['item2'];
@@ -15,20 +15,14 @@ $client = new \Adcuz\FatSecret\Client($consumer_key, $secret_key);
 
 // Get data from first search term:
 $searchResult = $client->SearchFood($searchTerm1, false, false, 1);
-
 $foodID = $searchResult["foods"]["food"]["food_id"];
-
 $rawFoodData = $client->GetFood($foodID);
-
 $foodData1 = getRelevantData($rawFoodData);
 
 // Get data from second search term:
 $searchResult = $client->SearchFood($searchTerm2, false, false, 1);
-
 $foodID = $searchResult["foods"]["food"]["food_id"];
-
 $rawFoodData = $client->GetFood($foodID);
-
 $foodData2 = getRelevantData($rawFoodData);
 
 var_dump($foodData1);
