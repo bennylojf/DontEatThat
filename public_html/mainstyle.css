@@ -47,3 +47,7 @@ input {
 	padding-left: 10%;
 	padding-right: 10%;
 }
+
+#register-button-style {
+    width: 400px;
+}
