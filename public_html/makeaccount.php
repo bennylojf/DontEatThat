@@ -6,17 +6,24 @@ $host = "localhost";
 $dbname = "Group14DB";
 
 // Create connection
-$conn = new mysqli($host, $username, $password);
+$conn = new mysqli($host, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 echo "Connected successfully"; 
-?>
-<!-- NEED TO SETUP VERIFICATION BEFORE ENTERING INTO DATABASE
-$sql = "INSERT INTO Users (Username, Password, Email, Concerns)
-VALUES ('John', 'Doe', 'john@example.com', 'Diabetes')";
+
+$signupname = $_POST['signup-name'];
+$signupusername = $_POST['signup-username'];
+$signuppassword = $_POST['signup-password'];
+$signupcalories = $_POST['signup-calories'];
+$signupsugar = $_POST['signup-sugar'];
+$signupsodium = $_POST['signup-sodium'];
+$signupprotein = $_POST['signup-protein'];
+
+$sql = "INSERT INTO Users (Name, Username, Password, Calories, Sugar, Sodium, Protein)
+VALUES ('$signupname', '$signupusername', '$signuppassword', '$signupcalories', '$signupsugar', '$signupsodium', '$signupprotein')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
@@ -26,4 +33,3 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 ?>
--->
