@@ -65,3 +65,6 @@ Alex - displayed results in results.php (1.5)
 
 Oct 31:
 Alex - fixed null query bug (1)
+
+Nov 2:
+Kenton, Charn, Benny - implemented sign up and log in features (2)
