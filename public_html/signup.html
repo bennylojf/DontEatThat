@@ -34,17 +34,9 @@
                 <div>
                     <!-- FIRST NAME -->
                     <div class="form-group form-group-lg">
-                        <label class="col-sm-2 control-label" for="lg">First Name</label>
+                        <label class="col-sm-2 control-label" for="lg">Name</label>
                         <div class="col-sm-4">
-                            <input class="form-control" type="text" id="lg" placeholder="First Name" required="true" name="signup-name">
-                        </div>
-                    </div>
-
-                    <!-- LAST NAME -->
-                    <div class="form-group form-group-lg">
-                        <label class="col-sm-2 control-label" for="lg">Last Name</label>
-                        <div class="col-sm-4">
-                            <input class="form-control" type="text" id="lg" placeholder="Last Name" required="true" name="signup-lastname">
+                            <input class="form-control" type="text" id="lg" placeholder="Name" required="true" name="signup-name">
                         </div>
                     </div>
 
@@ -64,49 +56,12 @@
                         </div>
                     </div>
 
-                    <!-- GENDER -->
-                    <div class="form-group form-group-lg">
-                        <label class="col-sm-2 control-label" for="lg">Gender</label>
-                        <div class="col-sm-2">
-                            <select class="form-control" id="sel1">
-                                <option></option>
-                                <option>Male</option>
-                                <option>Female</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-                    <!-- AGE -->
-                    <div class="form-group form-group-lg">
-                        <label class="col-sm-2 control-label" for="lg">Age</label>
-                        <div class="col-sm-2">
-                            <input class="form-control" type="text" id="lg" placeholder="Age" required="true">
-                        </div>
-                    </div>
-
-                    <!-- HEIGHT -->
-                    <div class="form-group form-group-lg">
-                        <label class="col-sm-2 control-label" for="lg">Height</label>
-                        <div class="col-sm-2">
-                            <input class="form-control" type="text" id="lg" placeholder="Height" required="true">
-                        </div>
-                    </div>
-
-                    <!-- WEIGHT -->
-                    <div class="form-group form-group-lg">
-                        <label class="col-sm-2 control-label" for="lg">Weight</label>
-                        <div class="col-sm-2">
-                            <input class="form-control" type="text" id="lg" placeholder="Weight" required="true">
-                        </div>
-                    </div>
-
                     <!-- MEAL PREFERENCE(S) -->
-                    <div class="form-group form-group-lg">
+               <!--     <div class="form-group form-group-lg">
                         <label class="col-sm-2 control-label" for="lg">Meal Preference</label>
                         <div style="padding-left: 15px;">
                         <label class="checkbox-inline">
-                            <input type="checkbox" value="">High calorie
+                            <input type="checkbox" value="">High <CENTER></CENTER>alorie
                         </label>
                         <label class="checkbox-inline">
                             <input type="checkbox" value="">High Sugar
@@ -125,11 +80,51 @@
                         <label class="checkbox-inline">
                             <input type="checkbox" value="">Low Salt
                         </label>
+                        </div>-->
+
+                          <!-- Meal Preference(s) -->
+                    <div class="form-group form-group-lg">
+                        <label class="col-sm-2 control-label" for="lg">Meal Preference</label>
+                        <div style="padding-left: 15px;">
+                        <div class="col-sm-2">
+                        <label class="col-sm-2 control-label" for="lg">Calories</label>
+                            <select class="form-control" id="sel1">
+                                <option></option>
+                                <option>High</option>
+                                <option>Low</option>
+                            </select>
                         </div>
+                         <div class="col-sm-2">
+                        <label class="col-sm-2 control-label" for="lg">Sugar</label>
+                            <select class="form-control" id="sel1">
+                                <option></option>
+                                <option>High</option>
+                                <option>Low</option>
+                            </select>
+                        </div>
+                         <div class="col-sm-2">
+                        <label class="col-sm-2 control-label" for="lg">Sodium</label>
+                            <select class="form-control" id="sel1">
+                                <option></option>
+                                <option>High</option>
+                                <option>Low</option>
+                            </select>
+                        </div>
+                         <div class="col-sm-2">
+                        <label class="col-sm-2 control-label" for="lg">Protein</label>
+                            <select class="form-control" id="sel1">
+                                <option></option>
+                                <option>High</option>
+                                <option>Low</option>
+                            </select>
+                        </div>
+                        </div>
+
+                    </div>
                     </div>
                 </div>
 
-                <div class="form-group form-group-lg">
+                <div style="padding-top: 40px; class="form-group form-group-lg">
                     <div align ="center">
                         <button type="submit" id= "register-button-style" class="btn btn-primary btn-lg">Register</button>
                     </div>
