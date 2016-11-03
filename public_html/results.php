@@ -38,23 +38,24 @@
                   </thead>
                   <?php
                      $resultData = include('foodquery.php');
-					 $metric_serving_amount0 = $resultData[0]['metric_serving_amount'];
-					 $food0calories = round(($resultData[0]['calories']/$metric_serving_amount0)*100);
-					 $food0fat = round(($resultData[0]['fat']/$metric_serving_amount0)*100);
-					 $food0sugar = round(($resultData[0]['sugar']/$metric_serving_amount0)*100);
-					 $food0sodium = round(($resultData[0]['sodium']/$metric_serving_amount0)*100);
-					 
-					 $metric_serving_amount1 = $resultData[1]['metric_serving_amount'];
-					 $food1calories = round(($resultData[1]['calories']/$metric_serving_amount1)*100);
-					 $food1fat = round(($resultData[1]['fat']/$metric_serving_amount1)*100);
-					 $food1sugar = round(($resultData[1]['sugar']/$metric_serving_amount1)*100);
-					 $food1sodium = round(($resultData[1]['sodium']/$metric_serving_amount1)*100);
-					 
-					 $dailycalories = 2500;
-					 $dailyfat = 65;
-					 $dailysugar = 30;
-					 $dailysodium = 2400; // only one in mg
-					 
+
+                     // Get NORMALIZED (to 100g) data for the first food item
+                     $food0calories = normalizeWeight($resultData[0]['calories'], $resultData[0]);
+                     $food0fat = normalizeWeight($resultData[0]['fat'], $resultData[0]);
+                     $food0sugar = normalizeWeight($resultData[0]['sugar'], $resultData[0]);
+                     $food0sodium = normalizeWeight($resultData[0]['sodium'], $resultData[0]);
+
+                     $food1calories = normalizeWeight($resultData[1]['calories'], $resultData[1]);
+                     $food1fat = normalizeWeight($resultData[1]['fat'], $resultData[1]);
+                     $food1sugar = normalizeWeight($resultData[1]['sugar'], $resultData[1]);
+                     $food1sodium = normalizeWeight($resultData[1]['sodium'], $resultData[1]);
+                     
+                     // TODO: Maybe remove this and store it as a constant somewhere?
+                     $dailycalories = 2500; // kcal
+                     $dailyfat = 65; // g
+                     $dailysugar = 30; // g
+                     $dailysodium = 2400; // mg
+                     
                      echo '
                      <tbody>
                        <tr>
@@ -88,22 +89,36 @@
                        </tr>
                      </tbody>
                      ';
-					 ?>
-					 
-		
-               </table>
-			   <?php
-			   		$food0score = ($food0calories/$dailycalories) + ($food0fat/$dailyfat) + ($food0sugar/$dailysugar) + ($food0sodium/$dailysodium);
-					$food1score = ($food1calories/$dailycalories) + ($food1fat/$dailyfat) + ($food1sugar/$dailysugar) + ($food1sodium/$dailysodium);
-					 
-					if (food0score > food1score) {
-						echo $resultData[1]['food_name'].' is healthier than '.$resultData[0]['food_name'] ;
-					} else if (food0score < food1score) {
-						echo $resultData[0]['food_name'].' is healthier than '.$resultData[1]['food_name'];
-					} else {
-						echo $resultData[0]['food_name'].' is about the same as '.$resultData[1]['food_name'];
-					}
-					?>
+
+                     // normalizes field to 100 grams
+                     function normalizeWeight($field, $resultData) {
+                        $serving_amt_grams = 0;
+                        if($resultData['metric_serving_unit'] == "g") {
+                           $serving_amt_grams = $resultData['metric_serving_amount'];
+                        }
+                        else if($resultData['metric_serving_unit'] == "oz") {
+                           $serving_amt_grams = $resultData['metric_serving_amount'] * 28.35;
+                        }
+                        else {
+                           echo "unknown unit";
+                        }
+
+                        return round(($field / $serving_amt_grams) * 100);
+                     }
+                     ?>
+                     </table>
+               <?php
+                    $food0score = ($food0calories/$dailycalories) + ($food0fat/$dailyfat) + ($food0sugar/$dailysugar) + ($food0sodium/$dailysodium);
+                    $food1score = ($food1calories/$dailycalories) + ($food1fat/$dailyfat) + ($food1sugar/$dailysugar) + ($food1sodium/$dailysodium);
+                     
+                    if (food0score > food1score) {
+                        echo $resultData[1]['food_name'].' is healthier than '.$resultData[0]['food_name'] ;
+                    } else if (food0score < food1score) {
+                        echo $resultData[0]['food_name'].' is healthier than '.$resultData[1]['food_name'];
+                    } else {
+                        echo $resultData[0]['food_name'].' is about the same as '.$resultData[1]['food_name'];
+                    }
+                ?>
             </div>
          </div>
       </div>
