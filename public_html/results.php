@@ -38,6 +38,8 @@
                   </thead>
                   <?php
                      $resultData = include('foodquery.php');
+					 $metric_serving_amount0 = $resultData[0]['metric_serving_amount'];
+					 $metric_serving_amount1 = $resultData[1]['metric_serving_amount'];
                      echo '
                      <tbody>
                        <tr>
@@ -45,13 +47,13 @@
                      
                          <td class="col-md-2">' . $resultData[0]['metric_serving_amount'] . ' ' . $resultData[0]['metric_serving_unit'] . '</td>
                      
-                         <td class="col-md-2">' . $resultData[0]['calories'] . ' kcal</td>
+                         <td class="col-md-2">' . ($resultData[0]['calories']/$metric_serving_amount0)*100 . ' kcal</td>
                      
-                         <td class="col-md-2">' . $resultData[0]['fat'] . ' g</td>
+                         <td class="col-md-2">' . ($resultData[0]['fat']/$metric_serving_amount0)*100  . ' g</td>
                      
-                         <td class="col-md-2">' . $resultData[0]['sugar']  . ' g</td>
+                         <td class="col-md-2">' . ($resultData[0]['sugar']/$metric_serving_amount0)*100   . ' g</td>
                      
-                         <td>' . $resultData[0]['sodium'] . ' mg</td>
+                         <td>' . ($resultData[0]['sodium']/$metric_serving_amount0)*100 . ' mg</td>
                        </tr>
                      </tbody>
                      
@@ -61,13 +63,13 @@
                      
                          <td class="col-md-2">' . $resultData[1]['metric_serving_amount'] . ' ' . $resultData[1]['metric_serving_unit'] . '</td>
                      
-                         <td class="col-md-2">' . $resultData[1]['calories'] . ' kcal</td>
+                         <td class="col-md-2">' . ($resultData[1]['calories']/$metric_serving_amount1)*100 . ' kcal</td>
                      
-                         <td class="col-md-2">' . $resultData[1]['fat'] . ' g</td>
+                         <td class="col-md-2">' . ($resultData[1]['fat']/$metric_serving_amount1)*100 . ' g</td>
                      
-                         <td class="col-md-2">' . $resultData[1]['sugar']  . ' g</td>
+                         <td class="col-md-2">' . ($resultData[1]['sugar']/$metric_serving_amount1)*100  . ' g</td>
                      
-                         <td>' . $resultData[1]['sodium'] . ' mg</td>
+                         <td>' . ($resultData[1]['sodium']/$metric_serving_amount1)*100 . ' mg</td>
                        </tr>
                      </tbody>
                      '
