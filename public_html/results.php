@@ -92,8 +92,13 @@
 					 $food0score = ($food0calories/$dailycalories) + ($food0fat/$dailyfat) + ($food0sugar/$dailysugar) + ($food0sodium/$dailysodium);
 					 $food1score = ($food1calories/$dailycalories) + ($food1fat/$dailyfat) + ($food1sugar/$dailysugar) + ($food1sodium/$dailysodium);
 					 
-					 echo 'food0: ' . $food0score . '<br>';
-					 echo 'food1: ' . $food1score . '<br>';
+					 if (food0score > food1score) {
+						 echo $resultData[1]['food_name'].' is healthier than '.$resultData[0]['food_name'] ;
+					 } else if (food0score < food1score) {
+						 echo $resultData[0]['food_name'].' is healthier than '.$resultData[1]['food_name'];
+					 } else {
+						 echo $resultData[0]['food_name'].' is about the same as '.$resultData[1]['food_name'];
+					 }
                      ?>
                </table>
             </div>
