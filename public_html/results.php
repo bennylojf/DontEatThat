@@ -30,22 +30,24 @@
                      <tr>
                         <th>Item</th>
                         <th>Serving Size</th>
-                        <th>Calories</th>
-                        <th>Fat</th>
-                        <th>Sugar</th>
-                        <th>Sodium</th>
+                        <th>Calories per 100 g</th>
+                        <th>Fat per 100 g</th>
+                        <th>Sugar per 100 g</th>
+                        <th>Sodium per 100 g</th>
                      </tr>
                   </thead>
                   <?php
                      $resultData = include('foodquery.php');
 
                      // Get NORMALIZED (to 100g) data for the first food item
-                     $food0calories = normalizeWeight($resultData[0]['calories'], $resultData[0]);
+                     $food0amount = round($resultData[0]['metric_serving_amount']);
+					 $food0calories = normalizeWeight($resultData[0]['calories'], $resultData[0]);
                      $food0fat = normalizeWeight($resultData[0]['fat'], $resultData[0]);
                      $food0sugar = normalizeWeight($resultData[0]['sugar'], $resultData[0]);
                      $food0sodium = normalizeWeight($resultData[0]['sodium'], $resultData[0]);
 
-                     $food1calories = normalizeWeight($resultData[1]['calories'], $resultData[1]);
+                     $food1amount = round($resultData[1]['metric_serving_amount']);
+					 $food1calories = normalizeWeight($resultData[1]['calories'], $resultData[1]);
                      $food1fat = normalizeWeight($resultData[1]['fat'], $resultData[1]);
                      $food1sugar = normalizeWeight($resultData[1]['sugar'], $resultData[1]);
                      $food1sodium = normalizeWeight($resultData[1]['sodium'], $resultData[1]);
@@ -61,7 +63,7 @@
                        <tr>
                          <td class="col-md-2">' . $resultData[0]['food_name'] . '</td>
                      
-                         <td class="col-md-2">' . 100 . " " . $resultData[0]['metric_serving_unit'] . '</td>
+                         <td class="col-md-2">' . $food0amount . " " . $resultData[0]['metric_serving_unit'] . '</td>
                      
                          <td class="col-md-2">' . $food0calories . ' kcal</td>
                      
@@ -77,7 +79,7 @@
                        <tr>
                          <td class="col-md-2">' . $resultData[1]['food_name'] . '</td>
                      
-                         <td class="col-md-2">' . 100 . " " . $resultData[1]['metric_serving_unit'] . '</td>
+                         <td class="col-md-2">' . $food0amount . " " . $resultData[1]['metric_serving_unit'] . '</td>
                      
                          <td class="col-md-2">' . $food1calories . ' kcal</td>
                      
@@ -110,7 +112,7 @@
                <?php
                     $food0score = ($food0calories/$dailycalories) + ($food0fat/$dailyfat) + ($food0sugar/$dailysugar) + ($food0sodium/$dailysodium);
                     $food1score = ($food1calories/$dailycalories) + ($food1fat/$dailyfat) + ($food1sugar/$dailysugar) + ($food1sodium/$dailysodium);
-                     
+										
                     if (food0score > food1score) {
                         echo $resultData[1]['food_name'].' is healthier than '.$resultData[0]['food_name'] ;
                     } else if (food0score < food1score) {
