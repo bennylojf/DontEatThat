@@ -59,7 +59,7 @@
                        <tr>
                          <td class="col-md-2">' . $resultData[1]['food_name'] . '</td>
                      
-                         <td class="col-md-2">' . $resultData[1]['metric_serving_amount'] . ' ' . $resultData[0]['metric_serving_unit'] . '</td>
+                         <td class="col-md-2">' . $resultData[1]['metric_serving_amount'] . ' ' . $resultData[1]['metric_serving_unit'] . '</td>
                      
                          <td class="col-md-2">' . $resultData[1]['calories'] . ' kcal</td>
                      
