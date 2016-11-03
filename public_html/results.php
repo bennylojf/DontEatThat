@@ -39,7 +39,22 @@
                   <?php
                      $resultData = include('foodquery.php');
 					 $metric_serving_amount0 = $resultData[0]['metric_serving_amount'];
+					 $food0calories = round(($resultData[0]['calories']/$metric_serving_amount0)*100);
+					 $food0fat = round(($resultData[0]['fat']/$metric_serving_amount0)*100);
+					 $food0sugar = round(($resultData[0]['sugar']/$metric_serving_amount0)*100);
+					 $food0sodium = round(($resultData[0]['sodium']/$metric_serving_amount0)*100);
+					 
 					 $metric_serving_amount1 = $resultData[1]['metric_serving_amount'];
+					 $food1calories = round(($resultData[1]['calories']/$metric_serving_amount1)*100);
+					 $food1fat = round(($resultData[1]['fat']/$metric_serving_amount1)*100);
+					 $food1sugar = round(($resultData[1]['sugar']/$metric_serving_amount1)*100);
+					 $food1sodium = round(($resultData[1]['sodium']/$metric_serving_amount1)*100);
+					 
+					 $dailycalories = 2500;
+					 $dailyfat = 65;
+					 $dailysugar = 30;
+					 $dailysodium = 2400; // only one in mg
+					 
                      echo '
                      <tbody>
                        <tr>
@@ -47,13 +62,13 @@
                      
                          <td class="col-md-2">' . 100 . " " . $resultData[0]['metric_serving_unit'] . '</td>
                      
-                         <td class="col-md-2">' . round(($resultData[0]['calories']/$metric_serving_amount0)*100) . ' kcal</td>
+                         <td class="col-md-2">' . $food0calories . ' kcal</td>
                      
-                         <td class="col-md-2">' . round(($resultData[0]['fat']/$metric_serving_amount0)*100)  . ' g</td>
+                         <td class="col-md-2">' . $food0fat . ' g</td>
                      
-                         <td class="col-md-2">' . round(($resultData[0]['sugar']/$metric_serving_amount0)*100)   . ' g</td>
+                         <td class="col-md-2">' .  $food0sugar . ' g</td>
                      
-                         <td>' . round(($resultData[0]['sodium']/$metric_serving_amount0)*100) . ' mg</td>
+                         <td>' . $food0sodium . ' mg</td>
                        </tr>
                      </tbody>
                      
@@ -63,16 +78,22 @@
                      
                          <td class="col-md-2">' . 100 . " " . $resultData[1]['metric_serving_unit'] . '</td>
                      
-                         <td class="col-md-2">' . round(($resultData[1]['calories']/$metric_serving_amount1)*100) . ' kcal</td>
+                         <td class="col-md-2">' . $food1calories . ' kcal</td>
                      
-                         <td class="col-md-2">' . round(($resultData[1]['fat']/$metric_serving_amount1)*100) . ' g</td>
+                         <td class="col-md-2">' . $food1fat . ' g</td>
                      
-                         <td class="col-md-2">' . round(($resultData[1]['sugar']/$metric_serving_amount1)*100)  . ' g</td>
+                         <td class="col-md-2">' . $food1sugar . ' g</td>
                      
-                         <td>' . round(($resultData[1]['sodium']/$metric_serving_amount1)*100) . ' mg</td>
+                         <td>' . $food1sodium . ' mg</td>
                        </tr>
                      </tbody>
-                     '
+                     ';
+					 
+					 $food0score = ($food0calories/$dailycalories) + ($food0fat/$dailyfat) + ($food0sugar/$dailysugar) + ($food0sodium/$dailysodium);
+					 $food1score = ($food1calories/$dailycalories) + ($food1fat/$dailyfat) + ($food1sugar/$dailysugar) + ($food1sodium/$dailysodium);
+					 
+					 echo 'food0: ' . $food0score . '<br>';
+					 echo 'food1: ' . $food1score . '<br>';
                      ?>
                </table>
             </div>
