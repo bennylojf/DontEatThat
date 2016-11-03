@@ -79,7 +79,7 @@
                        <tr>
                          <td class="col-md-2">' . $resultData[1]['food_name'] . '</td>
                      
-                         <td class="col-md-2">' . $food0amount . " " . $resultData[1]['metric_serving_unit'] . '</td>
+                         <td class="col-md-2">' . $food1amount . " " . $resultData[1]['metric_serving_unit'] . '</td>
                      
                          <td class="col-md-2">' . $food1calories . ' kcal</td>
                      
@@ -113,9 +113,9 @@
                     $food0score = ($food0calories/$dailycalories) + ($food0fat/$dailyfat) + ($food0sugar/$dailysugar) + ($food0sodium/$dailysodium);
                     $food1score = ($food1calories/$dailycalories) + ($food1fat/$dailyfat) + ($food1sugar/$dailysugar) + ($food1sodium/$dailysodium);
 										
-                    if (food0score > food1score) {
+                    if ($food0score > $food1score) {
                         echo $resultData[1]['food_name'].' is healthier than '.$resultData[0]['food_name'] ;
-                    } else if (food0score < food1score) {
+                    } else if ($food0score < $food1score) {
                         echo $resultData[0]['food_name'].' is healthier than '.$resultData[1]['food_name'];
                     } else {
                         echo $resultData[0]['food_name'].' is about the same as '.$resultData[1]['food_name'];
