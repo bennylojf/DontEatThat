@@ -35,10 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if ($count == 1) {
         $_SESSION['login_user'] = $myusername;
+       
         echo '<script type="text/javascript">
 		        window.location = "http://www.donteatthat.ca"
 			   </script>';
         exit();
+
     } else {
         $error = "Your Login Name or Password is invalid";
         echo "$error";

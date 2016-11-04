@@ -70,3 +70,41 @@ $(document).ready(function() {
 		}
 	});
 });
+
+/*$(document).ready(function(event) {
+ 	 $("#login_button").click(function(){
+ 	 	$("#login_change").replaceWith(
+ 	 		'<li><a href="#"><span class="glyphicon glyphicon-user"></span>Logout</a></li>' );
+
+ 	});
+
+});*/
+
+$(function(){
+    $(document).on("click", "#login_button", function(event){
+    	$("#login_change").replaceWith(
+ 	 		' <ul class="nav navbar-nav navbar-right">'+
+ 	 		'<li><a href="#"><span class="glyphicon glyphicon-cog"></span> Manage Account</a></li>'+
+ 	 		'<li><a data-toggle="modal" href="#myModal"><span class="glyphicon glyphicon-log-in"> Logout</a></li>'+
+ 	 		'</ul>' );
+    }); 
+});
+
+$(function(){
+    $(document).on("click", "#login_button", function(event){
+    	$("#login_change").replaceWith(
+ 	 		' <ul class="nav navbar-nav navbar-right">'+
+ 	 		'<li><a href="signup_html"><span class="glyphicon glyphicon-cog"></span> Signup</a></li>'+
+ 	 		'<li><a data-toggle="modal" href="#myModal"><span class="glyphicon glyphicon-log-in"> Login</a></li>'+
+ 	 		'</ul>' );
+    }); 
+});
+
+
+
+
+
+
+
+
+
