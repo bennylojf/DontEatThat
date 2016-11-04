@@ -28,3 +28,45 @@ $(document).ready(function() {
 		}
 	});
 });
+
+/* Script used to validate contact form */
+$(document).ready(function() {
+	$("#contact-submit").click(function(event) {
+		var name = $("#form_name").val();
+		var surname = $("#form_lastname").val();
+		var email = $("#form_email").val();
+		var message = $("#form_message").val();
+		var regex_name = /[a-zA-Z0-9]+/;
+		var regex_lastname = /[a-zA-Z0-9]+/;
+		var regex_email = /[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]+/;
+		var regex_message = /\w+/;
+
+		$("#contactFormError0").removeClass("show-form-error").addClass("form-error");
+
+		if (!regex_name.test(name)) {
+			$("#contactFormError0").removeClass("form-error").addClass("show-form-error");
+			event.preventDefault();
+		}
+
+		$("#contactFormError1").removeClass("show-form-error").addClass("form-error");
+
+		if (!regex_lastname.test(surname)) {
+			$("#contactFormError1").removeClass("form-error").addClass("show-form-error");
+			event.preventDefault();
+		}
+
+		$("#contactFormError2").removeClass("show-form-error").addClass("form-error");
+
+		if (!regex_email.test(email)) {
+			$("#contactFormError2").removeClass("form-error").addClass("show-form-error");
+			event.preventDefault();
+		}
+
+		$("#contactFormError3").removeClass("show-form-error").addClass("form-error");
+
+		if (!regex_message.test(message)) {
+			$("#contactFormError3").removeClass("form-error").addClass("show-form-error");
+			event.preventDefault();
+		}
+	});
+});
