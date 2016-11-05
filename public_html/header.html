@@ -19,10 +19,12 @@
             <li><a href="howItWorks.html">How It Works</a></li>
             <li><a href="contact.html">Contact</a></li>
          </ul>
-         <div id="login_change"> <ul class="nav navbar-nav navbar-right">
-            <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a data-toggle="modal" href="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-         </ul></div>
+         <div id="login_change"> 
+            <ul class="nav navbar-nav navbar-right">
+               <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+               <li><a data-toggle="modal" href="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+         </div>
       </div>
    </div>
 </nav>
@@ -43,7 +45,8 @@
                <div class="form-group form-group-lg">
                   <label class="col-sm-5 control-label">Username</label>
                   <div class="col-sm-9">
-                     <input class="form-control" type="text" placeholder="Username" name="login-name" required>
+                     <input id="loginName" class="form-control" type="text" placeholder="Username" name="login-name">
+                     <p id="loginError0" class="form-error">Please enter your username.</p>
                   </div>
                </div>
                </p>
@@ -51,11 +54,12 @@
                <div class="form-group form-group-lg">
                   <label class="col-sm-5 control-label">Password</label>
                   <div class="col-sm-9">
-                     <input class="form-control" type="password" placeholder="Password" name="login-password" required>
+                     <input id="loginPass" class="form-control" type="password" placeholder="Password" name="login-password">
+                     <p id="loginError1" class="form-error">Please enter your password.</p>
                   </div>
                </div>
                </p>
-               <br><br>
+               <br><br><br><br>
                <p><button id="login_button" type="submit" class="btn btn-primary btn-lg">Sign in</button></p>
             </form>
          </div>

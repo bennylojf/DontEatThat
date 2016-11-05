@@ -1,5 +1,6 @@
 <?php
 $configs = include('../config/config.php');
+session_start();
 
 // Reference: https://www.tutorialspoint.com/php/php_mysql_login.htm
 $username = $configs['database_username'];
@@ -14,9 +15,8 @@ $conn = new mysqli($host, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
-
-session_start();
+// Debug statement
+// echo "Connected successfully";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // username and password sent from form 
@@ -35,16 +35,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if ($count == 1) {
         $_SESSION['login_user'] = $myusername;
-       
-        echo '<script type="text/javascript">
-		        window.location = "http://www.donteatthat.ca"
-			   </script>';
-        exit();
 
+        echo '<script type="text/javascript">
+		          window.location = "http://www.donteatthat.ca"
+			  </script>';
+
+        exit();
     } else {
         $error = "Your Login Name or Password is invalid";
         echo "$error";
     }
 }
 ?>
-

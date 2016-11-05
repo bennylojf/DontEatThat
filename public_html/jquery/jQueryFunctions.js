@@ -71,40 +71,51 @@ $(document).ready(function() {
 	});
 });
 
-/*$(document).ready(function(event) {
- 	 $("#login_button").click(function(){
- 	 	$("#login_change").replaceWith(
- 	 		'<li><a href="#"><span class="glyphicon glyphicon-user"></span>Logout</a></li>' );
+/* Script to validate login form */
+$(document).ready(function() {
+	$(document).on("click", "#login_button", function(event) {
+		var username = $("#loginName").val();
+		var password = $("#loginPass").val();
+		var errorCount = 0;
 
- 	});
+		$("#loginError0").removeClass("show-form-error").addClass("form-error");
+		$("#loginError1").removeClass("show-form-error").addClass("form-error");
 
-});*/
+		if (username == null || username == "") {
+			$("#loginError0").removeClass("form-error").addClass("show-form-error");
+			errorCount++;
+		}
 
-$(function(){
-    $(document).on("click", "#login_button", function(event){
+		if (password == null || password == "") {
+			$("#loginError1").removeClass("form-error").addClass("show-form-error");
+			errorCount++;
+		}
+
+		if (errorCount > 0)
+			event.preventDefault();
+	});
+})
+
+$(function() {
+    $(document).on("click", "#login_button", function() {
     	$("#login_change").replaceWith(
- 	 		' <ul class="nav navbar-nav navbar-right">'+
+    		'<div id="login_change">'+
+ 	 		'<ul class="nav navbar-nav navbar-right">'+
  	 		'<li><a href="#"><span class="glyphicon glyphicon-cog"></span> Manage Account</a></li>'+
- 	 		'<li><a data-toggle="modal" href="#myModal"><span class="glyphicon glyphicon-log-in"> Logout</a></li>'+
- 	 		'</ul>' );
+ 	 		'<li><a id="logout_button" href="#"><span class="glyphicon glyphicon-log-out"> Logout</a></li>'+
+ 	 		'</ul>'+
+ 	 		'</div>');
     }); 
 });
 
-$(function(){
-    $(document).on("click", "#login_button", function(event){
+$(function() {
+    $(document).on("click", "#logout_button", function() {
     	$("#login_change").replaceWith(
- 	 		' <ul class="nav navbar-nav navbar-right">'+
- 	 		'<li><a href="signup_html"><span class="glyphicon glyphicon-cog"></span> Signup</a></li>'+
+    		'<div id="login_change">'+
+ 	 		'<ul class="nav navbar-nav navbar-right">'+
+ 	 		'<li><a href="signup_html"><span class="glyphicon glyphicon-user"></span> Signup</a></li>'+
  	 		'<li><a data-toggle="modal" href="#myModal"><span class="glyphicon glyphicon-log-in"> Login</a></li>'+
- 	 		'</ul>' );
+ 	 		'</ul>'+
+ 	 		'</div>');
     }); 
 });
-
-
-
-
-
-
-
-
-

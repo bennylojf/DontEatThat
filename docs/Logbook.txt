@@ -75,3 +75,6 @@ Alex, Benny - completed algorithm to determine healthier food (2)
 Nov 4:
 Charn, Kenton - worked on switching the login and sign up on the nav bar to logout and manage account after login is successful. Work is still in progress. (2)
 Kenton - validation of home page and contact page (3)
+
+Nov 5:
+Kenton - added javascript to test for null input for login (0.5); navbar now swaps correctly, but still needs work (0.5)
