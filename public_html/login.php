@@ -1,6 +1,6 @@
 <?php
-$configs = include('../config/config.php');
 session_start();
+$configs = include('../config/config.php');
 
 // Reference: https://www.tutorialspoint.com/php/php_mysql_login.htm
 $username = $configs['database_username'];
@@ -15,7 +15,6 @@ $conn = new mysqli($host, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-// Debug statement
 // echo "Connected successfully";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -24,26 +23,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $myusername = mysqli_real_escape_string($conn, $_POST['login-name']);
     $mypassword = mysqli_real_escape_string($conn, $_POST['login-password']);
     
-    $sql    = "SELECT username FROM Users WHERE Username = '$myusername' and Password = '$mypassword'";
+    $sql    = " SELECT Username, Name FROM Users WHERE Username = '$myusername' AND Password = '$mypassword' ";
     $result = mysqli_query($conn, $sql);
     $row    = mysqli_fetch_array($result, MYSQLI_ASSOC);
-    $active = $row['active'];
+    $count  = mysqli_num_rows($result);
     
-    $count = mysqli_num_rows($result);
-    
-    // If result matched $myusername and $mypassword, table row must be 1 row
+    // If result matched $myusername and $mypassword, a table row exists
     
     if ($count == 1) {
-        $_SESSION['login_user'] = $myusername;
+        $_SESSION['user_name'] = $row['Name'];
 
-        echo '<script type="text/javascript">
-		          window.location = "http://www.donteatthat.ca"
-			  </script>';
-
-        exit();
+        header("Location: index.php");
     } else {
-        $error = "Your Login Name or Password is invalid";
-        echo "$error";
+        echo "Your Username or Password is incorrect.";
     }
 }
 ?>

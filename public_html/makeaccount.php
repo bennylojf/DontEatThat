@@ -1,9 +1,11 @@
 <?php
-// Reference: http://www.w3schools.com/php/php_mysql_insert.asp
-$username = "group14";
-$password = "Cpen&321";
-$host = "localhost";
-$dbname = "Group14DB";
+$configs = include('../config/config.php');
+
+// Reference: https://www.tutorialspoint.com/php/php_mysql_login.htm
+$username = $configs['database_username'];
+$password = $configs['database_password'];
+$host     = $configs['host'];
+$dbname   = $configs['database_name'];
 
 // Create connection
 $conn = new mysqli($host, $username, $password, $dbname);
@@ -12,7 +14,7 @@ $conn = new mysqli($host, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully"; 
+//echo "Connected successfully"; 
 
 $signupname = $_POST['signup-name'];
 $signupusername = $_POST['signup-username'];

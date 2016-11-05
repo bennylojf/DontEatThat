@@ -77,4 +77,4 @@ Charn, Kenton - worked on switching the login and sign up on the nav bar to logo
 Kenton - validation of home page and contact page (3)
 
 Nov 5:
-Kenton - added javascript to test for null input for login (0.5); navbar now swaps correctly, but still needs work (0.5)
+Kenton - added javascript to test for null input for login (0.5); navbar now swaps correctly, but still needs work (0.5); refactor + added sessions (3)

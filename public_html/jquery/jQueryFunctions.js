@@ -1,13 +1,3 @@
-/* Script used to import navbar */
-$(document).ready(function() {
-    $("#header").load("header.html");
-});
-
-/* Script used to import footer */
-$(document).ready(function() {
-    $("#footer").load("footer.html");
-});
-
 /* Script used to validate food form */
 $(document).ready(function() {
 	$("#food-submit").click(function(event) {
@@ -95,27 +85,3 @@ $(document).ready(function() {
 			event.preventDefault();
 	});
 })
-
-$(function() {
-    $(document).on("click", "#login_button", function() {
-    	$("#login_change").replaceWith(
-    		'<div id="login_change">'+
- 	 		'<ul class="nav navbar-nav navbar-right">'+
- 	 		'<li><a href="#"><span class="glyphicon glyphicon-cog"></span> Manage Account</a></li>'+
- 	 		'<li><a id="logout_button" href="#"><span class="glyphicon glyphicon-log-out"> Logout</a></li>'+
- 	 		'</ul>'+
- 	 		'</div>');
-    }); 
-});
-
-$(function() {
-    $(document).on("click", "#logout_button", function() {
-    	$("#login_change").replaceWith(
-    		'<div id="login_change">'+
- 	 		'<ul class="nav navbar-nav navbar-right">'+
- 	 		'<li><a href="signup_html"><span class="glyphicon glyphicon-user"></span> Signup</a></li>'+
- 	 		'<li><a data-toggle="modal" href="#myModal"><span class="glyphicon glyphicon-log-in"> Login</a></li>'+
- 	 		'</ul>'+
- 	 		'</div>');
-    }); 
-});
