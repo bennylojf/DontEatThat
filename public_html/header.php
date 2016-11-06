@@ -58,7 +58,7 @@
                            echo 
                            "
                            <li><a href='signup.php'><span class='glyphicon glyphicon-user'></span> Signup</a></li>
-                           <li><a data-toggle='modal' href='#myModal'><span class='glyphicon glyphicon-log-in'> Login</a></li>
+                           <li><a data-toggle='modal' href='#' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'> Login</a></li>
                            ";
                         } 
                         ?>
@@ -69,40 +69,30 @@
       </nav>
       <!-- End of navbar setup -->
       <!-- Beginning of Modal -->
-      <div id="myModal" class="modal fade" role="dialog">
+      <div id="loginModal" class="modal fade" role="dialog">
          <div class="modal-dialog">
-            <!-- Modal content-->
             <div class="modal-content">
                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">x</button>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
                   <h3 class="modal-title">Login</h3>
                </div>
                <div class="modal-body">
                   <form method="post" action="login.php" name="login_form">
-                     <p> 
-                     <div class="form-group form-group-lg">
-                        <label class="col-sm-5 control-label">Username</label>
-                        <div class="col-sm-9">
-                           <input id="loginName" class="form-control" type="text" placeholder="Username" name="login-name">
-                           <p id="loginError0" class="form-error">Please enter your username.</p>
-                        </div>
+                     <div class="form-group">
+                        <label for="loginName">Username</label>
+                        <input id="loginName" class="form-control" type="text" placeholder="Enter Username" name="login-name">
+                        <p id="loginError0" class="form-error">Please enter your username.</p>
                      </div>
-                     </p>
-                     <p> 
-                     <div class="form-group form-group-lg">
-                        <label class="col-sm-5 control-label">Password</label>
-                        <div class="col-sm-9">
-                           <input id="loginPass" class="form-control" type="password" placeholder="Password" name="login-password">
-                           <p id="loginError1" class="form-error">Please enter your password.</p>
-                        </div>
+                     <div class="form-group">
+                        <label for="loginPass">Password</label>
+                        <input id="loginPass" class="form-control" type="password" placeholder="Enter Password" name="login-password">
+                        <p id="loginError1" class="form-error">Please enter your password.</p>
                      </div>
-                     </p>
-                     <br><br><br><br>
-                     <p><button id="login_button" type="submit" class="btn btn-primary btn-lg">Sign in</button></p>
+                     <button id="login_button" type="submit" class="btn btn-primary">Sign in</button>
                   </form>
                </div>
                <div class="modal-footer">
-                  <a id="reg_button" href="signup.php" class="btn btn-primary btn-lg">Register</a>
+                  <a id="reg_button" href="signup.php" class="btn btn-primary">Register</a>
                </div>
             </div>
          </div>

@@ -48,8 +48,8 @@ input {
 	padding-right: 10%;
 }
 
-#register-button-style {
-    width: 400px;
+#register-button {
+    width: 200px;
 }
 
 .form-error {

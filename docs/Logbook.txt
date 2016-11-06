@@ -78,3 +78,6 @@ Kenton - validation of home page and contact page (3)
 
 Nov 5:
 Kenton - added javascript to test for null input for login (0.5); navbar now swaps correctly, but still needs work (0.5); refactor + added sessions (3)
+
+Nov 6: 
+Kenton - added javascript to validate registration form (1); implemented logic to highlight healthier food (1); fixed registration UI for mobile (0.5)

@@ -1,13 +1,13 @@
 <?php 
-    $title = "Results";
-    include("header.php"); 
+   $title = "Results";
+   include("header.php"); 
 ?>
 <!-- Reference: http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_table_basic&stacked=h -->
 <div style="padding-left: 5%;padding-right:5%;">
    <div class="container-fluid">
       <h2>Results</h2>
-      <div align="center" style="padding-top: 2%;">
-         <table class="table">
+      <div style="padding-top: 30px;" class="table-responsive" align="center">
+         <table class="table table-bordered">
             <thead>
                <tr>
                   <th>Item</th>
@@ -40,35 +40,40 @@
                $dailysugar = 30; // g
                $dailysodium = 2400; // mg
                
+               $food0score = ($food0calories/$dailycalories) + ($food0fat/$dailyfat) + ($food0sugar/$dailysugar) + ($food0sodium/$dailysodium);
+               $food1score = ($food1calories/$dailycalories) + ($food1fat/$dailyfat) + ($food1sugar/$dailysugar) + ($food1sodium/$dailysodium);
+               
+                // variables used to highlight a food item
+               $highlight0 = "";
+               $highlight1 = "";
+               
+                // logic to determine which food to highlight
+               if ($food0score > $food1score) {
+                  $highlight1 = "success";
+               } else if ($food0score < $food1score) {
+                  $highlight0 = "success";
+               } else {
+                  $highlight0 = "warning";
+                  $highlight1 = "warning";
+               }
+               
                echo '
                <tbody>
-                 <tr>
-                   <td class="col-md-2">' . $resultData[0]['food_name'] . '</td>
-               
-                   <td class="col-md-2">' . $food0amount . " " . $resultData[0]['metric_serving_unit'] . '</td>
-               
-                   <td class="col-md-2">' . $food0calories . ' kcal</td>
-               
-                   <td class="col-md-2">' . $food0fat . ' g</td>
-               
-                   <td class="col-md-2">' .  $food0sugar . ' g</td>
-               
+                 <tr class='.$highlight0.'>
+                   <td>' . $resultData[0]['food_name'] . '</td>
+                   <td>' . $food0amount . ' ' . $resultData[0]['metric_serving_unit'] . '</td>
+                   <td>' . $food0calories . ' kcal</td>
+                   <td>' . $food0fat . ' g</td>
+                   <td>' . $food0sugar . ' g</td>
                    <td>' . $food0sodium . ' mg</td>
                  </tr>
-               </tbody>
                
-               <tbody>
-                 <tr>
-                   <td class="col-md-2">' . $resultData[1]['food_name'] . '</td>
-               
-                   <td class="col-md-2">' . $food1amount . " " . $resultData[1]['metric_serving_unit'] . '</td>
-               
-                   <td class="col-md-2">' . $food1calories . ' kcal</td>
-               
-                   <td class="col-md-2">' . $food1fat . ' g</td>
-               
-                   <td class="col-md-2">' . $food1sugar . ' g</td>
-               
+                 <tr class='.$highlight1.'>
+                   <td>' . $resultData[1]['food_name'] . '</td>
+                   <td>' . $food1amount . ' ' . $resultData[1]['metric_serving_unit'] . '</td>
+                   <td>' . $food1calories . ' kcal</td>
+                   <td>' . $food1fat . ' g</td>
+                   <td>' . $food1sugar . ' g</td>
                    <td>' . $food1sodium . ' mg</td>
                  </tr>
                </tbody>
@@ -89,24 +94,22 @@
                
                   return round(($field / $serving_amt_grams) * 100);
                }
-               ?>
+            ?>
          </table>
          <?php
-            $food0score = ($food0calories/$dailycalories) + ($food0fat/$dailyfat) + ($food0sugar/$dailysugar) + ($food0sodium/$dailysodium);
-            $food1score = ($food1calories/$dailycalories) + ($food1fat/$dailyfat) + ($food1sugar/$dailysugar) + ($food1sodium/$dailysodium);
-            
+            // print out the healthier food item
             if ($food0score > $food1score) {
-                echo $resultData[1]['food_name'].' is healthier than '.$resultData[0]['food_name'] ;
+                echo '<p>' . $resultData[1]['food_name'] . ' is healthier than ' . $resultData[0]['food_name'] . '</p>';
             } else if ($food0score < $food1score) {
-                echo $resultData[0]['food_name'].' is healthier than '.$resultData[1]['food_name'];
+                echo '<p>' . $resultData[0]['food_name'] . ' is healthier than ' . $resultData[1]['food_name'] . '</p>';
             } else {
-                echo $resultData[0]['food_name'].' is about the same as '.$resultData[1]['food_name'];
+                echo '<p>' . $resultData[0]['food_name'] . ' is about the same as ' . $resultData[1]['food_name'] . '</p>';
             }
-            ?>
+         ?>
       </div>
    </div>
 </div>
-<div align="center" style="padding-top: 2%;">
-   <a href="index.php" type="submit" class="btn btn-primary compare-button">Change Food Items</a>
+<div align="center">
+   <a href="index.php" type="submit" class="btn btn-primary">Change Food Items</a>
 </div>
 <?php include "footer.php" ?>

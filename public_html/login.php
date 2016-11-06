@@ -29,13 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $count  = mysqli_num_rows($result);
     
     // If result matched $myusername and $mypassword, a table row exists
-    
+
     if ($count == 1) {
         $_SESSION['user_name'] = $row['Name'];
 
         header("Location: index.php");
+        exit();
     } else {
-        echo "Your Username or Password is incorrect.";
+        echo "<h2>Your username or password is incorrect.</h2>";
     }
 }
 ?>

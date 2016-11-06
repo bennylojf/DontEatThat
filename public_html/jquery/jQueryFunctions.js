@@ -26,8 +26,8 @@ $(document).ready(function() {
 		var surname = $("#form_lastname").val();
 		var email = $("#form_email").val();
 		var message = $("#form_message").val();
-		var regex_name = /[a-zA-Z0-9]+/;
-		var regex_lastname = /[a-zA-Z0-9]+/;
+		var regex_name = /[a-zA-Z]+/;
+		var regex_lastname = /[a-zA-Z]+/;
 		var regex_email = /[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]+/;
 		var regex_message = /\w+/;
 
@@ -84,4 +84,37 @@ $(document).ready(function() {
 		if (errorCount > 0)
 			event.preventDefault();
 	});
-})
+});
+
+/* Script used to validate registration form */
+$(document).ready(function() {
+	$("#register-button").click(function(event) {
+		var name = $("#signup-name").val();
+		var username = $("#signup-username").val();
+		var password = $("#signup-password").val();
+		var regex_name = /^[a-zA-Z ]+/;
+		var regex_username = /\w{3,}/;
+		var regex_password = /\w{6,}/; // may need a safer pattern
+		
+		$("#signupFormError0").removeClass("show-form-error").addClass("form-error");
+
+		if (!regex_name.test(name)) {
+			$("#signupFormError0").removeClass("form-error").addClass("show-form-error");
+			event.preventDefault();
+		}
+
+		$("#signupFormError1").removeClass("show-form-error").addClass("form-error");
+
+		if (!regex_username.test(username)) {
+			$("#signupFormError1").removeClass("form-error").addClass("show-form-error");
+			event.preventDefault();
+		}
+
+		$("#signupFormError2").removeClass("show-form-error").addClass("form-error");
+
+		if (!regex_password.test(password)) {
+			$("#signupFormError2").removeClass("form-error").addClass("show-form-error");
+			event.preventDefault();
+		}
+	});
+});

@@ -1,6 +1,6 @@
 <?php 
-    $title = "Home";
-    include("header.php"); 
+   $title = "Home";
+   include("header.php"); 
 ?>
 <!-- Beginning of logo, input fields and buttons -->
 <div align="center" style="padding-top: 5%;">
