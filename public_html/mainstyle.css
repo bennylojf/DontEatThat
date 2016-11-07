@@ -61,3 +61,15 @@ input {
 	padding-bottom: 0px;
 	color: red;
 }
+
+#save-button {
+	width: 150px;
+}
+
+#delete-button {
+	width: 150px;
+}
+
+#container{
+    text-align: center;
+}

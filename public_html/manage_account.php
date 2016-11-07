@@ -1,24 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Account Manager</title>
-    <meta charset="utf-8">
-    <!-- Ensure proper rendering on mobile -->
-    <meta name="viewport" content="width=device-width, intial-scale=1">
-    <!-- Bootstrap -->
-	<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Link to an external style sheet -->
-	<link rel="stylesheet" type="text/css" href="mainstyle.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <!-- Custom jquery functions -->
-    <script src="jquery/jQueryFunctions.js"></script>
-</head>
-
+<?php 
+   $title = "Account Manager";
+   include("header.php"); 
+?>
 <body>
-    <div id="header"></div>
+ 
 	
 	<!-- Reference: http://bootsnipp.com/snippets/DVXQa
          http://www.w3schools.com/bootstrap/bootstrap_forms_inputs.asp
@@ -117,7 +104,7 @@
          </form>
       </div>
       <!--End of Form-->
-      <div id="footer"></div>
+     <?php include "footer.php" ?>
    </body>
                 	
    

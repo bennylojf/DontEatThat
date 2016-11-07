@@ -51,7 +51,7 @@
                         if (isset($_SESSION["user_name"])) {
                            echo 
                            "
-                           <li><a href='#'><span class='glyphicon glyphicon-cog'></span> Manage Account</a></li>
+                           <li><a href='manage_account.php'><span class='glyphicon glyphicon-cog'></span> Manage Account</a></li>
                            <li><a href='logout.php'><span class='glyphicon glyphicon-log-out'> Logout</a></li>
                            ";
                         } else {
