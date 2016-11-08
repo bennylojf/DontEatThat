@@ -116,7 +116,13 @@
                }
             ?>
          </table>
-         <?php
+     
+      </div>
+
+   </div>
+</div>
+<div align="center">
+   <?php
             // print out the healthier food item
             if ($food0score < $food1score) {
                 echo '<p>' . $resultData[1]['food_name'] . ' is healthier than ' . $resultData[0]['food_name'] . '</p>';
@@ -125,11 +131,7 @@
             } else {
                 echo '<p>' . $resultData[0]['food_name'] . ' is about the same as ' . $resultData[1]['food_name'] . '</p>';
             }
-         ?>
-      </div>
-   </div>
-</div>
-<div align="center">
+?>
    <a href="index.php" type="submit" class="btn btn-primary">Change Food Items</a>
 </div>
 <?php include "footer.php" ?>
