@@ -16,6 +16,8 @@
                   <th>Fat per 100 g</th>
                   <th>Sugar per 100 g</th>
                   <th>Sodium per 100 g</th>
+				  <th>Protein per 100 g</th>
+				  <th>Cholesterol per 100 g</th>
                </tr>
             </thead>
             <?php
@@ -27,30 +29,38 @@
                $food0fat = normalizeWeight($resultData[0]['fat'], $resultData[0]);
                $food0sugar = normalizeWeight($resultData[0]['sugar'], $resultData[0]);
                $food0sodium = normalizeWeight($resultData[0]['sodium'], $resultData[0]);
-               
+               $food0protein = normalizeWeight($resultData[0]['protein'], $resultData[0]);
+			   $food0cholesterol = normalizeWeight($resultData[0]['cholesterol'], $resultData[0]);
+
                $food1amount = round($resultData[1]['metric_serving_amount']);
                $food1calories = normalizeWeight($resultData[1]['calories'], $resultData[1]);
                $food1fat = normalizeWeight($resultData[1]['fat'], $resultData[1]);
                $food1sugar = normalizeWeight($resultData[1]['sugar'], $resultData[1]);
                $food1sodium = normalizeWeight($resultData[1]['sodium'], $resultData[1]);
+               $food1protein = normalizeWeight($resultData[1]['protein'], $resultData[1]);
+			   $food1cholesterol = normalizeWeight($resultData[1]['cholesterol'], $resultData[1]);
                
-               // TODO: Maybe remove this and store it as a constant somewhere?
+			   // TODO: Maybe remove this and store it as a constant somewhere?
                $dailycalories = 2500; // kcal
                $dailyfat = 65; // g
                $dailysugar = 30; // g
                $dailysodium = 2400; // mg
+			   $dailyprotein = 50; // g 
+			   $dailycholesterol = 300; // mg
                
-               $food0score = ($food0calories/$dailycalories) + ($food0fat/$dailyfat) + ($food0sugar/$dailysugar) + ($food0sodium/$dailysodium);
-               $food1score = ($food1calories/$dailycalories) + ($food1fat/$dailyfat) + ($food1sugar/$dailysugar) + ($food1sodium/$dailysodium);
+               $food0score = -($food0calories/$dailycalories) - ($food0fat/$dailyfat) - ($food0sugar/$dailysugar) - ($food0sodium/$dailysodium) 
+			   - ($food0cholesterol/$dailycholesterol) + ($food0protein/$dailyprotein);
+               $food1score = -($food1calories/$dailycalories) - ($food1fat/$dailyfat) - ($food1sugar/$dailysugar) - ($food1sodium/$dailysodium) 
+			   - ($food1cholesterol/$dailycholesterol) + ($food1protein/$dailyprotein);
                
                 // variables used to highlight a food item
                $highlight0 = "";
                $highlight1 = "";
                
                 // logic to determine which food to highlight
-               if ($food0score > $food1score) {
+               if ($food0score < $food1score) {
                   $highlight1 = "success";
-               } else if ($food0score < $food1score) {
+               } else if ($food0score > $food1score) {
                   $highlight0 = "success";
                } else {
                   $highlight0 = "warning";
@@ -66,6 +76,8 @@
                    <td>' . $food0fat . ' g</td>
                    <td>' . $food0sugar . ' g</td>
                    <td>' . $food0sodium . ' mg</td>
+				   <td>' . $food0protein . ' g</td>
+				   <td>' . $food0cholesterol . ' mg</td>
                  </tr>
                
                  <tr class='.$highlight1.'>
@@ -75,6 +87,8 @@
                    <td>' . $food1fat . ' g</td>
                    <td>' . $food1sugar . ' g</td>
                    <td>' . $food1sodium . ' mg</td>
+				   <td>' . $food1protein . ' g</td>
+				   <td>' . $food1cholesterol . ' mg</td>
                  </tr>
                </tbody>
                ';
@@ -98,9 +112,9 @@
          </table>
          <?php
             // print out the healthier food item
-            if ($food0score > $food1score) {
+            if ($food0score < $food1score) {
                 echo '<p>' . $resultData[1]['food_name'] . ' is healthier than ' . $resultData[0]['food_name'] . '</p>';
-            } else if ($food0score < $food1score) {
+            } else if ($food0score > $food1score) {
                 echo '<p>' . $resultData[0]['food_name'] . ' is healthier than ' . $resultData[1]['food_name'] . '</p>';
             } else {
                 echo '<p>' . $resultData[0]['food_name'] . ' is about the same as ' . $resultData[1]['food_name'] . '</p>';
