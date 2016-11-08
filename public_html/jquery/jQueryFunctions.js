@@ -93,8 +93,8 @@ $(document).ready(function() {
 		var username = $("#signup-username").val();
 		var password = $("#signup-password").val();
 		var regex_name = /^[a-zA-Z ]+/;
-		var regex_username = /\w{3,}/;
-		var regex_password = /\w{6,}/; // may need a safer pattern
+		var regex_username = /^[a-zA-Z0-9]{3,16}$/;
+		var regex_password = /^[a-zA-Z0-9_-]{6,}$/;
 		
 		$("#signupFormError0").removeClass("show-form-error").addClass("form-error");
 
