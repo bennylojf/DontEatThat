@@ -18,6 +18,7 @@
                   <th>Sodium per 100 g</th>
 				  <th>Protein per 100 g</th>
 				  <th>Cholesterol per 100 g</th>
+				  <th>Carbohydrates per 100 g</th>
                </tr>
             </thead>
             <?php
@@ -31,6 +32,7 @@
                $food0sodium = normalizeWeight($resultData[0]['sodium'], $resultData[0]);
                $food0protein = normalizeWeight($resultData[0]['protein'], $resultData[0]);
 			   $food0cholesterol = normalizeWeight($resultData[0]['cholesterol'], $resultData[0]);
+			   $food0carbs = normalizeWeight($resultData[0]['carbohydrate'], $resultData[0]);
 
                $food1amount = round($resultData[1]['metric_serving_amount']);
                $food1calories = normalizeWeight($resultData[1]['calories'], $resultData[1]);
@@ -39,6 +41,7 @@
                $food1sodium = normalizeWeight($resultData[1]['sodium'], $resultData[1]);
                $food1protein = normalizeWeight($resultData[1]['protein'], $resultData[1]);
 			   $food1cholesterol = normalizeWeight($resultData[1]['cholesterol'], $resultData[1]);
+			   $food1carbs = normalizeWeight($resultData[1]['carbohydrate'], $resultData[1]);
                
 			   // TODO: Maybe remove this and store it as a constant somewhere?
                $dailycalories = 2500; // kcal
@@ -47,11 +50,12 @@
                $dailysodium = 2400; // mg
 			   $dailyprotein = 50; // g 
 			   $dailycholesterol = 300; // mg
+			   $dailycarbs = 300; // g
                
                $food0score = -($food0calories/$dailycalories) - ($food0fat/$dailyfat) - ($food0sugar/$dailysugar) - ($food0sodium/$dailysodium) 
-			   - ($food0cholesterol/$dailycholesterol) + ($food0protein/$dailyprotein);
+			   - ($food0cholesterol/$dailycholesterol) + ($food0protein/$dailyprotein)+ ($food0carbs/$dailycarbs);
                $food1score = -($food1calories/$dailycalories) - ($food1fat/$dailyfat) - ($food1sugar/$dailysugar) - ($food1sodium/$dailysodium) 
-			   - ($food1cholesterol/$dailycholesterol) + ($food1protein/$dailyprotein);
+			   - ($food1cholesterol/$dailycholesterol) + ($food1protein/$dailyprotein)+ ($food1carbs/$dailycarbs);
                
                 // variables used to highlight a food item
                $highlight0 = "";
@@ -78,6 +82,7 @@
                    <td>' . $food0sodium . ' mg</td>
 				   <td>' . $food0protein . ' g</td>
 				   <td>' . $food0cholesterol . ' mg</td>
+				   <td>' . $food0carbs . ' g</td>
                  </tr>
                
                  <tr class='.$highlight1.'>
@@ -89,6 +94,7 @@
                    <td>' . $food1sodium . ' mg</td>
 				   <td>' . $food1protein . ' g</td>
 				   <td>' . $food1cholesterol . ' mg</td>
+				   <td>' . $food1carbs . ' g</td>
                  </tr>
                </tbody>
                ';
