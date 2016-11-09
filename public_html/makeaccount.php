@@ -99,6 +99,7 @@ if ($conn->query($sql) === TRUE) {
    $_SESSION['user_name'] = $signupname;
    $_SESSION['signupname'] = "";
    $_SESSION['signupusername'] = "";
+   header("Refresh: 3; url=http://donteatthat.ca");
    echo "<h2>Your account has been created. You will be redirected to the home page in 3 seconds.</h2>";
 } else {
    echo "Error: " . $sql . "<br>" . $conn->error;
@@ -107,12 +108,3 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="refresh" content="3; url=http://www.donteatthat.ca"> <!-- Redirect after 3 seconds -->
-</head>
-<body>
-</body>
-</html>

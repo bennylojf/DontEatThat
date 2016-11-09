@@ -14,6 +14,10 @@
       <link rel="stylesheet" type="text/css" href="mainstyle.css">
       <!-- jQuery library -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <!-- jQuery Validation Plugin -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
+      <!-- jQuery Validation Plugin: Additional Methods -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/additional-methods.min.js"></script>
       <!-- Latest compiled JavaScript -->
       <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
       <!-- Custom jquery functions -->

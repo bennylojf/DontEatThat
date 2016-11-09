@@ -1,3 +1,4 @@
+/* TODO: CHANGE TO USE PLUGIN */
 /* Script used to validate food form */
 $(document).ready(function() {
 	$("#food-submit").click(function(event) {
@@ -19,6 +20,7 @@ $(document).ready(function() {
 	});
 });
 
+/* TODO: CHANGE TO USE PLUGIN */
 /* Script used to validate contact form */
 $(document).ready(function() {
 	$("#contact-submit").click(function(event) {
@@ -61,6 +63,7 @@ $(document).ready(function() {
 	});
 });
 
+/* TODO: CHANGE TO USE PLUGIN */
 /* Script to validate login form */
 $(document).ready(function() {
 	$(document).on("click", "#login_button", function(event) {
@@ -88,33 +91,36 @@ $(document).ready(function() {
 
 /* Script used to validate registration form */
 $(document).ready(function() {
-	$("#register-button").click(function(event) {
-		var name = $("#signup-name").val();
-		var username = $("#signup-username").val();
-		var password = $("#signup-password").val();
-		var regex_name = /^[a-zA-Z ]+/;
-		var regex_username = /^[a-zA-Z0-9]{3,16}$/;
-		var regex_password = /^[a-zA-Z0-9_-]{6,}$/;
-		
-		$("#signupFormError0").removeClass("show-form-error").addClass("form-error");
-
-		if (!regex_name.test(name)) {
-			$("#signupFormError0").removeClass("form-error").addClass("show-form-error");
-			event.preventDefault();
-		}
-
-		$("#signupFormError1").removeClass("show-form-error").addClass("form-error");
-
-		if (!regex_username.test(username)) {
-			$("#signupFormError1").removeClass("form-error").addClass("show-form-error");
-			event.preventDefault();
-		}
-
-		$("#signupFormError2").removeClass("show-form-error").addClass("form-error");
-
-		if (!regex_password.test(password)) {
-			$("#signupFormError2").removeClass("form-error").addClass("show-form-error");
-			event.preventDefault();
+	$("#signupForm").validate({
+		rules: {
+			"signup-name": {
+				required: true,
+				pattern: /^[A-Za-z]+((\s)?((\'|\-|\.)?([A-Za-z])+))*$/
+			},
+			"signup-username": {
+				required: true,
+				pattern: /^[a-zA-Z0-9]{3,16}$/,
+				remote: 'checkUsername.php' // using AJAX to quickly check for pre-existing username
+			},
+			"signup-password": {
+				required: true,
+				pattern: /^[a-zA-Z0-9]{6,}$/
+			}
+		},
+		messages: {
+			"signup-name": {
+				required: "Please enter your name.",
+				pattern: "Name must contain only alphabetical letters."
+			},
+			"signup-username": {
+				required: "Please enter your username.",
+				pattern: "Username must be 3-16 characters long and contain only numbers and/or letters.",
+				remote: "Username already exists."
+			},
+			"signup-password": {
+				required: "Please enter your password.",
+				pattern: "Password must be at least 6 characters long and contain only alphanumeric characters."
+			}
 		}
 	});
 });

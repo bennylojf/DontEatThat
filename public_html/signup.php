@@ -2,12 +2,14 @@
     $title = "Sign Up";
     include("header.php");
 
-    // Error Handling on submit
-    $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    // Server-Side Error Handling on Submit
+    $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; // used in determining if we need to display errors
+    // Initialize to state with no errors
     $errorName = $errorUsername = $errorPassword = false;
     $errorInvalidName = false;
     $errorInvalidUsername = $errorUsernameExists = false;
     $errorInvalidPassword = false;
+    // Determine if we need to display errors
     if (strpos($url, 'errorName=empty') !== false) {
       $errorName = true;
     }
@@ -30,14 +32,9 @@
       $errorInvalidPassword = true;
     }
 ?>
-      <!-- Reference: http://bootsnipp.com/snippets/DVXQa
-   http://www.w3schools.com/bootstrap/bootstrap_forms_inputs.asp
-   http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_input_height2&stacked=h
-   http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_input_height&stacked=h
-   http://www.w3schools.com/bootstrap/bootstrap_forms_inputs.asp
-   -->
+
 <div class="container-fluid">
-   <form class="form-horizontal" action="makeaccount.php" method="post">
+   <form id="signupForm" class="form-horizontal" action="makeaccount.php" method="post">
       <h2 style="padding-left: 0;">Registration Form</h2>
          <!-- NAME -->
          <div class="form-group">
@@ -45,12 +42,12 @@
             <div class="col-sm-4">
                <input class="form-control" type="text" placeholder="Enter Name" id="signup-name" name="signup-name"
                   value="<?php echo $_SESSION['signupname'];?>">
-               <p id="signupFormError0" class="form-error">Name must contain only alphabetical letters.</p>
                <?php
+                  // SERVER-SIDE VALIDATION FOR NAME
                   if ($errorName !== false) {
-                     echo "<p class='show-form-error'>Please enter your name.</p>";
+                     echo "<label class='error'>Please enter your name.</label>";
                   } else if ($errorInvalidName !== false) {
-                     echo "<p class='show-form-error'>Name must contain only alphabetical letters.</p>";
+                     echo "<label class='error'>Name must contain only alphabetical letters.</label>";
                   }
                ?>
             </div>
@@ -61,14 +58,14 @@
             <div class="col-sm-4">
                <input class="form-control" type="text" placeholder="Enter Username" id="signup-username" name="signup-username"
                   value="<?php echo $_SESSION['signupusername'];?>">
-               <p id="signupFormError1" class="form-error">Username must be 3-16 characters long and contain only numbers and/or letters.</p>
                <?php
+                  // SERVER-SIDE VALIDATION FOR USERNAME
                   if ($errorUsername !== false) {
-                     echo "<p class='show-form-error'>Please enter your username.</p>";
+                     echo "<label class='error'>Please enter your username.</label>";
                   } else if ($errorInvalidUsername !== false) {
-                     echo "<p class='show-form-error'>Username must be 3-16 characters long and contain only numbers and/or letters.</p>";
+                     echo "<label class='error'>Username must be 3-16 characters long and contain only numbers and/or letters.</label>";
                   } else if ($errorUsernameExists !== false) {
-                     echo "<p class='show-form-error'>Username already exists.</p>";
+                     echo "<label class='error'>Username already exists.</label>";
                   }
                ?>
             </div>
@@ -78,12 +75,12 @@
             <label for="signup-password" class="col-sm-2 control-label">Password</label>
             <div class="col-sm-4">
                <input class="form-control" type="password" placeholder="Enter Password" id="signup-password" name="signup-password">
-               <p id="signupFormError2" class="form-error">Password must be at least 6 characters long.</p>
                <?php
+                  // SERVER-SIDE VALIDATION FOR PASSWORD
                   if ($errorPassword !== false) {
-                     echo "<p class='show-form-error'>Please enter your password.</p>";
+                     echo "<label class='error'>Please enter your password.</label>";
                   } else if ($errorInvalidPassword !== false) {
-                     echo "<p class='show-form-error'>Password must be at least 6 characters long.</p>";
+                     echo "<label class='error'>Password must be at least 6 characters long and contain only alphanumeric characters.</label>";
                   }
                ?>
             </div>

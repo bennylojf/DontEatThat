@@ -73,3 +73,7 @@ input {
 #container{
     text-align: center;
 }
+
+label.error {
+   color: red;
+}
