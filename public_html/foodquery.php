@@ -1,8 +1,8 @@
 <?php 
 
-require_once('../lib/fat-secret-php/src/Client.php');
-require_once('../lib/fat-secret-php/src/OAuthBase.php');
-require_once('../lib/fat-secret-php/src/FatSecretException.php');
+require_once('lib/fat-secret-php/src/Client.php');
+require_once('lib/fat-secret-php/src/OAuthBase.php');
+require_once('lib/fat-secret-php/src/FatSecretException.php');
 $config = include('../config/config.php');
 
 $consumer_key = $config['consumer_key']; 

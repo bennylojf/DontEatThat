@@ -9,7 +9,7 @@
       <!-- Ensure proper rendering on mobile -->
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- Bootstrap -->
-      <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
       <!-- Link to an external style sheet -->
       <link rel="stylesheet" type="text/css" href="mainstyle.css">
       <!-- jQuery library -->
@@ -19,7 +19,7 @@
       <!-- jQuery Validation Plugin: Additional Methods -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/additional-methods.min.js"></script>
       <!-- Latest compiled JavaScript -->
-      <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+      <script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
       <!-- Custom jquery functions -->
       <script src="jquery/jQueryFunctions.js"></script>
       <!-- Script to send email -->
