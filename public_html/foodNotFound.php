@@ -22,35 +22,10 @@
             echo "<br>";
             ?>
 
-            <font face="Helvetica"><b>You will be redirected in <p style="display:inline" id="number"></p> Seconds</b>
+            <font face="Helvetica"><b>You will be redirected in <p style="display:inline; padding:0px;" id="number"></p> seconds</b>
 
-            <script type="text/javascript">
-                var targetURL="http://donteatthat.ca";
-                var count = 5;
-                countdown(count);
-
-                function countdown(timer) {
-                    //Keeps the interval ID for later clear
-                    var intervalID;
-                    intervalID = setInterval(function () {
-                
-                        display(timer);
-                        timer = timer - 1;
-                
-                        if (timer < 0) {
-                            clearTimeout(intervalID);
-
-                            window.location=targetURL;
-                            return;
-                        }
-                    }, 1000);
-                }
-                
-                //Modifies the countdown display
-                function display(timer) {
-                    document.getElementById("number").innerHTML = timer;
-                }
-                </script>
+            <script type="text/javascript" src="js/countdown.js">
+            </script>
        </div>
     </div>
 </div>
