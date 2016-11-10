@@ -33,9 +33,7 @@ if ($conn->connect_error) {
  $sql = " UPDATE Users SET Name = '$signupname', Username = '$signupusername', Password = '$signuppassword', Calories = '$signupcalories', Sugar = '$signupsugar', Sodium = '$signupsodium', Protein = '$signupprotein' WHERE Username = '{$_SESSION['user_username']}' ";
  
 if ($conn->query($sql) === TRUE) {
-	  header("Refresh: 3; url=http://donteatthat.ca"); 
-	  echo "<h2>Your account has been updated.</h2>";
-	  
+	   header("Location: index.php");
   }
   else {
 	  echo "Error: " . $sql . "<br>" . $conn->error;
