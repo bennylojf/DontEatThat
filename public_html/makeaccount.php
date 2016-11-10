@@ -97,6 +97,7 @@ VALUES ('$signupname', '$signupusername', '$signuppassword', '$signupcalories', 
 if ($conn->query($sql) === TRUE) {
    // redirect user to home and automatically log in
    $_SESSION['user_name'] = $signupname;
+   $_SESSION['user_username'] = $signupusername;
    $_SESSION['signupname'] = "";
    $_SESSION['signupusername'] = "";
    header("Refresh: 3; url=http://donteatthat.ca");

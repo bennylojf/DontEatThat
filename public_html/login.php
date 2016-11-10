@@ -32,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($count == 1) {
         $_SESSION['user_name'] = $row['Name'];
+        $_SESSION['user_username'] = $row['Username'];
 
         header("Location: index.php");
         exit();

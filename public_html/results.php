@@ -116,9 +116,9 @@
                   else if($resultData['metric_serving_unit'] == "oz") {
                      $serving_amt_grams = $resultData['metric_serving_amount'] * 28.35;
                   }
-                  else {
-                     echo "unknown unit";
-                  }
+                  //else {
+                     //echo "unknown unit";
+                  //}
                
                   return round(($field / $serving_amt_grams) * 100);
                }
@@ -131,17 +131,17 @@
 </div>
 <div align="center">
    <?php
-            // print out the healthier food item
-			echo "All statistics are based on 100 gram portions";
-			echo '<b>';
-            if ($food0score < $food1score) {
-                echo '<p>' . $resultData[1]['food_name'] . ' is healthier than ' . $resultData[0]['food_name'] . '</p>';
-            } else if ($food0score > $food1score) {
-                echo '<p>' . $resultData[0]['food_name'] . ' is healthier than ' . $resultData[1]['food_name'] . '</p>';
-            } else {
-                echo '<p>' . $resultData[0]['food_name'] . ' is about the same as ' . $resultData[1]['food_name'] . '</p>';
-            }
-			echo '</b>';
+             // print out the healthier food item
+      echo "All statistics are based on 100 gram portions";
+      echo '<b>';
+             if ($food0score < $food1score) {
+                 echo '<p>' . $resultData[1]['food_name'] . ' is healthier than ' . $resultData[0]['food_name'] . '</p>';
+             } else if ($food0score > $food1score) {
+                 echo '<p>' . $resultData[0]['food_name'] . ' is healthier than ' . $resultData[1]['food_name'] . '</p>';
+             } else {
+                 echo '<p>' . $resultData[0]['food_name'] . ' is about the same as ' . $resultData[1]['food_name'] . '</p>';
+             }
+      echo '</b>';
 ?>
    <a href="index.php" type="submit" class="btn btn-primary">Change Food Items</a>
 </div>

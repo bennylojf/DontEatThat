@@ -56,13 +56,13 @@
                            echo 
                            "
                            <li><a href='manage_account.php'><span class='glyphicon glyphicon-cog'></span> Manage Account</a></li>
-                           <li><a href='logout.php'><span class='glyphicon glyphicon-log-out'> Logout</a></li>
+                           <li><a href='logout.php'><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
                            ";
                         } else {
                            echo 
                            "
                            <li><a href='signup.php'><span class='glyphicon glyphicon-user'></span> Signup</a></li>
-                           <li><a data-toggle='modal' href='#' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'> Login</a></li>
+                           <li><a data-toggle='modal' href='#' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>
                            ";
                         } 
                         ?>
@@ -72,7 +72,7 @@
          </div>
       </nav>
       <!-- End of navbar setup -->
-      <!-- Beginning of Modal -->
+      <!-- Beginning of Login Modal -->
       <div id="loginModal" class="modal fade" role="dialog">
          <div class="modal-dialog">
             <div class="modal-content">
@@ -101,4 +101,4 @@
             </div>
          </div>
       </div>
-      <!-- End of Modal -->
+      <!-- End of Login Modal -->
