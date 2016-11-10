@@ -90,3 +90,4 @@ Nov 9:
 Alex - Moved library to public_html and updated upload script (.5)
 Alex - Made Travis lint (check for syntax errors) all php files (1)
 Benny, Alex - Created countdown timer and redirect after user sends an email (1.5)
+Benny, Alex - refined query to use first result with valid serving units (2)

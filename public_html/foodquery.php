@@ -16,18 +16,48 @@ $_SESSION['item2'] = $searchTerm2;
 
 $client = new \Adcuz\FatSecret\Client($consumer_key, $secret_key);
 
-// Get data from first search term:
-$searchResult = $client->SearchFood($searchTerm1, false, false, 1);
-$foodID = $searchResult["foods"]["food"]["food_id"];
-$rawFoodData = $client->GetFood($foodID);
-$foodData1 = getRelevantData($rawFoodData);
+$numberOfSearchTerms = 5;
 
-// Get data from second search term:
-$searchResult = $client->SearchFood($searchTerm2, false, false, 1);
-$foodID = $searchResult["foods"]["food"]["food_id"];
-$rawFoodData = $client->GetFood($foodID);
-$foodData2 = getRelevantData($rawFoodData);
+// Get the first item
+$searchResult = $client->SearchFood($searchTerm1, false, false, $numberOfSearchTerms);
 
+$foodIDs = [];
+
+for ($i = 0; $i < $numberOfSearchTerms; $i++) {
+    $foodIDs[$i] = $searchResult['foods']['food'][$i]['food_id'];
+}
+
+for ($i = 0; $i < $numberOfSearchTerms; $i++) {
+    $rawFoodData1 = $client->GetFood($foodIDs[$i]);
+    $foodData1 = getRelevantData($rawFoodData1);
+
+    if ($foodData1['metric_serving_unit'] == 'g' || $foodData1['metric_serving_unit'] == 'oz') {
+        break;
+    }
+}
+if ($foodData1['metric_serving_unit'] != 'g' && $foodData1['metric_serving_unit'] != 'oz') {
+    $foodData1 = null;
+}
+// Get the second item
+$searchResult = $client->SearchFood($searchTerm2, false, false, $numberOfSearchTerms);
+
+$foodIDs = [];
+
+for ($i = 0; $i < $numberOfSearchTerms; $i++) {
+    $foodIDs[$i] = $searchResult['foods']['food'][$i]['food_id'];
+}
+
+for ($i = 0; $i < $numberOfSearchTerms; $i++) {
+    $rawFoodData2 = $client->GetFood($foodIDs[$i]);
+    $foodData2 = getRelevantData($rawFoodData2);
+
+    if ($foodData2['metric_serving_unit'] == 'g' || $foodData2['metric_serving_unit'] == 'oz') {
+        break;
+    }
+}
+if ($foodData2['metric_serving_unit'] != 'g' && $foodData2['metric_serving_unit'] != 'oz') {
+    $foodData2 = null;
+}
 // Return the data as an associative array
 return array(
     $foodData1,

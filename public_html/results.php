@@ -116,9 +116,6 @@
                   else if($resultData['metric_serving_unit'] == "oz") {
                      $serving_amt_grams = $resultData['metric_serving_amount'] * 28.35;
                   }
-                  else {
-                     echo "unknown unit";
-                  }
                
                   return round(($field / $serving_amt_grams) * 100);
                }
@@ -132,8 +129,8 @@
 <div align="center">
    <?php
             // print out the healthier food item
-			echo "All statistics are based on 100 gram portions";
-			echo '<b>';
+			echo "All statistics are based on 100 gram portions <br>";
+
             if ($food0score < $food1score) {
                 echo '<p>' . $resultData[1]['food_name'] . ' is healthier than ' . $resultData[0]['food_name'] . '</p>';
             } else if ($food0score > $food1score) {
