@@ -96,3 +96,7 @@ Alex - Added check for similar user input (.5)
 
 Nov 10:
 Alex - fixed some issues with the countdown (negative values, duplicated code) (1)
+Charn, Kenton - fixed manageaccout.php ui, also added modal (1)
+Kenton - created delete modal (1)
+Alex - updated upload script (.5)
+Charn, Alex, Kenton - search for bugs, fixed various minor bugs (like spacing, countdown timer) (1)
