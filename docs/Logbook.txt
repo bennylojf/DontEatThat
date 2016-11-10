@@ -93,3 +93,6 @@ Benny, Alex - Created countdown timer and redirect after user sends an email (1.
 Kenton - added PHP script to delete an account (1); fixed session variable not being registered upon login and navbar text (1)
 Benny, Alex - refined query to use first result with valid serving units (2)
 Alex - Added check for similar user input (.5)
+
+Nov 10:
+Alex - fixed some issues with the countdown (negative values, duplicated code) (1)

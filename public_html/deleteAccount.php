@@ -23,8 +23,7 @@ $sql = " DELETE FROM Users WHERE Username = '$user' ";
 
 if ($conn->query($sql) === TRUE) {
    session_destroy();
-   header("Refresh: 3; url=http://donteatthat.ca");
-   echo "<h2>Your account has been deleted from our records. You will be redirected to the home page in 3 seconds.</h2>";
+   header("Location: index.php");
    exit();
 } else {
    echo "Error: " . $sql . "<br>" . $conn->error;

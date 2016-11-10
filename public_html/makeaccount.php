@@ -100,8 +100,8 @@ if ($conn->query($sql) === TRUE) {
    $_SESSION['user_username'] = $signupusername;
    $_SESSION['signupname'] = "";
    $_SESSION['signupusername'] = "";
-   header("Refresh: 3; url=http://donteatthat.ca");
-   echo "<h2>Your account has been created. You will be redirected to the home page in 3 seconds.</h2>";
+   header("Location: index.php");
+   exit();
 } else {
    echo "Error: " . $sql . "<br>" . $conn->error;
 }
