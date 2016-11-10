@@ -78,13 +78,16 @@ Kenton - validation of home page and contact page (3)
 
 Nov 5:
 Kenton - added javascript to test for null input for login (0.5); navbar now swaps correctly, but still needs work (0.5); refactor + added sessions (3)
+Adil - worked on SSL(4)
 
 Nov 6: 
 Kenton - added javascript to validate registration form (1); implemented logic to highlight healthier food (1); fixed registration UI for mobile (0.5)
+Adil - worked on manage account user interface(3) 
 
 Nov 8:
 Kenton - added server-side form validation for sign up page (3); fixed validation patterns for javascript validation (0.5); fixed invalid username bug (issue #41) (1); fixed insecure redirect issue #42 (0.5)
 Benny - expanded the recommendation algorithm (1)
+Adil - modified manage account user interface(3) 
 
 Nov 9:
 Alex - Moved library to public_html and updated upload script (.5)
@@ -93,6 +96,7 @@ Benny, Alex - Created countdown timer and redirect after user sends an email (1.
 Kenton - added PHP script to delete an account (1); fixed session variable not being registered upon login and navbar text (1)
 Benny, Alex - refined query to use first result with valid serving units (2)
 Alex - Added check for similar user input (.5)
+Adil - Created php file for account updates (5) 
 
 Nov 10:
 Alex - fixed some issues with the countdown (negative values, duplicated code) (1)
