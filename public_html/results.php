@@ -11,14 +11,13 @@
             <thead>
                <tr>
                   <th>Item</th>
-                  <th>Serving Size</th>
-                  <th>Calories per 100 g</th>
-                  <th>Fat per 100 g</th>
-                  <th>Sugar per 100 g</th>
-                  <th>Sodium per 100 g</th>
-				  <th>Protein per 100 g</th>
-				  <th>Cholesterol per 100 g</th>
-				  <th>Carbohydrates per 100 g</th>
+                  <th>Calories</th>
+                  <th>Fat</th>
+                  <th>Sugar</th>
+                  <th>Sodium</th>
+				  <th>Protein</th>
+				  <th>Cholesterol</th>
+				  <th>Carbohydrates</th>
                </tr>
             </thead>
             <?php
@@ -75,7 +74,6 @@
                <tbody>
                  <tr class='.$highlight0.'>
                    <td>' . $resultData[0]['food_name'] . '</td>
-                   <td>' . $food0amount . ' ' . $resultData[0]['metric_serving_unit'] . '</td>
                    <td>' . $food0calories . ' kcal</td>
                    <td>' . $food0fat . ' g</td>
                    <td>' . $food0sugar . ' g</td>
@@ -87,7 +85,6 @@
                
                  <tr class='.$highlight1.'>
                    <td>' . $resultData[1]['food_name'] . '</td>
-                   <td>' . $food1amount . ' ' . $resultData[1]['metric_serving_unit'] . '</td>
                    <td>' . $food1calories . ' kcal</td>
                    <td>' . $food1fat . ' g</td>
                    <td>' . $food1sugar . ' g</td>
@@ -124,6 +121,8 @@
 <div align="center">
    <?php
             // print out the healthier food item
+			echo "All statistics are based on 100 gram portions";
+			echo '<b>';
             if ($food0score < $food1score) {
                 echo '<p>' . $resultData[1]['food_name'] . ' is healthier than ' . $resultData[0]['food_name'] . '</p>';
             } else if ($food0score > $food1score) {
@@ -131,6 +130,7 @@
             } else {
                 echo '<p>' . $resultData[0]['food_name'] . ' is about the same as ' . $resultData[1]['food_name'] . '</p>';
             }
+			echo '</b>';
 ?>
    <a href="index.php" type="submit" class="btn btn-primary">Change Food Items</a>
 </div>
