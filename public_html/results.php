@@ -120,9 +120,6 @@
                   else if($resultData['metric_serving_unit'] == "oz") {
                      $serving_amt_grams = $resultData['metric_serving_amount'] * 28.35;
                   }
-                  //else {
-                     //echo "unknown unit";
-                  //}
                
                   return round(($field / $serving_amt_grams) * 100);
                }
@@ -133,10 +130,86 @@
 
    </div>
 </div>
+
+<div align="center">
+   <?php
+      echo "The above statistics are based on 100 gram portions";
+?>
+</div>
+
+<div style="padding-left: 5%;padding-right:5%;">
+   <div class="container-fluid">
+      <div style="padding-top: 30px;" class="table-responsive" align="center">
+         <table class="table table-bordered">
+            <thead>
+               <tr>
+                  <th>Item</th>
+				  <th>Serving Size</th>
+                  <th>Calories</th>
+                  <th>Fat</th>
+                  <th>Sugar</th>
+                  <th>Sodium</th>
+				  <th>Protein</th>
+				  <th>Cholesterol</th>
+				  <th>Carbohydrates</th>
+               </tr>
+            </thead>
+			<?php
+               $food0amountA = round($resultData[0]['metric_serving_amount']);
+               $food0caloriesA =($resultData[0]['calories']);
+               $food0fatA =($resultData[0]['fat']);
+               $food0sugarA = ($resultData[0]['sugar']);
+               $food0sodiumA = ($resultData[0]['sodium']);
+               $food0proteinA = ($resultData[0]['protein']);
+			   $food0cholesterolA = ($resultData[0]['cholesterol']);
+			   $food0carbsA = ($resultData[0]['carbohydrate']);
+
+               $food1amountA = round($resultData[1]['metric_serving_amount']);
+               $food1caloriesA = ($resultData[1]['calories']);
+               $food1fatA = ($resultData[1]['fat']);
+               $food1sugarA = ($resultData[1]['sugar']);
+               $food1sodiumA = ($resultData[1]['sodium']);
+               $food1proteinA = ($resultData[1]['protein']);
+			   $food1cholesterolA = ($resultData[1]['cholesterol']);
+			   $food1carbsA = ($resultData[1]['carbohydrate']);
+               
+               echo '
+               <tbody>
+                 <tr class='.$highlight0.'>
+                   <td>' . $resultData[0]['food_name'] . '</td>
+				   <td>' . $food0amountA . $resultData[0]['metric_serving_unit'] . ' </td>
+                   <td>' . $food0caloriesA . ' kcal</td>
+                   <td>' . $food0fatA . ' g</td>
+                   <td>' . $food0sugarA . ' g</td>
+                   <td>' . $food0sodiumA . ' mg</td>
+				   <td>' . $food0proteinA . ' g</td>
+				   <td>' . $food0cholesterolA . ' mg</td>
+				   <td>' . $food0carbsA . ' g</td>
+                 </tr>
+               
+                 <tr class='.$highlight1.'>
+                   <td>' . $resultData[1]['food_name'] . '</td>
+				   <td>' . $food1amountA . $resultData[0]['metric_serving_unit'] . ' </td>
+                   <td>' . $food1caloriesA . ' kcal</td>
+                   <td>' . $food1fatA . ' g</td>
+                   <td>' . $food1sugarA . ' g</td>
+                   <td>' . $food1sodiumA . ' mg</td>
+				   <td>' . $food1proteinA . ' g</td>
+				   <td>' . $food1cholesterolA . ' mg</td>
+				   <td>' . $food1carbsA . ' g</td>
+                 </tr>
+               </tbody>
+               '; 
+            ?>
+         </table>
+      </div>
+   </div>
+</div>
+
 <div align="center">
    <?php
              // print out the healthier food item
-      echo "All statistics are based on 100 gram portions";
+      echo "The above statistics are based on the displayed serving sizes";
       echo '<b>';
              if ($food0score < $food1score) {
                  echo '<p>' . $resultData[1]['food_name'] . ' is healthier than ' . $resultData[0]['food_name'] . '</p>';
