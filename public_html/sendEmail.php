@@ -24,6 +24,9 @@ try
     mail($sendTo, $subject, $emailText, "From: " . $from);
 
     $responseArray = array('type' => 'success', 'message' => $okMessage);
+
+    header("Location: emailReceived.php");
+
 }
 catch (\Exception $e)
 {

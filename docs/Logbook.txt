@@ -84,6 +84,9 @@ Kenton - added javascript to validate registration form (1); implemented logic t
 
 Nov 8:
 Kenton - added server-side form validation for sign up page (3); fixed validation patterns for javascript validation (0.5); fixed invalid username bug (issue #41) (1); fixed insecure redirect issue #42 (0.5)
+Benny - expanded the recommendation algorithm (1)
 
 Nov 9:
 Alex - Moved library to public_html and updated upload script (.5)
+Alex - Made Travis lint (check for syntax errors) all php files (1)
+Benny, Alex - Created countdown timer and redirect after user sends an email (1.5)
