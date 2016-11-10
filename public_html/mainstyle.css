@@ -63,11 +63,7 @@ input {
 }
 
 #save-button {
-	width: 150px;
-}
-
-#delete-button {
-	width: 150px;
+	margin-right: 5px;
 }
 
 #container{
