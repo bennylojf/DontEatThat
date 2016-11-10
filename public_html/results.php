@@ -9,6 +9,10 @@
     if($resultData[0]['food_id'] == 0 || $resultData[1]['food_id'] == 0) {
         header('Location: foodNotFound.php');
     }
+
+    if($resultData[0]['food_id'] == $resultData[1]['food_id']) {
+        header('Location: foodSameResult.php');
+    }
 ?>
 
 <?php 
