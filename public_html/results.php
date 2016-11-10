@@ -70,6 +70,7 @@
 			   $dailycholesterol = 300; // mg
 			   $dailycarbs = 300; // g
                
+			   // algorithm to determine healthiest choice with 100 g portions 
                $food0score = -($food0calories/$dailycalories) - ($food0fat/$dailyfat) - ($food0sugar/$dailysugar) - ($food0sodium/$dailysodium) 
 			   - ($food0cholesterol/$dailycholesterol) + ($food0protein/$dailyprotein)+ ($food0carbs/$dailycarbs);
                $food1score = -($food1calories/$dailycalories) - ($food1fat/$dailyfat) - ($food1sugar/$dailysugar) - ($food1sodium/$dailysodium) 
@@ -137,9 +138,24 @@
 
 <div align="center">
    <?php
-      echo "The above statistics are based on 100 gram portions";
+      echo "The above statistics  and following recommendation are based on 100 gram portions";
 ?>
 </div>
+
+<div align="center">
+   <?php
+      // print out the healthier food item
+      echo '<b>';
+             if ($food0score < $food1score) {
+                 echo '<p>' . $resultData[1]['food_name'] . ' is healthier than ' . $resultData[0]['food_name'] . '</p>';
+             } else if ($food0score > $food1score) {
+                 echo '<p>' . $resultData[0]['food_name'] . ' is healthier than ' . $resultData[1]['food_name'] . '</p>';
+             } else {
+                 echo '<p>' . $resultData[0]['food_name'] . ' is about the same as ' . $resultData[1]['food_name'] . '</p>';
+             }
+      echo '</b>';
+
+?>
 
 <div style="padding-left: 5%;padding-right:5%;">
    <div class="container-fluid">
@@ -177,6 +193,12 @@
 			   $food1cholesterolA = ($resultData[1]['cholesterol']);
 			   $food1carbsA = ($resultData[1]['carbohydrate']);
                
+			      // algorithm to determine healthiest choice with absolute portions 
+               $food0scoreA = -($food0caloriesA/$dailycalories) - ($food0fatA/$dailyfat) - ($food0sugarA/$dailysugar) - ($food0sodiumA/$dailysodium) 
+			   - ($food0cholesterolA/$dailycholesterol) + ($food0proteinA/$dailyprotein)+ ($food0carbsA/$dailycarbs);
+               $food1scoreA = -($food1caloriesA/$dailycalories) - ($food1fatA/$dailyfat) - ($food1sugarA/$dailysugar) - ($food1sodiumA/$dailysodium) 
+			   - ($food1cholesterolA/$dailycholesterol) + ($food1proteinA/$dailyprotein)+ ($food1carbsA/$dailycarbs);
+			   
                echo '
                <tbody>
                  <tr class='.$highlight0.'>
@@ -212,8 +234,8 @@
 
 <div align="center">
    <?php
-             // print out the healthier food item
-      echo "The above statistics are based on the displayed serving sizes";
+      // print out the healthier food item
+      echo "The above statistics and following recommendation are based on the displayed serving sizes";
       echo '<b>';
              if ($food0score < $food1score) {
                  echo '<p>' . $resultData[1]['food_name'] . ' is healthier than ' . $resultData[0]['food_name'] . '</p>';
