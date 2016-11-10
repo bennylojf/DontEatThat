@@ -1,4 +1,5 @@
 <?php 
+session_start();
 
 require_once('lib/fat-secret-php/src/Client.php');
 require_once('lib/fat-secret-php/src/OAuthBase.php');
@@ -10,6 +11,8 @@ $secret_key = $config['secret_key'];
 
 $searchTerm1 = $_GET['item1'];
 $searchTerm2 = $_GET['item2'];
+$_SESSION['item1'] = $searchTerm1;
+$_SESSION['item2'] = $searchTerm2;
 
 $client = new \Adcuz\FatSecret\Client($consumer_key, $secret_key);
 

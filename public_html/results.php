@@ -1,6 +1,19 @@
+<?php
+    session_start();
+
+    $resultData = include('foodquery.php');
+
+    $_SESSION['food0_id'] = $resultData[0]['food_id'];
+    $_SESSION['food1_id'] = $resultData[1]['food_id'];
+
+    if($resultData[0]['food_id'] == 0 || $resultData[1]['food_id'] == 0) {
+        header('Location: foodNotFound.php');
+    }
+?>
+
 <?php 
-   $title = "Results";
-   include("header.php"); 
+    $title = "Results";
+    include("header.php"); 
 ?>
 <!-- Reference: http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_table_basic&stacked=h -->
 <div style="padding-left: 5%;padding-right:5%;">
@@ -21,8 +34,6 @@
                </tr>
             </thead>
             <?php
-               $resultData = include('foodquery.php');
-               
                // Get NORMALIZED (to 100g) data for the first food item
                $food0amount = round($resultData[0]['metric_serving_amount']);
                $food0calories = normalizeWeight($resultData[0]['calories'], $resultData[0]);
