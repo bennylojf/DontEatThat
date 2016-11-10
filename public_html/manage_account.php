@@ -19,21 +19,21 @@
                <div class="form-group" >
                   <label class="col-sm-2 control-label">Name</label>
                   <div class="col-sm-4">
-                     <input class="form-control" type="text" placeholder="Name" name="signup-name">
+                     <input class="form-control" type="text" placeholder="Enter new name" name="signup-name">
                   </div>
                </div>
                <!-- USERNAME -->
                <div class="form-group" >
                   <label class="col-sm-2 control-label">Username</label>
                   <div class="col-sm-4">
-                     <input class="form-control" type="text" placeholder="Username" name="signup-username">
+                     <input class="form-control" type="text" placeholder="Enter new username" name="signup-username">
                   </div>
                </div>
                <!-- PASSWORD -->
                <div class="form-group" >
                   <label class="col-sm-2 control-label">Password</label>
                   <div class="col-sm-4">
-                     <input class="form-control" type="password" placeholder="Password" name="signup-password">
+                     <input class="form-control" type="password" placeholder="Enter new password" name="signup-password">
                   </div>
                </div>
                
