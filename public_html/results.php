@@ -9,6 +9,10 @@
     if($resultData[0]['food_id'] == 0 || $resultData[1]['food_id'] == 0) {
         header('Location: foodNotFound.php');
     }
+
+    if($resultData[0]['food_id'] == $resultData[1]['food_id']) {
+        header('Location: foodSameResult.php');
+    }
 ?>
 
 <?php 
@@ -142,6 +146,7 @@
                  echo '<p>' . $resultData[0]['food_name'] . ' is about the same as ' . $resultData[1]['food_name'] . '</p>';
              }
       echo '</b>';
+
 ?>
    <a href="index.php" type="submit" class="btn btn-primary">Change Food Items</a>
 </div>

@@ -20,10 +20,11 @@
                 function countdown(timer) {
                     //Keeps the interval ID for later clear
                     var intervalID;
+                    display(timer);
                     intervalID = setInterval(function () {
                 
-                        display(timer);
                         timer = timer - 1;
+                        display(timer);
                 
                         if (timer < 0) {
                             clearTimeout(intervalID);
