@@ -176,22 +176,22 @@
             </thead>
 			<?php
                $food0amountA = round($resultData[0]['metric_serving_amount']);
-               $food0caloriesA =($resultData[0]['calories']);
-               $food0fatA =($resultData[0]['fat']);
-               $food0sugarA = ($resultData[0]['sugar']);
-               $food0sodiumA = ($resultData[0]['sodium']);
-               $food0proteinA = ($resultData[0]['protein']);
-			   $food0cholesterolA = ($resultData[0]['cholesterol']);
-			   $food0carbsA = ($resultData[0]['carbohydrate']);
+               $food0caloriesA =round($resultData[0]['calories']);
+               $food0fatA =round($resultData[0]['fat']);
+               $food0sugarA = round($resultData[0]['sugar']);
+               $food0sodiumA = round($resultData[0]['sodium']);
+               $food0proteinA = round($resultData[0]['protein']);
+			   $food0cholesterolA = round($resultData[0]['cholesterol']);
+			   $food0carbsA = round($resultData[0]['carbohydrate']);
 
                $food1amountA = round($resultData[1]['metric_serving_amount']);
-               $food1caloriesA = ($resultData[1]['calories']);
-               $food1fatA = ($resultData[1]['fat']);
-               $food1sugarA = ($resultData[1]['sugar']);
-               $food1sodiumA = ($resultData[1]['sodium']);
-               $food1proteinA = ($resultData[1]['protein']);
-			   $food1cholesterolA = ($resultData[1]['cholesterol']);
-			   $food1carbsA = ($resultData[1]['carbohydrate']);
+               $food1caloriesA = round($resultData[1]['calories']);
+               $food1fatA = round($resultData[1]['fat']);
+               $food1sugarA = round($resultData[1]['sugar']);
+               $food1sodiumA = round($resultData[1]['sodium']);
+               $food1proteinA = round($resultData[1]['protein']);
+			   $food1cholesterolA = round($resultData[1]['cholesterol']);
+			   $food1carbsA = round($resultData[1]['carbohydrate']);
                
 			      // algorithm to determine healthiest choice with absolute portions 
                $food0scoreA = -($food0caloriesA/$dailycalories) - ($food0fatA/$dailyfat) - ($food0sugarA/$dailysugar) - ($food0sodiumA/$dailysodium) 
