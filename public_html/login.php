@@ -23,7 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $myusername = mysqli_real_escape_string($conn, $_POST['login-name']);
     $mypassword = mysqli_real_escape_string($conn, $_POST['login-password']);
     
-    $sql    = " SELECT Username, Name FROM Users WHERE Username = '$myusername' AND Password = '$mypassword' ";
+    $sql    = " SELECT Username, Name, Calories, Sugar, Sodium, Protein FROM 
+	Users WHERE Username = '$myusername' AND Password = '$mypassword' "; // get the user's preferences
     $result = mysqli_query($conn, $sql);
     $row    = mysqli_fetch_array($result, MYSQLI_ASSOC);
     $count  = mysqli_num_rows($result);
@@ -33,6 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($count == 1) {
         $_SESSION['user_name'] = $row['Name'];
         $_SESSION['user_username'] = $row['Username'];
+		$_SESSION['user_calories'] = $row['Calories']; 
+		$_SESSION['user_sugar'] = $row['Sugar']; 
+		$_SESSION['user_sodium'] = $row['Sodium']; 
+		$_SESSION['user_protein'] = $row['Protein']; 
         session_write_close();
         header("Location: index.php");
         exit();

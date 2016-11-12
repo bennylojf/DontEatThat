@@ -44,7 +44,7 @@
                <div class="col-sm-2">
                   <label class="col-sm-2">Calories</label>
                   <select class="form-control" name="signup-calories">
-                     <option>Default</option>
+                     <option>Normal</option>
                      <option>High</option>
                      <option>Low</option>
                   </select>
@@ -52,7 +52,7 @@
                <div class="col-sm-2">
                   <label class="col-sm-2">Sugar</label>
                   <select class="form-control" name="signup-sugar">
-                     <option>Default</option>
+                     <option>Normal</option>
                      <option>High</option>
                      <option>Low</option>
                   </select>
@@ -60,7 +60,7 @@
                <div class="col-sm-2">
                   <label class="col-sm-2">Sodium</label>
                   <select class="form-control" name="signup-sodium">
-                     <option>Default</option>
+                     <option>Normal</option>
                      <option>High</option>
                      <option>Low</option>
                   </select>
@@ -68,7 +68,7 @@
                <div class="col-sm-2">
                   <label class="col-sm-2">Protein</label>
                   <select class="form-control" name="signup-protein">
-                     <option>Default</option>
+                     <option>Normal</option>
                      <option>High</option>
                      <option>Low</option>
                   </select>

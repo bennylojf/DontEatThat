@@ -100,6 +100,13 @@ if ($conn->query($sql) === TRUE) {
    $_SESSION['user_username'] = $signupusername;
    $_SESSION['signupname'] = "";
    $_SESSION['signupusername'] = "";
+   
+   // get user preferences
+   $_SESSION['user_calories'] = $signupcalories;
+   $_SESSION['user_sugar'] = $signupsugar;
+   $_SESSION['user_sodium'] = $signupsodium;
+   $_SESSION['user_protein'] = $signupprotein;
+   session_write_close();
    header("Location: index.php");
    exit();
 } else {

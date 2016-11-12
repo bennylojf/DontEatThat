@@ -32,7 +32,8 @@ if ($conn->connect_error) {
 
  $sql = " UPDATE Users SET Name = '$signupname', Username = '$signupusername', Password = '$signuppassword', Calories = '$signupcalories', Sugar = '$signupsugar', Sodium = '$signupsodium', Protein = '$signupprotein' WHERE Username = '$current' ";
  
-if ($conn->query($sql) == TRUE) {
+
+if ($conn->query($sql) === TRUE) {
 	   header("Location: index.php");
   }
   else {
