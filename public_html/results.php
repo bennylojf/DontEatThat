@@ -257,7 +257,7 @@
 					}
 					$food0scoreA = -($caloriesScale)*($food0caloriesA/$dailycalories) - ($food0fatA/$dailyfat) - ($sugarScale)*($food0sugarA/$dailysugar) - ($sodiumScale)*($food0sodiumA/$dailysodium) 
 					- ($food0cholesterolA/$dailycholesterol) + ($proteinScale)*($food0proteinA/$dailyprotein) + ($food0carbsA/$dailycarbs);
-					$food1scoreA = -($caloriesScale)*($food1calories/$dailycalories) - ($food1fat/$dailyfat) - ($sugarScale)*($food1sugar/$dailysugar) - ($sodiumScale)*($food1sodiumA/$dailysodium) 
+					$food1scoreA = -($caloriesScale)*($food1caloriesA/$dailycalories) - ($food1fatA/$dailyfat) - ($sugarScale)*($food1sugarA/$dailysugar) - ($sodiumScale)*($food1sodiumA/$dailysodium) 
 					- ($food1cholesterolA/$dailycholesterol) + ($proteinScale)*($food1proteinA/$dailyprotein) + ($food1carbsA/$dailycarbs);
 				}
 			   
