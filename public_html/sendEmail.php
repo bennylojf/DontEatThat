@@ -1,36 +1,45 @@
 <?php
 
 // configure
-$from = 'Demo contact form <demo@domain.com>';
-$sendTo = 'Demo contact form <donteatthat.contact@gmail.com>';
-$subject = 'New message from contact form';
-$fields = array('name' => 'Name', 'surname' => 'Surname', 'email' => 'Email', 'message' => 'Message'); // array variable name => Text to appear in email
-$okMessage = 'Contact form successfully submitted. Thank you, we will get back to you soon!';
+$from         = 'Demo contact form <demo@domain.com>';
+$sendTo       = 'Demo contact form <donteatthat.contact@gmail.com>';
+$subject      = 'New message from contact form';
+$fields       = array(
+    'name' => 'Name',
+    'surname' => 'Surname',
+    'email' => 'Email',
+    'message' => 'Message'
+); // array variable name => Text to appear in email
+$okMessage    = 'Contact form successfully submitted. Thank you, we will get back to you soon!';
 $errorMessage = 'There was an error while submitting the form. Please try again later';
 
 // let's do the sending
 
-try
-{
+try {
     $emailText = "You have new message from contact form\n=============================\n";
-
+    
     foreach ($_POST as $key => $value) {
-
+        
         if (isset($fields[$key])) {
             $emailText .= "$fields[$key]: $value\n";
         }
     }
-
+    
     mail($sendTo, $subject, $emailText, "From: " . $from);
-
-    $responseArray = array('type' => 'success', 'message' => $okMessage);
-
+    
+    $responseArray = array(
+        'type' => 'success',
+        'message' => $okMessage
+    );
+    
     header("Location: emailReceived.php");
-
+    
 }
-catch (\Exception $e)
-{
-    $responseArray = array('type' => 'danger', 'message' => $errorMessage);
+catch (\Exception $e) {
+    $responseArray = array(
+        'type' => 'danger',
+        'message' => $errorMessage
+    );
 }
 
 if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
@@ -39,7 +48,6 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
     header('Content-Type: application/json');
     
     echo $encoded;
-}
-else {
+} else {
     echo $responseArray['message'];
 }

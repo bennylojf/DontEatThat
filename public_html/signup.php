@@ -1,36 +1,36 @@
-<?php 
-    $title = "Sign Up";
-    include("header.php");
+<?php
+$title = "Sign Up";
+include("header.php");
 
-    // Server-Side Error Handling on Submit
-    $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; // used in determining if we need to display errors
-    // Initialize to state with no errors
-    $errorName = $errorUsername = $errorPassword = false;
-    $errorInvalidName = false;
-    $errorInvalidUsername = $errorUsernameExists = false;
-    $errorInvalidPassword = false;
-    // Determine if we need to display errors
-    if (strpos($url, 'errorName=empty') !== false) {
-      $errorName = true;
-    }
-    if (strpos($url, 'errorName=invalid') !== false) {
-      $errorInvalidName = true;
-    }
-    if (strpos($url, 'errorUsername=empty') !== false) {
-      $errorUsername = true;
-    }
-    if (strpos($url, 'errorUsername=invalid') !== false) {
-      $errorInvalidUsername = true;
-    }
-    if (strpos($url, 'errorUsername=exists') !== false) {
-      $errorUsernameExists = true;
-    }
-    if (strpos($url, 'errorPassword=empty') !== false) {
-      $errorPassword = true;
-    }
-    if (strpos($url, 'errorPassword=invalid') !== false) {
-      $errorInvalidPassword = true;
-    }
+// Server-Side Error Handling on Submit
+$url                  = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; // used in determining if we need to display errors
+// Initialize to state with no errors
+$errorName            = $errorUsername = $errorPassword = false;
+$errorInvalidName     = false;
+$errorInvalidUsername = $errorUsernameExists = false;
+$errorInvalidPassword = false;
+// Determine if we need to display errors
+if (strpos($url, 'errorName=empty') !== false) {
+    $errorName = true;
+}
+if (strpos($url, 'errorName=invalid') !== false) {
+    $errorInvalidName = true;
+}
+if (strpos($url, 'errorUsername=empty') !== false) {
+    $errorUsername = true;
+}
+if (strpos($url, 'errorUsername=invalid') !== false) {
+    $errorInvalidUsername = true;
+}
+if (strpos($url, 'errorUsername=exists') !== false) {
+    $errorUsernameExists = true;
+}
+if (strpos($url, 'errorPassword=empty') !== false) {
+    $errorPassword = true;
+}
+if (strpos($url, 'errorPassword=invalid') !== false) {
+    $errorInvalidPassword = true;
+}
 ?>
 
 <div class="container-fluid">
@@ -41,15 +41,17 @@
             <label for="signup-name" class="col-sm-2 control-label">Name</label>
             <div class="col-sm-4">
                <input class="form-control" type="text" placeholder="Enter Name" id="signup-name" name="signup-name"
-                  value="<?php echo $_SESSION['signupname'];?>">
+                  value="<?php
+echo $_SESSION['signupname'];
+?>">
                <?php
-                  // SERVER-SIDE VALIDATION FOR NAME
-                  if ($errorName !== false) {
-                     echo "<label class='error'>Please enter your name.</label>";
-                  } else if ($errorInvalidName !== false) {
-                     echo "<label class='error'>Name must contain only alphabetical letters.</label>";
-                  }
-               ?>
+// SERVER-SIDE VALIDATION FOR NAME
+if ($errorName !== false) {
+    echo "<label class='error'>Please enter your name.</label>";
+} else if ($errorInvalidName !== false) {
+    echo "<label class='error'>Name must contain only alphabetical letters.</label>";
+}
+?>
             </div>
          </div>
          <!-- USERNAME -->
@@ -57,17 +59,19 @@
             <label for="signup-username" class="col-sm-2 control-label">Username</label>
             <div class="col-sm-4">
                <input class="form-control" type="text" placeholder="Enter Username" id="signup-username" name="signup-username"
-                  value="<?php echo $_SESSION['signupusername'];?>">
+                  value="<?php
+echo $_SESSION['signupusername'];
+?>">
                <?php
-                  // SERVER-SIDE VALIDATION FOR USERNAME
-                  if ($errorUsername !== false) {
-                     echo "<label class='error'>Please enter your username.</label>";
-                  } else if ($errorInvalidUsername !== false) {
-                     echo "<label class='error'>Username must be 3-16 characters long and contain only numbers and/or letters.</label>";
-                  } else if ($errorUsernameExists !== false) {
-                     echo "<label class='error'>Username already exists.</label>";
-                  }
-               ?>
+// SERVER-SIDE VALIDATION FOR USERNAME
+if ($errorUsername !== false) {
+    echo "<label class='error'>Please enter your username.</label>";
+} else if ($errorInvalidUsername !== false) {
+    echo "<label class='error'>Username must be 3-16 characters long and contain only numbers and/or letters.</label>";
+} else if ($errorUsernameExists !== false) {
+    echo "<label class='error'>Username already exists.</label>";
+}
+?>
             </div>
          </div>
          <!-- PASSWORD -->
@@ -76,13 +80,13 @@
             <div class="col-sm-4">
                <input class="form-control" type="password" placeholder="Enter Password" id="signup-password" name="signup-password">
                <?php
-                  // SERVER-SIDE VALIDATION FOR PASSWORD
-                  if ($errorPassword !== false) {
-                     echo "<label class='error'>Please enter your password.</label>";
-                  } else if ($errorInvalidPassword !== false) {
-                     echo "<label class='error'>Password must be at least 6 characters long and contain only alphanumeric characters.</label>";
-                  }
-               ?>
+// SERVER-SIDE VALIDATION FOR PASSWORD
+if ($errorPassword !== false) {
+    echo "<label class='error'>Please enter your password.</label>";
+} else if ($errorInvalidPassword !== false) {
+    echo "<label class='error'>Password must be at least 6 characters long and contain only alphanumeric characters.</label>";
+}
+?>
             </div>
          </div>
          <!-- Meal Preference(s) -->
@@ -129,4 +133,6 @@
    </form>
 </div>
 <!--End of Form-->
-<?php include "footer.php" ?>
+<?php
+include "footer.php";
+?>

@@ -1,50 +1,50 @@
 <?php
-    ob_start(); 
-    session_start();
-    
-    $configs = include('../config/config.php');
+ob_start();
+session_start();
 
-    // Reference: https://www.tutorialspoint.com/php/php_mysql_login.htm
+$configs = include('../config/config.php');
 
-    $username = $configs['database_username'];
-    $password = $configs['database_password'];
-    $host     = $configs['host'];
-    $dbname   = $configs['database_name'];
+// Reference: https://www.tutorialspoint.com/php/php_mysql_login.htm
 
-    // Create connection
+$username = $configs['database_username'];
+$password = $configs['database_password'];
+$host     = $configs['host'];
+$dbname   = $configs['database_name'];
 
-    $conn = new mysqli($host, $username, $password, $dbname);
+// Create connection
 
-    // Check connection
+$conn = new mysqli($host, $username, $password, $dbname);
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-   
-	//$signupname = $_POST['signup-name'];
-	//$signupusername = $_POST['signup-username'];
-	$signuppassword = $_POST['signup-password'];
-	$signupcalories = $_POST['signup-calories'];
-	$signupsugar = $_POST['signup-sugar'];
-	$signupsodium = $_POST['signup-sodium'];
-	$signupprotein = $_POST['signup-protein'];
-	
-	$current = $_SESSION['user_username'];
+// Check connection
 
-    $sql = " UPDATE Users SET Password = '$signuppassword', Calories = '$signupcalories', Sugar = '$signupsugar', Sodium = '$signupsodium', Protein = '$signupprotein' WHERE Username = '$current' ";
- 
-    if (mysqli_query($conn, $sql)) {
-        header('Location: http://donteatthat.ca');
-        exit();
-    }
-  
-    else {
-        echo "Error: " . $sql . "<br>" . $conn->error; 
-    }
-  
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-  
-    $conn->close();
-    ob_end_flush();
+//$signupname = $_POST['signup-name'];
+//$signupusername = $_POST['signup-username'];
+$signuppassword = $_POST['signup-password'];
+$signupcalories = $_POST['signup-calories'];
+$signupsugar    = $_POST['signup-sugar'];
+$signupsodium   = $_POST['signup-sodium'];
+$signupprotein  = $_POST['signup-protein'];
+
+$current = $_SESSION['user_username'];
+
+$sql = " UPDATE Users SET Password = '$signuppassword', Calories = '$signupcalories', Sugar = '$signupsugar', Sodium = '$signupsodium', Protein = '$signupprotein' WHERE Username = '$current' ";
+
+if (mysqli_query($conn, $sql)) {
+    header('Location: http://donteatthat.ca');
+    exit();
+}
+
+else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+
+
+$conn->close();
+ob_end_flush();
 ?>
   
