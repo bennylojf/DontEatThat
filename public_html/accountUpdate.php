@@ -1,27 +1,28 @@
-  <?php 
-   session_start();
+<?php
+    ob_start(); 
+    session_start();
     
-$configs = include('../config/config.php');
+    $configs = include('../config/config.php');
 
-// Reference: https://www.tutorialspoint.com/php/php_mysql_login.htm
+    // Reference: https://www.tutorialspoint.com/php/php_mysql_login.htm
 
-$username = $configs['database_username'];
-$password = $configs['database_password'];
-$host     = $configs['host'];
-$dbname   = $configs['database_name'];
+    $username = $configs['database_username'];
+    $password = $configs['database_password'];
+    $host     = $configs['host'];
+    $dbname   = $configs['database_name'];
 
-// Create connection
+    // Create connection
 
-$conn = new mysqli($host, $username, $password, $dbname);
+    $conn = new mysqli($host, $username, $password, $dbname);
 
-// Check connection
+    // Check connection
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
    
-	$signupname = $_POST['signup-name'];
-	$signupusername = $_POST['signup-username'];
+	//$signupname = $_POST['signup-name'];
+	//$signupusername = $_POST['signup-username'];
 	$signuppassword = $_POST['signup-password'];
 	$signupcalories = $_POST['signup-calories'];
 	$signupsugar = $_POST['signup-sugar'];
@@ -30,18 +31,20 @@ if ($conn->connect_error) {
 	
 	$current = $_SESSION['user_username'];
 
- $sql = " UPDATE Users SET Name = '$signupname', Username = '$signupusername', Password = '$signuppassword', Calories = '$signupcalories', Sugar = '$signupsugar', Sodium = '$signupsodium', Protein = '$signupprotein' WHERE Username = '$current' ";
+    $sql = " UPDATE Users SET Password = '$signuppassword', Calories = '$signupcalories', Sugar = '$signupsugar', Sodium = '$signupsodium', Protein = '$signupprotein' WHERE Username = '$current' ";
  
-
-if ($conn->query($sql) === TRUE) {
-	   header("Location: index.php");
-  }
-  else {
-	  echo "Error: " . $sql . "<br>" . $conn->error;
-  }
+    if (mysqli_query($conn, $sql)) {
+        header('Location: http://donteatthat.ca');
+        exit();
+    }
   
-$conn->close();
-    ?>
+    else {
+        echo "Error: " . $sql . "<br>" . $conn->error; 
+    }
   
 
-
+  
+    $conn->close();
+    ob_end_flush();
+?>
+  
