@@ -20,8 +20,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
    
-	$signupname = $_POST['signup-name'];
-	$signupusername = $_POST['signup-username'];
 	$signuppassword = $_POST['signup-password'];
 	$signupcalories = $_POST['signup-calories'];
 	$signupsugar = $_POST['signup-sugar'];
@@ -30,10 +28,14 @@ if ($conn->connect_error) {
 	
 	$current = $_SESSION['user_username'];
 
- $sql = " UPDATE Users SET Name = '$signupname', Username = '$signupusername', Password = '$signuppassword', Calories = '$signupcalories', Sugar = '$signupsugar', Sodium = '$signupsodium', Protein = '$signupprotein' WHERE Username = '$current' ";
+ $sql = " UPDATE Users SET Password = '$signuppassword', Calories = '$signupcalories', Sugar = '$signupsugar', Sodium = '$signupsodium', Protein = '$signupprotein' WHERE Username = '$current' ";
  
-
 if ($conn->query($sql) === TRUE) {
+	    $_SESSION['user_calories'] = $signupcalories; 
+		$_SESSION['user_sugar'] = $signupsugar;
+		$_SESSION['user_sodium'] = $signupsodium; 
+		$_SESSION['user_protein'] = $signupprotein; 
+        session_write_close();
 	   header("Location: index.php");
   }
   else {

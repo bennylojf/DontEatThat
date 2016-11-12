@@ -19,21 +19,21 @@
                <div class="form-group" >
                   <label class="col-sm-2 control-label">Name</label>
                   <div class="col-sm-4">
-                     <input class="form-control" type="text" placeholder="Enter new name" name="signup-name">
+                     <input class="form-control" type="text" value="<?php echo $_SESSION['user_name']; ?> "  name="signup-name" disabled>
                   </div>
                </div>
                <!-- USERNAME -->
                <div class="form-group" >
                   <label class="col-sm-2 control-label">Username</label>
                   <div class="col-sm-4">
-                     <input class="form-control" type="text" placeholder="Enter new username" name="signup-username">
+                     <input class="form-control" type="text" value="<?php echo $_SESSION['user_username']; ?> " name="signup-username" disabled>
                   </div>
                </div>
                <!-- PASSWORD -->
                <div class="form-group" >
-                  <label class="col-sm-2 control-label">Password</label>
+                  <label class="col-sm-2 control-label">New Password</label>
                   <div class="col-sm-4">
-                     <input class="form-control" type="password" placeholder="Enter new password" name="signup-password">
+                     <input class="form-control" type="password" placeholder="Password" name="signup-password">
                   </div>
                </div>
                
@@ -44,33 +44,108 @@
                <div class="col-sm-2">
                   <label class="col-sm-2">Calories</label>
                   <select class="form-control" name="signup-calories">
-                     <option>Normal</option>
-                     <option>High</option>
-                     <option>Low</option>
+                  <?php 
+                     if($_SESSION['user_calories'] == "High"){
+                       $CalSelHigh = "selected";
+                       $CalSelLow = "";
+                       $CalSelNormal = "";
+                     }
+                    else if($_SESSION['user_calories'] == "Low"){
+                       $CalSelHigh = "";
+                       $CalSelLow = "selected";
+                       $CalSelNormal = "";
+                     }
+                    else if($_SESSION['user_calories'] == "Normal"){
+                       $CalSelHigh = "";
+                       $CalSelLow = "";
+                       $CalSelNormal = "selected";
+                     }
+                  ?>
+
+
+                    <option value = "Normal" <?php echo $CalSelNormal; ?> >Normal</option>
+                   <option value = "High" <?php echo $CalSelHigh; ?> >High</option>
+                   <option value = "Low" <?php echo $CalSelLow; ?> >Low</option>
                   </select>
                </div>
                <div class="col-sm-2">
                   <label class="col-sm-2">Sugar</label>
-                  <select class="form-control" name="signup-sugar">
-                     <option>Normal</option>
-                     <option>High</option>
-                     <option>Low</option>
+                   <select class="form-control" name="signup-sugar">
+                  <?php 
+                     if($_SESSION['user_sugar'] == "High"){
+                       $SugSelHigh = "selected";
+                       $SugSelLow = "";
+                       $SugSelNormal = "";
+                     }
+                    else if($_SESSION['user_sugar'] == "Low"){
+                       $SugSelHigh = "";
+                       $SugSelLow = "selected";
+                       $SugSelNormal = "";
+                     }
+                    else if($_SESSION['user_sugar'] == "Normal"){
+                       $SugSelHigh = "";
+                       $SugSelLow = "";
+                       $SugSelNormal = "selected";
+                     }
+                  ?>
+
+
+                   <option value = "Normal" <?php echo $SugSelNormal; ?> >Normal</option>
+                   <option value = "High" <?php echo $SugSelHigh; ?> >High</option>
+                   <option value = "Low" <?php echo $SugSelLow; ?> >Low</option>
                   </select>
+                  
                </div>
                <div class="col-sm-2">
                   <label class="col-sm-2">Sodium</label>
-                  <select class="form-control" name="signup-sodium">
-                     <option>Normal</option>
-                     <option>High</option>
-                     <option>Low</option>
+                      <select class="form-control" name="signup-sodium">
+                  <?php 
+                     if($_SESSION['user_sodium'] == "High"){
+                       $SodSelHigh = "selected";
+                       $SodSelLow = "";
+                       $SodSelNormal = "";
+                     }
+                    else if($_SESSION['user_sodium'] == "Low"){
+                       $SodSelHigh = "";
+                       $SodSelLow = "selected";
+                       $SodSelNormal = "";
+                     }
+                    else if($_SESSION['user_sodium'] == "Normal"){
+                       $SodSelHigh = "";
+                       $SodSelLow = "";
+                       $SodSelNormal = "selected";
+                     }
+                  ?>
+
+
+                   <option value = "Normal" <?php echo $SodSelNormal; ?> >Normal</option>
+                   <option value = "High" <?php echo $SodSelHigh; ?> >High</option>
+                   <option value = "Low" <?php echo $SodSelLow; ?> >Low</option>
                   </select>
                </div>
                <div class="col-sm-2">
                   <label class="col-sm-2">Protein</label>
-                  <select class="form-control" name="signup-protein">
-                     <option>Normal</option>
-                     <option>High</option>
-                     <option>Low</option>
+                      <select class="form-control" name="signup-protein">
+                  <?php 
+                     if($_SESSION['user_protein'] == "High"){
+                       $ProSelHigh = "selected";
+                       $ProSelLow = "";
+                       $ProSelNormal = "";
+                     }
+                    else if($_SESSION['user_protein'] == "Low"){
+                       $ProSelHigh = "";
+                       $ProSelLow = "selected";
+                       $ProSelNormal = "";
+                     }
+                    else if($_SESSION['user_protein'] == "Normal"){
+                       $ProSelHigh = "";
+                       $ProSelLow = "";
+                       $ProSelNormal = "selected";
+                     }
+                  ?>
+                   <option value = "Normal" <?php echo $ProSelNormal; ?> >Normal</option>
+                   <option value = "High" <?php echo $ProSelHigh; ?> >High</option>
+                   <option value = "Low" <?php echo $ProSelLow; ?> >Low</option>
                   </select>
                </div>
             </div>
