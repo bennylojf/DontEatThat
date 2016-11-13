@@ -21,8 +21,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-//$signupname = $_POST['signup-name'];
-//$signupusername = $_POST['signup-username'];
 $signuppassword = $_POST['signup-password'];
 $signupcalories = $_POST['signup-calories'];
 $signupsugar    = $_POST['signup-sugar'];
