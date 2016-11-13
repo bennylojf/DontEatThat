@@ -22,11 +22,11 @@ $user = $_SESSION['user_username'];
 $sql = " DELETE FROM Users WHERE Username = '$user' ";
 
 if ($conn->query($sql) === TRUE) {
-   session_destroy();
-   header("Location: index.php");
-   exit();
+    session_destroy();
+    header("Location: index.php");
+    exit();
 } else {
-   echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
 $conn->close();

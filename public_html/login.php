@@ -30,19 +30,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $count  = mysqli_num_rows($result);
     
     // If result matched $myusername and $mypassword, a table row exists
-
+    
     if ($count == 1) {
-        $_SESSION['user_name'] = $row['Name'];
+        $_SESSION['user_name']     = $row['Name'];
         $_SESSION['user_username'] = $row['Username'];
-		$_SESSION['user_calories'] = $row['Calories']; 
-		$_SESSION['user_sugar'] = $row['Sugar']; 
-		$_SESSION['user_sodium'] = $row['Sodium']; 
-		$_SESSION['user_protein'] = $row['Protein']; 
+        $_SESSION['user_calories'] = $row['Calories'];
+        $_SESSION['user_sugar']    = $row['Sugar'];
+        $_SESSION['user_sodium']   = $row['Sodium'];
+        $_SESSION['user_protein']  = $row['Protein'];
         session_write_close();
         header("Location: index.php");
         exit();
     } else {
-        echo "<h2>Your username or password is incorrect.</h2>";
+        header("Location: index.php");
     }
 }
 ?>

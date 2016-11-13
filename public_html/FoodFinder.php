@@ -1,113 +1,96 @@
 <?php
-require_once('lib/fat-secret-php/src/Client.php');
-require_once('lib/fat-secret-php/src/OAuthBase.php');
-require_once('lib/fat-secret-php/src/FatSecretException.php');
+require_once ('lib/fat-secret-php/src/Client.php');
 
-    class FoodFinder {
-        var $numberOfSearchTerms = 5;
-        var $foodData1;
-        var $foodData2;
-        var $consumerKey;
-        var $secretKey;
-        var $client;
+require_once ('lib/fat-secret-php/src/OAuthBase.php');
 
-        function __construct() {
-            $config = include('../config/config.php');
-            $this->consumerKey = $config['consumer_key'];
-            $this->secretKey = $config['secret_key'];
-            $this->client = new \Adcuz\FatSecret\Client($this->consumerKey, $this->secretKey);
+require_once ('lib/fat-secret-php/src/FatSecretException.php');
+
+class FoodFinder
+
+{
+    var $numberOfSearchTerms = 5;
+    var $client;
+
+    function __construct($consumerKey, $secretKey)
+    {
+        $this->client = new Adcuz\FatSecret\Client($consumerKey, $secretKey);
+    }
+
+    function runQuery($searchTerm)
+    {
+        // This initial search does not give us enough data. It only contains a
+        // few basic facts like ID, sugar, some other stuff I forgot
+        $searchResult = $this->client->SearchFood($searchTerm, false, false, $this->numberOfSearchTerms);
+
+        // Keep track of all the IDs found by the search
+        for ($i = 0; $i < $this->numberOfSearchTerms; $i++) {
+            $foodIDs[$i] = $searchResult['foods']['food'][$i]['food_id'];
         }
 
-        function runQuery($searchTerm1, $searchTerm2) {
-            // Get the first item
-            $searchResult = $this->client->SearchFood($searchTerm1, false, false, $this->numberOfSearchTerms);
-
-            $foodIDs = [];
-            for ($i = 0; $i < $this->numberOfSearchTerms; $i++) {
-                $foodIDs[$i] = $searchResult['foods']['food'][$i]['food_id'];
-            }
-
-            for ($i = 0; $i < $this->numberOfSearchTerms; $i++) {
-                $rawFoodData1 = $this->client->GetFood($foodIDs[$i]);
-                $this->foodData1 = $this->getRelevantData($rawFoodData1);
-            
-                if ($this->foodData1['metric_serving_unit'] == 'g' || $this->foodData1['metric_serving_unit'] == 'oz') {
-                    break;
-                }
-            }
-
-            if ($this->foodData1['metric_serving_unit'] != 'g' && $this->foodData1['metric_serving_unit'] != 'oz') {
-                $this->foodData1 = null;
-            }
-            
-            // Get the second item
-            $searchResult = $this->client->SearchFood($searchTerm2, false, false, $this->numberOfSearchTerms);
-            $foodIDs = [];
-            for ($i = 0; $i < $this->numberOfSearchTerms; $i++) {
-                $foodIDs[$i] = $searchResult['foods']['food'][$i]['food_id'];
-            }
-            
-            for ($i = 0; $i < $this->numberOfSearchTerms; $i++) {
-                $rawFoodData2 = $this->client->GetFood($foodIDs[$i]);
-                $this->foodData2 = $this->getRelevantData($rawFoodData2);
-            
-                if ($this->foodData2['metric_serving_unit'] == 'g' || $this->foodData2['metric_serving_unit'] == 'oz') {
-                    break;
-                }
-            }
-            if ($this->foodData2['metric_serving_unit'] != 'g' && $this->foodData2['metric_serving_unit'] != 'oz') {
-                $this->foodData2 = null;
+        // Get the first food which has an actual serving size
+        // Some items have a strange serving units
+        for ($i = 0; $i < $this->numberOfSearchTerms; $i++) {
+            $rawFoodData = $this->client->GetFood($foodIDs[$i]);
+            $foodData = $this->getRelevantData($rawFoodData);
+            if ($foodData['metric_serving_unit'] == 'g' || $this->foodData1['metric_serving_unit'] == 'oz') {
+                break;
             }
         }
 
-        function setNumberOfSearchTerms($num) {
-            $this->numberOfSearchTerms = $num;
+        // If we went able to find something with a valid serving unit, 
+        // we set the foodData to null so that whoever uses this knows
+        if ($foodData['metric_serving_unit'] != 'g' && $this->foodData1['metric_serving_unit'] != 'oz') {
+            $foodData = null;
         }
 
-        function getFoodDatas() {
+        return $foodData;
+    }
+
+    function setNumberOfSearchTerms($num)
+    {
+        $this->numberOfSearchTerms = $num;
+    }
+
+    private
+    function getRelevantData($rawFoodData)
+    { // This is the case where the query contains multiple different ways of serving
+
+        // Eg, for fried chicken, yeild after cooking, bones removed, sliced, with bone, etc
+
+        if ($rawFoodData["food"]["servings"]["serving"][0] !== null) {
             return array(
-                $this->foodData1,
-                $this->foodData2
+                "food_id" => $rawFoodData["food"]["food_id"],
+                "food_name" => $rawFoodData["food"]["food_name"],
+                "metric_serving_unit" => $rawFoodData["food"]["servings"]["serving"][0]["metric_serving_unit"],
+                "metric_serving_amount" => $rawFoodData["food"]["servings"]["serving"][0]["metric_serving_amount"],
+                "cholesterol" => $rawFoodData["food"]["servings"]["serving"][0]["cholesterol"], //mg
+                "calories" => $rawFoodData["food"]["servings"]["serving"][0]["calories"], // kcal
+                "fat" => $rawFoodData["food"]["servings"]["serving"][0]["fat"], // grams
+                "protein" => $rawFoodData["food"]["servings"]["serving"][0]["protein"], // grams
+                "sodium" => $rawFoodData["food"]["servings"]["serving"][0]["sodium"], // mg
+                "carbohydrate" => $rawFoodData["food"]["servings"]["serving"][0]["carbohydrate"], // grams
+                "sugar" => $rawFoodData["food"]["servings"]["serving"][0]["sugar"] // grams
             );
         }
 
+        // In this case, there is only one serving_description
 
-        private function getRelevantData($rawFoodData) { // This is the case where the query contains multiple different ways of serving
-            // Eg, for fried chicken, yeild after cooking, bones removed, sliced, with bone, etc
-            if ($rawFoodData["food"]["servings"]["serving"][0] !== null) {
-                return array(
-                    "food_id" => $rawFoodData["food"]["food_id"],
-                    "food_name" => $rawFoodData["food"]["food_name"],
-                    "metric_serving_unit" => $rawFoodData["food"]["servings"]["serving"][0]["metric_serving_unit"],
-                    "metric_serving_amount" => $rawFoodData["food"]["servings"]["serving"][0]["metric_serving_amount"],
-                    "cholesterol" => $rawFoodData["food"]["servings"]["serving"][0]["cholesterol"], //mg
-                    "calories" => $rawFoodData["food"]["servings"]["serving"][0]["calories"], // kcal
-                    "fat" => $rawFoodData["food"]["servings"]["serving"][0]["fat"], // grams
-                    "protein" => $rawFoodData["food"]["servings"]["serving"][0]["protein"], // grams
-                    "sodium" => $rawFoodData["food"]["servings"]["serving"][0]["sodium"], // mg
-                    "carbohydrate" => $rawFoodData["food"]["servings"]["serving"][0]["carbohydrate"], // grams
-                    "sugar" => $rawFoodData["food"]["servings"]["serving"][0]["sugar"] // grams
-                );
-            } 
-            // In this case, there is only one serving_description
-            else {
-                return array(
-                    "food_id" => $rawFoodData["food"]["food_id"],
-                    "food_name" => $rawFoodData["food"]["food_name"],
-                    "metric_serving_unit" => $rawFoodData["food"]["servings"]["serving"]["metric_serving_unit"],
-                    "metric_serving_amount" => $rawFoodData["food"]["servings"]["serving"]["metric_serving_amount"],
-                    "cholesterol" => $rawFoodData["food"]["servings"]["serving"]["cholesterol"], //mg
-                    "calories" => $rawFoodData["food"]["servings"]["serving"]["calories"], // kcal
-                    "fat" => $rawFoodData["food"]["servings"]["serving"]["fat"], // grams
-                    "protein" => $rawFoodData["food"]["servings"]["serving"]["protein"], // grams
-                    "sodium" => $rawFoodData["food"]["servings"]["serving"]["sodium"], // mg
-                    "carbohydrate" => $rawFoodData["food"]["servings"]["serving"]["carbohydrate"], // grams
-                    "sugar" => $rawFoodData["food"]["servings"]["serving"]["sugar"] // grams
-                );
-        
-            }
+        else {
+            return array(
+                "food_id" => $rawFoodData["food"]["food_id"],
+                "food_name" => $rawFoodData["food"]["food_name"],
+                "metric_serving_unit" => $rawFoodData["food"]["servings"]["serving"]["metric_serving_unit"],
+                "metric_serving_amount" => $rawFoodData["food"]["servings"]["serving"]["metric_serving_amount"],
+                "cholesterol" => $rawFoodData["food"]["servings"]["serving"]["cholesterol"], //mg
+                "calories" => $rawFoodData["food"]["servings"]["serving"]["calories"], // kcal
+                "fat" => $rawFoodData["food"]["servings"]["serving"]["fat"], // grams
+                "protein" => $rawFoodData["food"]["servings"]["serving"]["protein"], // grams
+                "sodium" => $rawFoodData["food"]["servings"]["serving"]["sodium"], // mg
+                "carbohydrate" => $rawFoodData["food"]["servings"]["serving"]["carbohydrate"], // grams
+                "sugar" => $rawFoodData["food"]["servings"]["serving"]["sugar"] // grams
+            );
         }
-
     }
+}
 
 ?>
