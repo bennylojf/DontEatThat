@@ -53,18 +53,24 @@
                         <ul class="nav navbar-nav navbar-right">
                             <?php
                                 if (isset($_SESSION["user_name"])) {
-                                   echo 
-                                   "
-                                   <span class='navbar-text'>" . $_SESSION["user_name"] . "</span>
-                                   <li><a href='manage_account.php'><span class='glyphicon glyphicon-cog'></span> Manage Account</a></li>
-                                   <li><a href='logout.php'><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
-                                   ";
+                                    echo 
+                                    "
+                                    <div class='dropdown' style='margin-top: 7px; margin-left: 15px;'>
+                                        <button class='btn btn-default dropdown-toggle' type='button' data-toggle='dropdown'>
+                                        <span class='glyphicon glyphicon-user'></span>" . $_SESSION['user_name'] . " <span class='caret'></span>
+                                        </button>
+                                        <ul class='dropdown-menu'>
+                                            <li><a href='manage_account.php'><span class='glyphicon glyphicon-cog'></span> Manage Account</a></li>
+                                            <li><a href='logout.php'><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
+                                        </ul>
+                                    </div>
+                                    ";
                                 } else {
-                                   echo 
-                                   "
-                                   <li><a href='signup.php'><span class='glyphicon glyphicon-user'></span> Signup</a></li>
-                                   <li><a data-toggle='modal' href='#' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>
-                                   ";
+                                    echo 
+                                    "
+                                    <li><a href='signup.php'><span class='glyphicon glyphicon-user'></span> Signup</a></li>
+                                    <li><a data-toggle='modal' href='#' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>
+                                    ";
                                 } 
                                 ?>
                         </ul>
