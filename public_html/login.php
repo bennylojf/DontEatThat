@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: index.php");
         exit();
     } else {
-        echo "<h2>Your username or password is incorrect.</h2>";
+        header("Location: index.php");
     }
 }
 ?>
