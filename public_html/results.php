@@ -1,10 +1,13 @@
 <?php
-session_start();
 require_once('FoodFinder.php');
+$config = include('../config/config.php');
 
-$foodFinder = new FoodFinder();
-$foodFinder->runQuery($_GET['item1'], $_GET['item2']);
-$resultData           = $foodFinder->getFoodDatas();
+session_start();
+
+$foodFinder = new FoodFinder($config['consumer_key'], $config['secret_key']);
+$resultData[0] = $foodFinder->runQuery($_GET['item1']);
+$resultData[1] = $foodFinder->runQuery($_GET['item2']);
+
 $_SESSION['food0_id'] = $resultData[0]['food_id'];
 $_SESSION['food1_id'] = $resultData[1]['food_id'];
 
