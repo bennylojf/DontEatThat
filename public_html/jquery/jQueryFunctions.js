@@ -63,30 +63,48 @@ $(document).ready(function() {
 	});
 });
 
-/* TODO: CHANGE TO USE PLUGIN */
-/* Script to validate login form */
+/* Script used to validate login form */
 $(document).ready(function() {
-	$(document).on("click", "#login_button", function(event) {
-		var username = $("#loginName").val();
-		var password = $("#loginPass").val();
-		var errorCount = 0;
-
-		$("#loginError0").removeClass("show-form-error").addClass("form-error");
-		$("#loginError1").removeClass("show-form-error").addClass("form-error");
-
-		if (username == null || username == "") {
-			$("#loginError0").removeClass("form-error").addClass("show-form-error");
-			errorCount++;
-		}
-
-		if (password == null || password == "") {
-			$("#loginError1").removeClass("form-error").addClass("show-form-error");
-			errorCount++;
-		}
-
-		if (errorCount > 0)
-			event.preventDefault();
+	$("#loginForm").validate({
+		rules: {
+			"login-username": {
+				required: true
+			},
+			"login-password": {
+				required: true
+			}
+		},
+		messages: {
+			"login-username": {
+				required: "Please enter your username."
+			},
+			"login-password": {
+				required: "Please enter your password."
+			}
+		},
+		submitHandler: submitForm
 	});
+
+	function submitForm() {
+		var data = $("#loginForm").serialize();
+
+		$.ajax({
+			type : 'POST',
+			url : 'checkLogin.php',
+			data : data,
+			success : function(response) {
+				if (response == "success") {
+					$("#login_button").html('<img src="/res/loginLoad.svg" /> &nbsp; Logging In ...');
+					setTimeout(' window.location.href = "index.php"; ', 4000);
+				} else {
+					$("#loginErr").fadeIn(1000, function() {
+						$("#loginErr").html('<label class="error">' + response + '</label>');
+					});
+				}
+			}
+		});
+		return false;
+	}
 });
 
 /* Script used to validate registration form */
@@ -124,3 +142,4 @@ $(document).ready(function() {
 		}
 	});
 });
+

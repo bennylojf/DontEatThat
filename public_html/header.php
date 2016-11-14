@@ -88,21 +88,21 @@
                         <h3 class="modal-title">Login</h3>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="login.php" name="login_form">
+                        <div id="loginErr"></div>
+                        <form id="loginForm" method="post" action="login.php" name="login_form">
                             <div class="form-group">
-                                <label for="loginName">Username</label>
-                                <input id="loginName" class="form-control" type="text" placeholder="Enter Username" name="login-name">
-                                <p id="loginError0" class="form-error">Please enter your username.</p>
+                                <label for="login-username">Username</label>
+                                <input id="login-username" class="form-control" type="text" placeholder="Enter Username" name="login-username">
                             </div>
                             <div class="form-group">
-                                <label for="loginPass">Password</label>
-                                <input id="loginPass" class="form-control" type="password" placeholder="Enter Password" name="login-password">
-                                <p id="loginError1" class="form-error">Please enter your password.</p>
+                                <label for="login-password">Password</label>
+                                <input id="login-password" class="form-control" type="password" placeholder="Enter Password" name="login-password">
                             </div>
                             <button id="login_button" type="submit" class="btn btn-primary">Sign in</button>
                         </form>
                     </div>
                     <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <a id="reg_button" href="signup.php" class="btn btn-primary">Register</a>
                     </div>
                 </div>
