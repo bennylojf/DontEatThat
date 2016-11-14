@@ -34,24 +34,22 @@ if (strpos($url, 'errorPassword=invalid') !== false) {
 ?>
 
 <div class="container-fluid">
-   <form id="signupForm" class="form-horizontal" action="makeaccount.php" method="post">
+   <form id="signupForm" class="form-horizontal" action="makeAccount.php" method="post">
       <h2 style="padding-left: 0;">Registration Form</h2>
          <!-- NAME -->
          <div class="form-group">
             <label for="signup-name" class="col-sm-2 control-label">Name</label>
             <div class="col-sm-4">
                <input class="form-control" type="text" placeholder="Enter Name" id="signup-name" name="signup-name"
-                  value="<?php
-echo $_SESSION['signupname'];
-?>">
+                  value="<?php echo $_SESSION['signupname']; ?>">
                <?php
-// SERVER-SIDE VALIDATION FOR NAME
-if ($errorName !== false) {
-    echo "<label class='error'>Please enter your name.</label>";
-} else if ($errorInvalidName !== false) {
-    echo "<label class='error'>Name must contain only alphabetical letters.</label>";
-}
-?>
+                  // SERVER-SIDE VALIDATION FOR NAME
+                  if ($errorName !== false) {
+                      echo "<label class='error'>Please enter your name.</label>";
+                  } else if ($errorInvalidName !== false) {
+                      echo "<label class='error'>Name must contain only alphabetical letters.</label>";
+                  }
+                  ?>
             </div>
          </div>
          <!-- USERNAME -->
@@ -59,19 +57,17 @@ if ($errorName !== false) {
             <label for="signup-username" class="col-sm-2 control-label">Username</label>
             <div class="col-sm-4">
                <input class="form-control" type="text" placeholder="Enter Username" id="signup-username" name="signup-username"
-                  value="<?php
-echo $_SESSION['signupusername'];
-?>">
+                  value="<?php echo $_SESSION['signupusername']; ?>">
                <?php
-// SERVER-SIDE VALIDATION FOR USERNAME
-if ($errorUsername !== false) {
-    echo "<label class='error'>Please enter your username.</label>";
-} else if ($errorInvalidUsername !== false) {
-    echo "<label class='error'>Username must be 3-16 characters long and contain only numbers and/or letters.</label>";
-} else if ($errorUsernameExists !== false) {
-    echo "<label class='error'>Username already exists.</label>";
-}
-?>
+                  // SERVER-SIDE VALIDATION FOR USERNAME
+                  if ($errorUsername !== false) {
+                      echo "<label class='error'>Please enter your username.</label>";
+                  } else if ($errorInvalidUsername !== false) {
+                      echo "<label class='error'>Username must be 3-16 characters long and contain only numbers and/or letters.</label>";
+                  } else if ($errorUsernameExists !== false) {
+                      echo "<label class='error'>Username already exists.</label>";
+                  }
+                  ?>
             </div>
          </div>
          <!-- PASSWORD -->
@@ -80,13 +76,13 @@ if ($errorUsername !== false) {
             <div class="col-sm-4">
                <input class="form-control" type="password" placeholder="Enter Password" id="signup-password" name="signup-password">
                <?php
-// SERVER-SIDE VALIDATION FOR PASSWORD
-if ($errorPassword !== false) {
-    echo "<label class='error'>Please enter your password.</label>";
-} else if ($errorInvalidPassword !== false) {
-    echo "<label class='error'>Password must be at least 6 characters long and contain only alphanumeric characters.</label>";
-}
-?>
+                  // SERVER-SIDE VALIDATION FOR PASSWORD
+                  if ($errorPassword !== false) {
+                      echo "<label class='error'>Please enter your password.</label>";
+                  } else if ($errorInvalidPassword !== false) {
+                      echo "<label class='error'>Password must be at least 6 characters long and contain only alphanumeric characters.</label>";
+                  }
+                  ?>
             </div>
          </div>
          <!-- Meal Preference(s) -->
@@ -133,6 +129,4 @@ if ($errorPassword !== false) {
    </form>
 </div>
 <!--End of Form-->
-<?php
-include "footer.php";
-?>
+<?php include "footer.php"; ?>

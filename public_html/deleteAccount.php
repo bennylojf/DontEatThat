@@ -1,5 +1,5 @@
 <?php
-// THIS SCRIPT IS CALLED WHEN A USER CONFIRMS ACCOUNT DELETION IN manage_account.php
+// THIS SCRIPT IS CALLED WHEN A USER CONFIRMS ACCOUNT DELETION IN manageAccount.php
 session_start();
 $configs = include('../config/config.php');
 

@@ -60,7 +60,7 @@
                                         <span class='glyphicon glyphicon-user'></span> " . $_SESSION['user_name'] . " <span class='caret'></span>
                                         </a>
                                         <ul class='dropdown-menu'>
-                                            <li><a href='manage_account.php'><span class='glyphicon glyphicon-cog'></span> Manage Account</a></li>
+                                            <li><a href='manageAccount.php'><span class='glyphicon glyphicon-cog'></span> Manage Account</a></li>
                                             <li><a href='logout.php'><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
                                         </ul>
                                     </li>

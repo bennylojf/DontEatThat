@@ -116,4 +116,4 @@ Alex - Refactored FoodFinder (1)
 Alex - Display username in navbar (.5)
 
 Nov 13
-Kenton - dropdown menu for logged-in users (1)
+Kenton - dropdown menu for logged-in users (1), added password validation for Manage Account page (1)

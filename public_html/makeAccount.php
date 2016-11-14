@@ -75,7 +75,7 @@ if (empty($signuppassword)) {
     $error .= "errorPassword=empty";
 } else {
     // CHECK if password is at least 6 characters long
-    $pattern = "/^[a-zA-Z0-9_-]{6,}$/";
+    $pattern = "/^[a-zA-Z0-9]{6,}$/";
     
     if (!preg_match($pattern, $signuppassword)) {
         $error .= "errorPassword=invalid";
