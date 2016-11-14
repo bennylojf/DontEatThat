@@ -4,7 +4,7 @@ $config = include('../config/config.php');
 
 session_start();
 
-$foodFinder = new FoodFinder($config['consumer_key'], $config['secret_key']);
+$foodFinder    = new FoodFinder($config['consumer_key'], $config['secret_key']);
 $resultData[0] = $foodFinder->runQuery($_GET['item1']);
 $resultData[1] = $foodFinder->runQuery($_GET['item2']);
 
@@ -34,7 +34,7 @@ include("header.php");
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th>Item</th>
+						<th>Item (100 g portions)</th>
 						<th>Calories</th>
 						<th>Fat</th>
 						<th>Sugar</th>
@@ -48,32 +48,53 @@ include("header.php");
 
 // Get NORMALIZED (to 100g) data for the first food item
 
+// food 0 statistics
 $food0amount      = round($resultData[0]['metric_serving_amount']);
-$food0calories    = normalizeWeight($resultData[0]['calories'], $resultData[0]);
-$food0fat         = normalizeWeight($resultData[0]['fat'], $resultData[0]);
-$food0sugar       = normalizeWeight($resultData[0]['sugar'], $resultData[0]);
-$food0sodium      = normalizeWeight($resultData[0]['sodium'], $resultData[0]);
-$food0protein     = normalizeWeight($resultData[0]['protein'], $resultData[0]);
-$food0cholesterol = normalizeWeight($resultData[0]['cholesterol'], $resultData[0]);
-$food0carbs       = normalizeWeight($resultData[0]['carbohydrate'], $resultData[0]);
+$food0calories    = normalizeWeight($resultData[0]['calories'], $resultData[0]); // bad
+$food0carbs       = normalizeWeight($resultData[0]['carbohydrate'], $resultData[0]); // good
+$food0protein     = normalizeWeight($resultData[0]['protein'], $resultData[0]); // good
+$food0fat         = normalizeWeight($resultData[0]['fat'], $resultData[0]); // bad
+$food0cholesterol = normalizeWeight($resultData[0]['cholesterol'], $resultData[0]); // bad
+$food0sodium      = normalizeWeight($resultData[0]['sodium'], $resultData[0]); // bad
+$food0potassium   = normalizeWeight($resultData[0]['potassium'], $resultData[0]); // good
+$food0fiber       = normalizeWeight($resultData[0]['fiber'], $resultData[0]); // good
+$food0sugar       = normalizeWeight($resultData[0]['sugar'], $resultData[0]); // bad
+$food0vitA        = normalizeWeight($resultData[0]['vitamin_a'], $resultData[0]); // good
+$food0vitC        = normalizeWeight($resultData[0]['vitamin_c'], $resultData[0]); // good
+$food0calcium     = normalizeWeight($resultData[0]['calcium'], $resultData[0]); // good
+$food0iron        = normalizeWeight($resultData[0]['iron'], $resultData[0]); // good
+
+// food 1 statistics
 $food1amount      = round($resultData[1]['metric_serving_amount']);
-$food1calories    = normalizeWeight($resultData[1]['calories'], $resultData[1]);
-$food1fat         = normalizeWeight($resultData[1]['fat'], $resultData[1]);
-$food1sugar       = normalizeWeight($resultData[1]['sugar'], $resultData[1]);
-$food1sodium      = normalizeWeight($resultData[1]['sodium'], $resultData[1]);
-$food1protein     = normalizeWeight($resultData[1]['protein'], $resultData[1]);
-$food1cholesterol = normalizeWeight($resultData[1]['cholesterol'], $resultData[1]);
-$food1carbs       = normalizeWeight($resultData[1]['carbohydrate'], $resultData[1]);
+$food1calories    = normalizeWeight($resultData[1]['calories'], $resultData[1]); // bad
+$food1carbs       = normalizeWeight($resultData[1]['carbohydrate'], $resultData[1]); // good
+$food1protein     = normalizeWeight($resultData[1]['protein'], $resultData[1]); // good
+$food1fat         = normalizeWeight($resultData[1]['fat'], $resultData[1]); // bad
+$food1cholesterol = normalizeWeight($resultData[1]['cholesterol'], $resultData[1]); // bad
+$food1sodium      = normalizeWeight($resultData[1]['sodium'], $resultData[1]); // bad
+$food1potassium   = normalizeWeight($resultData[1]['potassium'], $resultData[1]); // good
+$food1fiber       = normalizeWeight($resultData[1]['fiber'], $resultData[1]); // good
+$food1sugar       = normalizeWeight($resultData[1]['sugar'], $resultData[1]); // bad
+$food1vitA        = normalizeWeight($resultData[1]['vitamin_a'], $resultData[1]); // good
+$food1vitC        = normalizeWeight($resultData[1]['vitamin_c'], $resultData[1]); // good
+$food1calcium     = normalizeWeight($resultData[1]['calcium'], $resultData[1]); // good
+$food1iron        = normalizeWeight($resultData[1]['iron'], $resultData[1]); // good
 
 // TODO: Maybe remove this and store it as a constant somewhere?
 
 $dailycalories    = 2500; // kcal
-$dailyfat         = 65; // g
-$dailysugar       = 30; // g
-$dailysodium      = 2400; // mg
-$dailyprotein     = 50; // g
-$dailycholesterol = 300; // mg
 $dailycarbs       = 300; // g
+$dailyprotein     = 50; // g
+$dailyfat         = 65; // g
+$dailycholesterol = 300; // mg
+$dailysodium      = 2400; // mg
+$dailypotassium   = 5000; // mg
+$dailyfiber       = 30; // g 
+$dailysugar       = 30; // g
+$dailyvitA        = 100; // percentage
+$dailyvitC        = 100; // percentage
+$dailycalcium     = 100; // percentage
+$dailyiron        = 100; // percentage
 
 // scaling preferences, initialized to 1 for normal preference
 
@@ -85,9 +106,9 @@ $proteinScale  = 1;
 if (!isset($_SESSION['user_username'])) { // user is not logged in
     
     // algorithm to determine healthiest choice with 100 g portions
+    $food0score = -($food0calories / $dailycalories) + ($food0carbs / $dailycarbs) + ($food0protein / $dailyprotein) - ($food0fat / $dailyfat) - ($food0cholesterol / $dailycholesterol) - ($food0sodium / $dailysodium) + ($food0potassium / $dailypotassium) + ($food0fiber / $dailyfiber) - ($food0sugar / $dailysugar) + ($food0vitA / $dailyvitA) + ($food0vitC / $dailyvitC) + ($food0calcium / $dailycalcium) + ($food0iron / $dailyiron);
     
-    $food0score = -($food0calories / $dailycalories) - ($food0fat / $dailyfat) - ($food0sugar / $dailysugar) - ($food0sodium / $dailysodium) - ($food0cholesterol / $dailycholesterol) + ($food0protein / $dailyprotein) + ($food0carbs / $dailycarbs);
-    $food1score = -($food1calories / $dailycalories) - ($food1fat / $dailyfat) - ($food1sugar / $dailysugar) - ($food1sodium / $dailysodium) - ($food1cholesterol / $dailycholesterol) + ($food1protein / $dailyprotein) + ($food1carbs / $dailycarbs);
+    $food1score = -($food1calories / $dailycalories) + ($food1carbs / $dailycarbs) + ($food1protein / $dailyprotein) - ($food1fat / $dailyfat) - ($food1cholesterol / $dailycholesterol) - ($food1sodium / $dailysodium) + ($food1potassium / $dailypotassium) + ($food1fiber / $dailyfiber) - ($food1sugar / $dailysugar) + ($food1vitA / $dailyvitA) + ($food1vitC / $dailyvitC) + ($food1calcium / $dailycalcium) + ($food1iron / $dailyiron);
 } else { // user is logged in
     if ($_SESSION['user_calories'] == "High") {
         $caloriesScale = -10;
@@ -121,8 +142,9 @@ if (!isset($_SESSION['user_username'])) { // user is not logged in
         $proteinScale = -10;
     }
     
-    $food0score = -($caloriesScale) * ($food0calories / $dailycalories) - ($food0fat / $dailyfat) - ($sugarScale) * ($food0sugar / $dailysugar) - ($sodiumScale) * ($food0sodium / $dailysodium) - ($food0cholesterol / $dailycholesterol) + ($proteinScale) * ($food0protein / $dailyprotein) + ($food0carbs / $dailycarbs);
-    $food1score = -($caloriesScale) * ($food1calories / $dailycalories) - ($food1fat / $dailyfat) - ($sugarScale) * ($food1sugar / $dailysugar) - ($sodiumScale) * ($food1sodium / $dailysodium) - ($food1cholesterol / $dailycholesterol) + ($proteinScale) * ($food1protein / $dailyprotein) + ($food1carbs / $dailycarbs);
+    $food0score = -($caloriesScale) * ($food0calories / $dailycalories) + ($food0carbs / $dailycarbs) + ($proteinScale) * ($food0protein / $dailyprotein) - ($food0fat / $dailyfat) - ($food0cholesterol / $dailycholesterol) - ($sodiumScale) * ($food0sodium / $dailysodium) + ($food0potassium / $dailypotassium) + ($food0fiber / $dailyfiber) - ($sugarScale) * ($food0sugar / $dailysugar) + ($food0vitA / $dailyvitA) + ($food0vitC / $dailyvitC) + ($food0calcium / $dailycalcium) + ($food0iron / $dailyiron);
+    
+    $food1score = -($caloriesScale) * ($food1calories / $dailycalories) + ($food1carbs / $dailycarbs) + ($proteinScale) * ($food1protein / $dailyprotein) - ($food1fat / $dailyfat) - ($food1cholesterol / $dailycholesterol) - ($sodiumScale) * ($food1sodium / $dailysodium) + ($food1potassium / $dailypotassium) + ($food1fiber / $dailyfiber) - ($sugarScale) * ($food1sugar / $dailysugar) + ($food1vitA / $dailyvitA) + ($food1vitC / $dailyvitC) + ($food1calcium / $dailycalcium) + ($food1iron / $dailyiron);
 }
 
 // variables used to highlight a food item
@@ -223,31 +245,46 @@ if ($food0score < $food1score) {
 						</tr>
 					</thead>
 					<?php
+// food 0 statistics
 $food0amountA      = round($resultData[0]['metric_serving_amount']);
-$food0caloriesA    = round($resultData[0]['calories']);
-$food0fatA         = round($resultData[0]['fat']);
-$food0sugarA       = round($resultData[0]['sugar']);
-$food0sodiumA      = round($resultData[0]['sodium']);
-$food0proteinA     = round($resultData[0]['protein']);
-$food0cholesterolA = round($resultData[0]['cholesterol']);
-$food0carbsA       = round($resultData[0]['carbohydrate']);
+$food0caloriesA    = round($resultData[0]['calories']); // bad
+$food0carbsA       = round($resultData[0]['carbohydrate']); // good
+$food0proteinA     = round($resultData[0]['protein']); // good
+$food0fatA         = round($resultData[0]['fat']); // bad
+$food0cholesterolA = round($resultData[0]['cholesterol']); // bad
+$food0sodiumA      = round($resultData[0]['sodium']); // bad
+$food0potassiumA   = round($resultData[0]['potassium']); // good
+$food0fiberA       = round($resultData[0]['fiber']); // good
+$food0sugarA       = round($resultData[0]['sugar']); // bad
+$food0vitAA        = round($resultData[0]['vitamin_a']); // good
+$food0vitCA        = round($resultData[0]['vitamin_c']); // good
+$food0calciumA     = round($resultData[0]['calcium']); // good
+$food0ironA        = round($resultData[0]['iron']); // good
+
+// food 1 statistics
 $food1amountA      = round($resultData[1]['metric_serving_amount']);
-$food1caloriesA    = round($resultData[1]['calories']);
-$food1fatA         = round($resultData[1]['fat']);
-$food1sugarA       = round($resultData[1]['sugar']);
-$food1sodiumA      = round($resultData[1]['sodium']);
-$food1proteinA     = round($resultData[1]['protein']);
-$food1cholesterolA = round($resultData[1]['cholesterol']);
-$food1carbsA       = round($resultData[1]['carbohydrate']);
+$food1caloriesA    = round($resultData[1]['calories']); // bad
+$food1carbsA       = round($resultData[1]['carbohydrate']); // good
+$food1proteinA     = round($resultData[1]['protein']); // good
+$food1fatA         = round($resultData[1]['fat']); // bad
+$food1cholesterolA = round($resultData[1]['cholesterol']); // bad
+$food1sodiumA      = round($resultData[1]['sodium']); // bad
+$food1potassiumA   = round($resultData[1]['potassium']); // good
+$food1fiberA       = round($resultData[1]['fiber']); // good
+$food1sugarA       = round($resultData[1]['sugar']); // bad
+$food1vitAA        = round($resultData[1]['vitamin_a']); // good
+$food1vitCA        = round($resultData[1]['vitamin_c']); // good
+$food1calciumA     = round($resultData[1]['calcium']); // good
+$food1ironA        = round($resultData[1]['iron']); // good
 
 // algorithm to determine healthiest choice with absolute portions
 
 if (!isset($_SESSION['user_username'])) { // user is not logged in
     
-    // algorithm to determine healthiest choice with 100 g portions
+    // algorithm to determine healthiest choice with provided portions
+    $food0scoreA = -($food0caloriesA / $dailycalories) + ($food0carbsA / $dailycarbs) + ($food0proteinA / $dailyprotein) - ($food0fatA / $dailyfat) - ($food0cholesterolA / $dailycholesterol) - ($food0sodiumA / $dailysodium) + ($food0potassiumA / $dailypotassium) + ($food0fiberA / $dailyfiber) - ($food0sugarA / $dailysugar) + ($food0vitAA / $dailyvitA) + ($food0vitCA / $dailyvitC) + ($food0calciumA / $dailycalcium) + ($food0ironA / $dailyiron);
     
-    $food0scoreA = -($food0caloriesA / $dailycalories) - ($food0fatA / $dailyfat) - ($food0sugarA / $dailysugar) - ($food0sodiumA / $dailysodium) - ($food0cholesterolA / $dailycholesterol) + ($food0proteinA / $dailyprotein) + ($food0carbsA / $dailycarbs);
-    $food1scoreA = -($food1caloriesA / $dailycalories) - ($food1fatA / $dailyfat) - ($food1sugarA / $dailysugar) - ($food1sodiumA / $dailysodium) - ($food1cholesterolA / $dailycholesterol) + ($food1proteinA / $dailyprotein) + ($food1carbsA / $dailycarbs);
+    $food1scoreA = -($food1caloriesA / $dailycalories) + ($food1carbsA / $dailycarbs) + ($food1proteinA / $dailyprotein) - ($food1fatA / $dailyfat) - ($food1cholesterolA / $dailycholesterol) - ($food1sodiumA / $dailysodium) + ($food1potassiumA / $dailypotassium) + ($food1fiberA / $dailyfiber) - ($food1sugarA / $dailysugar) + ($food1vitAA / $dailyvitA) + ($food1vitCA / $dailyvitC) + ($food1calciumA / $dailycalcium) + ($food1ironA / $dailyiron);
 } else { // user is logged in
     if ($_SESSION['user_calories'] == "High") {
         $caloriesScale = -10;
@@ -280,9 +317,9 @@ if (!isset($_SESSION['user_username'])) { // user is not logged in
     if ($_SESSION['user_protein'] == "Low") {
         $proteinScale = -10;
     }
+    $food0scoreA = -($caloriesScale) * ($food0caloriesA / $dailycalories) + ($food0carbsA / $dailycarbs) + ($proteinScale) * ($food0proteinA / $dailyprotein) - ($food0fatA / $dailyfat) - ($food0cholesterolA / $dailycholesterol) - ($sodiumScale) * ($food0sodiumA / $dailysodium) + ($food0potassiumA / $dailypotassium) + ($food0fiberA / $dailyfiber) - ($sugarScale) * ($food0sugarA / $dailysugar) + ($food0vitAA / $dailyvitA) + ($food0vitCA / $dailyvitC) + ($food0calciumA / $dailycalcium) + ($food0ironA / $dailyiron);
     
-    $food0scoreA = -($caloriesScale) * ($food0caloriesA / $dailycalories) - ($food0fatA / $dailyfat) - ($sugarScale) * ($food0sugarA / $dailysugar) - ($sodiumScale) * ($food0sodiumA / $dailysodium) - ($food0cholesterolA / $dailycholesterol) + ($proteinScale) * ($food0proteinA / $dailyprotein) + ($food0carbsA / $dailycarbs);
-    $food1scoreA = -($caloriesScale) * ($food1caloriesA / $dailycalories) - ($food1fatA / $dailyfat) - ($sugarScale) * ($food1sugarA / $dailysugar) - ($sodiumScale) * ($food1sodiumA / $dailysodium) - ($food1cholesterolA / $dailycholesterol) + ($proteinScale) * ($food1proteinA / $dailyprotein) + ($food1carbsA / $dailycarbs);
+    $food1scoreA = -($caloriesScale) * ($food1caloriesA / $dailycalories) + ($food1carbsA / $dailycarbs) + ($proteinScale) * ($food1proteinA / $dailyprotein) - ($food1fatA / $dailyfat) - ($food1cholesterolA / $dailycholesterol) - ($sodiumScale) * ($food1sodiumA / $dailysodium) + ($food1potassiumA / $dailypotassium) + ($food1fiberA / $dailyfiber) - ($sugarScale) * ($food1sugarA / $dailysugar) + ($food1vitAA / $dailyvitA) + ($food1vitCA / $dailyvitC) + ($food1calciumA / $dailycalcium) + ($food1ironA / $dailyiron);
 }
 
 echo '
