@@ -1,7 +1,13 @@
 <?php
 ob_start();
 session_start();
-
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data); // prevents SQL injection
+    return $data;
+}
 $configs = include('../config/config.php');
 
 // Reference: https://www.tutorialspoint.com/php/php_mysql_login.htm
@@ -21,11 +27,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$update_password = $_POST['update-password'];
-$update_calories = $_POST['update-calories'];
-$update_sugar    = $_POST['update-sugar'];
-$update_sodium   = $_POST['update-sodium'];
-$update_protein  = $_POST['update-protein'];
+$update_password = test_input($_POST['update-password']);
+$update_calories = test_input($_POST['update-calories']);
+$update_sugar    = test_input($_POST['update-sugar']);
+$update_sodium   = test_input($_POST['update-sodium']);
+$update_protein  = test_input($_POST['update-protein']);
 
 $current = $_SESSION['user_username'];
 
@@ -42,7 +48,9 @@ if (!empty($update_password)) {
         exit();
     } else {
         // user entered a valid password, update password and the user's meal preferences
-        $sql = " UPDATE Users SET Password = '$update_password', Calories = '$update_calories', Sugar = '$update_sugar', Sodium = '$update_sodium', Protein = '$update_protein' WHERE Username = '$current' ";
+        // encrypt password
+        $encryptedPass = password_hash($update_password, PASSWORD_DEFAULT);
+        $sql = " UPDATE Users SET Password = '$encryptedPass', Calories = '$update_calories', Sugar = '$update_sugar', Sodium = '$update_sodium', Protein = '$update_protein' WHERE Username = '$current' ";
     }
 } else {
     // password is empty, so only update the user's calories, sugar, sodium, protein
