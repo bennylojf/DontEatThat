@@ -55,15 +55,15 @@
                                 if (isset($_SESSION["user_name"])) {
                                     echo 
                                     "
-                                    <div class='dropdown' style='margin-top: 7px; margin-left: 15px;'>
-                                        <button class='btn btn-default dropdown-toggle' type='button' data-toggle='dropdown'>
-                                        <span class='glyphicon glyphicon-user'></span>" . $_SESSION['user_name'] . " <span class='caret'></span>
-                                        </button>
+                                    <li class='dropdown'>
+                                        <a href='#' class='dropdown-toggle' type='button' data-toggle='dropdown'>
+                                        <span class='glyphicon glyphicon-user'></span> " . $_SESSION['user_name'] . " <span class='caret'></span>
+                                        </a>
                                         <ul class='dropdown-menu'>
                                             <li><a href='manage_account.php'><span class='glyphicon glyphicon-cog'></span> Manage Account</a></li>
                                             <li><a href='logout.php'><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
                                         </ul>
-                                    </div>
+                                    </li>
                                     ";
                                 } else {
                                     echo 
