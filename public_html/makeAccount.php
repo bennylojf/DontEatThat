@@ -92,8 +92,13 @@ if ($error !== "") {
 
 
 // ---------- Beginning of User Insertion into DB ----------
+// reach here if we have no errors
+
+// encrypt password
+$encryptedPass = password_hash($signuppassword, PASSWORD_DEFAULT);
+
 $sql = "INSERT INTO Users (Name, Username, Password, Calories, Sugar, Sodium, Protein)
-VALUES ('$signupname', '$signupusername', '$signuppassword', '$signupcalories', '$signupsugar', '$signupsodium', '$signupprotein')";
+VALUES ('$signupname', '$signupusername', '$encryptedPass', '$signupcalories', '$signupsugar', '$signupsodium', '$signupprotein')";
 
 if ($conn->query($sql) === TRUE) {
     // redirect user to home and automatically log in
