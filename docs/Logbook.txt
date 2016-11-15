@@ -119,5 +119,5 @@ Nov 13
 Kenton - dropdown menu for logged-in users (1), added password validation for Manage Account page (1)
 
 Nov 14
-Benny - expanded recommendation algorithm (1)
+Benny - expanded recommendation algorithm (1), added calcium customizability (1)
 Kenton - added password encryption (1)

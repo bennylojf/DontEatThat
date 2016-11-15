@@ -31,6 +31,7 @@ $signupcalories = test_input($_POST['signup-calories']);
 $signupsugar    = test_input($_POST['signup-sugar']);
 $signupsodium   = test_input($_POST['signup-sodium']);
 $signupprotein  = test_input($_POST['signup-protein']);
+$signupcalcium  = test_input($_POST['signup-calcium']);
 
 // ---------- Beginning of Error Handling ----------
 $error = "";
@@ -97,8 +98,8 @@ if ($error !== "") {
 // encrypt password
 $encryptedPass = password_hash($signuppassword, PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO Users (Name, Username, Password, Calories, Sugar, Sodium, Protein)
-VALUES ('$signupname', '$signupusername', '$encryptedPass', '$signupcalories', '$signupsugar', '$signupsodium', '$signupprotein')";
+$sql = "INSERT INTO Users (Name, Username, Password, Calories, Sugar, Sodium, Protein, Calcium)
+VALUES ('$signupname', '$signupusername', '$encryptedPass', '$signupcalories', '$signupsugar', '$signupsodium', '$signupprotein', '$signupcalcium')";
 
 if ($conn->query($sql) === TRUE) {
     // redirect user to home and automatically log in
@@ -112,6 +113,7 @@ if ($conn->query($sql) === TRUE) {
     $_SESSION['user_sugar']    = $signupsugar;
     $_SESSION['user_sodium']   = $signupsodium;
     $_SESSION['user_protein']  = $signupprotein;
+    $_SESSION['user_calcium']  = $signupcalcium;
     session_write_close();
     header("Location: index.php");
     exit();

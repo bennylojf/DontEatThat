@@ -102,6 +102,7 @@ $caloriesScale = 1;
 $sugarScale    = 1;
 $sodiumScale   = 1;
 $proteinScale  = 1;
+$calciumScale  = 1;
 
 if (!isset($_SESSION['user_username'])) { // user is not logged in
     
@@ -142,9 +143,17 @@ if (!isset($_SESSION['user_username'])) { // user is not logged in
         $proteinScale = -10;
     }
     
-    $food0score = -($caloriesScale) * ($food0calories / $dailycalories) + ($food0carbs / $dailycarbs) + ($proteinScale) * ($food0protein / $dailyprotein) - ($food0fat / $dailyfat) - ($food0cholesterol / $dailycholesterol) - ($sodiumScale) * ($food0sodium / $dailysodium) + ($food0potassium / $dailypotassium) + ($food0fiber / $dailyfiber) - ($sugarScale) * ($food0sugar / $dailysugar) + ($food0vitA / $dailyvitA) + ($food0vitC / $dailyvitC) + ($food0calcium / $dailycalcium) + ($food0iron / $dailyiron);
+    if ($_SESSION['user_calcium'] == "High") {
+        $calciumScale = 10;
+    }
     
-    $food1score = -($caloriesScale) * ($food1calories / $dailycalories) + ($food1carbs / $dailycarbs) + ($proteinScale) * ($food1protein / $dailyprotein) - ($food1fat / $dailyfat) - ($food1cholesterol / $dailycholesterol) - ($sodiumScale) * ($food1sodium / $dailysodium) + ($food1potassium / $dailypotassium) + ($food1fiber / $dailyfiber) - ($sugarScale) * ($food1sugar / $dailysugar) + ($food1vitA / $dailyvitA) + ($food1vitC / $dailyvitC) + ($food1calcium / $dailycalcium) + ($food1iron / $dailyiron);
+    if ($_SESSION['user_calcium'] == "Low") {
+        $calciumScale = -10;
+    }
+    
+    $food0score = -($caloriesScale) * ($food0calories / $dailycalories) + ($food0carbs / $dailycarbs) + ($proteinScale) * ($food0protein / $dailyprotein) - ($food0fat / $dailyfat) - ($food0cholesterol / $dailycholesterol) - ($sodiumScale) * ($food0sodium / $dailysodium) + ($food0potassium / $dailypotassium) + ($food0fiber / $dailyfiber) - ($sugarScale) * ($food0sugar / $dailysugar) + ($food0vitA / $dailyvitA) + ($food0vitC / $dailyvitC) + ($calciumScale) * ($food0calcium / $dailycalcium) + ($food0iron / $dailyiron);
+    
+    $food1score = -($caloriesScale) * ($food1calories / $dailycalories) + ($food1carbs / $dailycarbs) + ($proteinScale) * ($food1protein / $dailyprotein) - ($food1fat / $dailyfat) - ($food1cholesterol / $dailycholesterol) - ($sodiumScale) * ($food1sodium / $dailysodium) + ($food1potassium / $dailypotassium) + ($food1fiber / $dailyfiber) - ($sugarScale) * ($food1sugar / $dailysugar) + ($food1vitA / $dailyvitA) + ($food1vitC / $dailyvitC) + ($calciumScale) * ($food1calcium / $dailycalcium) + ($food1iron / $dailyiron);
 }
 
 // variables used to highlight a food item
@@ -215,13 +224,22 @@ function normalizeWeight($field, $resultData)
 	<?php
 
 // print out the healthier food item
-
-if ($food0score < $food1score) {
-    echo '<p style="text-align: center;">' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[1]['food_name'] . ' is healthier than ' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[0]['food_name'] . '</p>';
-} else if ($food0score > $food1score) {
-    echo '<p style="text-align: center;">' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[0]['food_name'] . ' is healthier than ' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[1]['food_name'] . '</p>';
-} else {
-    echo '<p style="text-align: center;">' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[0]['food_name'] . ' is about the same as ' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[1]['food_name'] . '</p>';
+if (!isset($_SESSION['user_username'])) {
+    if ($food0score < $food1score) {
+        echo '<p style="text-align: center;">' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[1]['food_name'] . ' is healthier than ' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[0]['food_name'] . '</p>';
+    } else if ($food0score > $food1score) {
+        echo '<p style="text-align: center;">' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[0]['food_name'] . ' is healthier than ' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[1]['food_name'] . '</p>';
+    } else {
+        echo '<p style="text-align: center;">' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[0]['food_name'] . ' is about the same as ' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[1]['food_name'] . '</p>';
+    }
+} else { // user logged in
+    if ($food0score < $food1score) {
+        echo '<p style="text-align: center;">' . 'Based on your preferences, ' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[1]['food_name'] . ' is healthier than ' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[0]['food_name'] . '</p>';
+    } else if ($food0score > $food1score) {
+        echo '<p style="text-align: center;">' . 'Based on your preferences, ' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[0]['food_name'] . ' is healthier than ' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[1]['food_name'] . '</p>';
+    } else {
+        echo '<p style="text-align: center;">' . 'Based on your preferences, ' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[0]['food_name'] . ' is about the same as ' . '<b>' . '100 g ' . '</b>' . 'of ' . $resultData[1]['food_name'] . '</p>';
+    }
 }
 
 ?>
@@ -317,9 +335,17 @@ if (!isset($_SESSION['user_username'])) { // user is not logged in
     if ($_SESSION['user_protein'] == "Low") {
         $proteinScale = -10;
     }
-    $food0scoreA = -($caloriesScale) * ($food0caloriesA / $dailycalories) + ($food0carbsA / $dailycarbs) + ($proteinScale) * ($food0proteinA / $dailyprotein) - ($food0fatA / $dailyfat) - ($food0cholesterolA / $dailycholesterol) - ($sodiumScale) * ($food0sodiumA / $dailysodium) + ($food0potassiumA / $dailypotassium) + ($food0fiberA / $dailyfiber) - ($sugarScale) * ($food0sugarA / $dailysugar) + ($food0vitAA / $dailyvitA) + ($food0vitCA / $dailyvitC) + ($food0calciumA / $dailycalcium) + ($food0ironA / $dailyiron);
     
-    $food1scoreA = -($caloriesScale) * ($food1caloriesA / $dailycalories) + ($food1carbsA / $dailycarbs) + ($proteinScale) * ($food1proteinA / $dailyprotein) - ($food1fatA / $dailyfat) - ($food1cholesterolA / $dailycholesterol) - ($sodiumScale) * ($food1sodiumA / $dailysodium) + ($food1potassiumA / $dailypotassium) + ($food1fiberA / $dailyfiber) - ($sugarScale) * ($food1sugarA / $dailysugar) + ($food1vitAA / $dailyvitA) + ($food1vitCA / $dailyvitC) + ($food1calciumA / $dailycalcium) + ($food1ironA / $dailyiron);
+    if ($_SESSION['user_calcium'] == "High") {
+        $calciumScale = 10;
+    }
+    
+    if ($_SESSION['user_calcium'] == "Low") {
+        $calciumScale = -10;
+    }
+    $food0scoreA = -($caloriesScale) * ($food0caloriesA / $dailycalories) + ($food0carbsA / $dailycarbs) + ($proteinScale) * ($food0proteinA / $dailyprotein) - ($food0fatA / $dailyfat) - ($food0cholesterolA / $dailycholesterol) - ($sodiumScale) * ($food0sodiumA / $dailysodium) + ($food0potassiumA / $dailypotassium) + ($food0fiberA / $dailyfiber) - ($sugarScale) * ($food0sugarA / $dailysugar) + ($food0vitAA / $dailyvitA) + ($food0vitCA / $dailyvitC) + ($calciumScale) * ($food0calciumA / $dailycalcium) + ($food0ironA / $dailyiron);
+    
+    $food1scoreA = -($caloriesScale) * ($food1caloriesA / $dailycalories) + ($food1carbsA / $dailycarbs) + ($proteinScale) * ($food1proteinA / $dailyprotein) - ($food1fatA / $dailyfat) - ($food1cholesterolA / $dailycholesterol) - ($sodiumScale) * ($food1sodiumA / $dailysodium) + ($food1potassiumA / $dailypotassium) + ($food1fiberA / $dailyfiber) - ($sugarScale) * ($food1sugarA / $dailysugar) + ($food1vitAA / $dailyvitA) + ($food1vitCA / $dailyvitC) + ($calciumScale) * ($food1calciumA / $dailycalcium) + ($food1ironA / $dailyiron);
 }
 
 echo '
@@ -359,13 +385,22 @@ echo '
 		<?php
 
 // print out the healthier food item
-
-if ($food0scoreA < $food1scoreA) {
-    echo '<p>' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[1]['food_name'] . ' is healthier than ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[0]['food_name'] . '</p>';
-} else if ($food0scoreA > $food1scoreA) {
-    echo '<p>' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[0]['food_name'] . ' is healthier than ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[1]['food_name'] . '</p>';
-} else {
-    echo '<p>' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[0]['food_name'] . ' is about the same as ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[1]['food_name'] . '</p>';
+if (!isset($_SESSION['user_username'])) {
+    if ($food0scoreA < $food1scoreA) {
+        echo '<p>' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[1]['food_name'] . ' is healthier than ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[0]['food_name'] . '</p>';
+    } else if ($food0scoreA > $food1scoreA) {
+        echo '<p>' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[0]['food_name'] . ' is healthier than ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[1]['food_name'] . '</p>';
+    } else {
+        echo '<p>' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[0]['food_name'] . ' is about the same as ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[1]['food_name'] . '</p>';
+    }
+} else { // user is logged in
+    if ($food0scoreA < $food1scoreA) {
+        echo '<p>' . 'Based on your preferences, ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[1]['food_name'] . ' is healthier than ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[0]['food_name'] . '</p>';
+    } else if ($food0scoreA > $food1scoreA) {
+        echo '<p>' . 'Based on your preferences, ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[0]['food_name'] . ' is healthier than ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[1]['food_name'] . '</p>';
+    } else {
+        echo '<p>' . 'Based on your preferences, ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[0]['food_name'] . ' is about the same as ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $resultData[1]['food_name'] . '</p>';
+    }
 }
 
 ?>
