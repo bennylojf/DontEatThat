@@ -1,78 +1,92 @@
 <?php 
     $title = "Manage Account";
     include("header.php");
-
-// Determine user's current settings and selects
-// CALORIES
-if ($_SESSION['user_calories'] == "High") {
+    
+    // Determine user's current settings and selects
+    // CALORIES
+    if ($_SESSION['user_calories'] == "High") {
     $CalSelHigh = "selected";
     $CalSelLow = "";
     $CalSelNormal = "";
-} else if ($_SESSION['user_calories'] == "Low") {
+    } else if ($_SESSION['user_calories'] == "Low") {
     $CalSelHigh = "";
     $CalSelLow = "selected";
     $CalSelNormal = "";
-} else if ($_SESSION['user_calories'] == "Normal") {
+    } else if ($_SESSION['user_calories'] == "Normal") {
     $CalSelHigh = "";
     $CalSelLow = "";
     $CalSelNormal = "selected";
-}
-
-// SUGAR
-if ($_SESSION['user_sugar'] == "High") {
+    }
+    
+    // SUGAR
+    if ($_SESSION['user_sugar'] == "High") {
     $SugSelHigh = "selected";
     $SugSelLow = "";
     $SugSelNormal = "";
-} else if ($_SESSION['user_sugar'] == "Low") {
+    } else if ($_SESSION['user_sugar'] == "Low") {
     $SugSelHigh = "";
     $SugSelLow = "selected";
     $SugSelNormal = "";
-} else if ($_SESSION['user_sugar'] == "Normal") {
+    } else if ($_SESSION['user_sugar'] == "Normal") {
     $SugSelHigh = "";
     $SugSelLow = "";
     $SugSelNormal = "selected";
-}
-
-// SODIUM
-if ($_SESSION['user_sodium'] == "High") {
+    }
+    
+    // SODIUM
+    if ($_SESSION['user_sodium'] == "High") {
     $SodSelHigh = "selected";
     $SodSelLow = "";
     $SodSelNormal = "";
-} else if ($_SESSION['user_sodium'] == "Low") {
+    } else if ($_SESSION['user_sodium'] == "Low") {
     $SodSelHigh = "";
     $SodSelLow = "selected";
     $SodSelNormal = "";
-} else if ($_SESSION['user_sodium'] == "Normal") {
+    } else if ($_SESSION['user_sodium'] == "Normal") {
     $SodSelHigh = "";
     $SodSelLow = "";
     $SodSelNormal = "selected";
-}
-
-// PROTEIN
-if ($_SESSION['user_protein'] == "High") {
+    }
+    
+    // PROTEIN
+    if ($_SESSION['user_protein'] == "High") {
     $ProSelHigh = "selected";
     $ProSelLow = "";
     $ProSelNormal = "";
-} else if ($_SESSION['user_protein'] == "Low") {
+    } else if ($_SESSION['user_protein'] == "Low") {
     $ProSelHigh = "";
     $ProSelLow = "selected";
     $ProSelNormal = "";
-} else if ($_SESSION['user_protein'] == "Normal") {
+    } else if ($_SESSION['user_protein'] == "Normal") {
     $ProSelHigh = "";
     $ProSelLow = "";
     $ProSelNormal = "selected";
-}
-
-// Server-Side Error Handling on Submit
-$url                  = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; // used in determining if we need to display errors
-// Initialize to state with no errors
-$errorInvalidPassword = false;
-// Determine if we need to display errors
-if (strpos($url, 'errorPassword=invalid') !== false) {
-    $errorInvalidPassword = true;
-}
-    ?>
+    }
     
+    // CALCIUM
+    if ($_SESSION['user_calcium'] == "High") {
+    $CalSelHigh = "selected";
+    $CalSelLow = "";
+    $CalSelNormal = "";
+    } else if ($_SESSION['user_calcium'] == "Low") {
+    $CalSelHigh = "";
+    $CalSelLow = "selected";
+    $CalSelNormal = "";
+    } else if ($_SESSION['user_calcium'] == "Normal") {
+    $CalSelHigh = "";
+    $CalSelLow = "";
+    $CalSelNormal = "selected";
+    }
+    
+    // Server-Side Error Handling on Submit
+    $url                  = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; // used in determining if we need to display errors
+    // Initialize to state with no errors
+    $errorInvalidPassword = false;
+    // Determine if we need to display errors
+    if (strpos($url, 'errorPassword=invalid') !== false) {
+    $errorInvalidPassword = true;
+    }
+    ?>
 <div>
     <div class="container-fluid">
         <form class="form-horizontal" action="accountUpdate.php" method="post">
@@ -98,11 +112,11 @@ if (strpos($url, 'errorPassword=invalid') !== false) {
                     <div class="col-sm-4">
                         <input class="form-control" type="password" placeholder="Enter Password" name="update-password">
                         <?php
-                          // SERVER-SIDE VALIDATION FOR PASSWORD
-                          if ($errorInvalidPassword !== false) {
-                              echo "<label class='error'>Password must be at least 6 characters long and contain only alphanumeric characters.</label>";
-                          }
-                          ?>
+                            // SERVER-SIDE VALIDATION FOR PASSWORD
+                            if ($errorInvalidPassword !== false) {
+                                echo "<label class='error'>Password must be at least 6 characters long and contain only alphanumeric characters.</label>";
+                            }
+                            ?>
                     </div>
                 </div>
                 <!-- Meal Preference(s) -->
@@ -141,6 +155,14 @@ if (strpos($url, 'errorPassword=invalid') !== false) {
                                 <option value = "Low" <?php echo $ProSelLow; ?> >Low</option>
                             </select>
                         </div>
+                        <div class="col-sm-2">
+                            <label class="col-sm-2">Calcium</label>
+                            <select class="form-control" name="update-calcium">
+                                <option value = "Normal" <?php echo $CalSelNormal; ?> >Normal</option>
+                                <option value = "High" <?php echo $CalSelHigh; ?> >High</option>
+                                <option value = "Low" <?php echo $CalSelLow; ?> >Low</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -154,7 +176,6 @@ if (strpos($url, 'errorPassword=invalid') !== false) {
         </form>
     </div>
 </div>
-
 <!-- Start of Delete Account Modal -->
 <div id="deleteModal" class="modal fade" role="dialog">
     <div class="modal-dialog">

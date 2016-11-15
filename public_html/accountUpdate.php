@@ -32,6 +32,7 @@ $update_calories = test_input($_POST['update-calories']);
 $update_sugar    = test_input($_POST['update-sugar']);
 $update_sodium   = test_input($_POST['update-sodium']);
 $update_protein  = test_input($_POST['update-protein']);
+$update_calcium  = test_input($_POST['update-calcium']);
 
 $current = $_SESSION['user_username'];
 
@@ -50,11 +51,11 @@ if (!empty($update_password)) {
         // user entered a valid password, update password and the user's meal preferences
         // encrypt password
         $encryptedPass = password_hash($update_password, PASSWORD_DEFAULT);
-        $sql = " UPDATE Users SET Password = '$encryptedPass', Calories = '$update_calories', Sugar = '$update_sugar', Sodium = '$update_sodium', Protein = '$update_protein' WHERE Username = '$current' ";
+        $sql = " UPDATE Users SET Password = '$encryptedPass', Calories = '$update_calories', Sugar = '$update_sugar', Sodium = '$update_sodium', Protein = '$update_protein', Calcium = '$update_calcium' WHERE Username = '$current' ";
     }
 } else {
     // password is empty, so only update the user's calories, sugar, sodium, protein
-    $sql = " UPDATE Users SET Calories = '$update_calories', Sugar = '$update_sugar', Sodium = '$update_sodium', Protein = '$update_protein' WHERE Username = '$current' ";
+    $sql = " UPDATE Users SET Calories = '$update_calories', Sugar = '$update_sugar', Sodium = '$update_sodium', Protein = '$update_protein', Calcium = '$update_calcium' WHERE Username = '$current' ";
 }
 
 if ($conn->query($sql) === TRUE) {
@@ -63,6 +64,7 @@ if ($conn->query($sql) === TRUE) {
     $_SESSION['user_sugar']    = $update_sugar;
     $_SESSION['user_sodium']   = $update_sodium;
     $_SESSION['user_protein']  = $update_protein;
+    $_SESSION['user_calcium']  = $update_calcium;
     session_write_close();
     header("Location: index.php");
     exit();
@@ -73,4 +75,3 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 ob_end_flush();
 ?>
-  
