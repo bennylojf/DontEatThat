@@ -1,6 +1,6 @@
 <?php 
     $title = "How It Works";
-    include("header.php"); 
+    include("layout/header.php"); 
     ?>
 <!-- Beginning of Feedback content -->
 <div align="center" style="padding-top: 5%;">
@@ -20,4 +20,4 @@
     </div>
 </div>
 <!-- End of Feedback content -->
-<?php include "footer.php" ?>
+<?php include "layout/footer.php" ?>

@@ -121,3 +121,6 @@ Kenton - dropdown menu for logged-in users (1), added password validation for Ma
 Nov 14
 Benny - expanded recommendation algorithm (1), added calcium customizability (1), updated How It Works page (0.5)
 Kenton - added password encryption (1)
+
+Nov 15
+Alex - refactor (86a8f527066a85782b172744dd75c8a599c0c0c8) (3)
