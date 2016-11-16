@@ -30,11 +30,11 @@ return array(
 );
 
 ?>
+```
 
 Also, DontEatThat! requires at least PHP 5.5 to run. This is because the function used to encrypt user passwords is only
 available in PHP 5.5 and above.
 
-```
 
 ## Running Tests
 (WIP)
