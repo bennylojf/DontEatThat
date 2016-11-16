@@ -414,10 +414,6 @@ if (!isset($_SESSION['user_username'])) {
 }
 
 ?>
-<!-- Begin FatSecret Platform API HTML Attribution Snippet -->
-<b>Don't Eat That! is proudly</b><br>
-<a href="http://platform.fatsecret.com">Powered by FatSecret</a>
-<!-- End FatSecret Platform API HTML Attribution Snippet -->
 <br><br>
 <a href="index.php" type="submit" class="btn btn-primary">Change Food Items</a>
 

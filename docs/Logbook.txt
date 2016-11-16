@@ -127,3 +127,4 @@ Alex - refactor (86a8f527066a85782b172744dd75c8a599c0c0c8) (3)
 
 Nov 16
 Benny - added attribution (15 minutes)
+Alex - moved attribution to footer (15 minutes)

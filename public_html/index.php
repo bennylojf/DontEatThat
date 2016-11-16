@@ -28,8 +28,6 @@
             </div>
         </form>
 		<!-- Begin FatSecret Platform API HTML Attribution Snippet -->
-<br><b>Don't Eat That! is proudly</b><br>
-<a href="http://platform.fatsecret.com">Powered by FatSecret</a>
 <!-- End FatSecret Platform API HTML Attribution Snippet -->
 <br>
     </div>
