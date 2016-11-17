@@ -1,0 +1,27 @@
+Omar -
+- confused as to enter food items, meals or recipes ("food items" too vague?)
+- serving size table is more useful, put it on top
++ interface is clean, similar to google
+- red font saying "item not found" if food not found, instead of countdown page
+- compare button should be bigger than clear choices button
++ having the two tables for per 100g and per serving size was not too confusing
+
+Mihailo
+- not clear what the site does (replace "please enter food items")
+- on mobile, it's not obvious you can scroll horizontally (maybe may scroll bar visible always), or make a vertical scroll
+- include more specific details: why one thing is healthier (it has less sodium, etc)
+
+Raj
++ Website is simple
+- add a "go back to main menu" or something. it's not clear the logo does this.
+
+Micheal
+- Maybe have a toggle switch for the two tables
+- not clear what website does when first opening
+- make it more obvious which is more healthy instead of tiny sentence
+
+Chen
+- How it works page has too much writing.
+- Took a while to figure out the two charts
+
+Overall, everyone says the general layout is nice and clean
