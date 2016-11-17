@@ -1,5 +1,5 @@
 <?php
-require_once('php/FoodFinder.php');
+require_once('classes/FoodFinder.php');
 $config = include('../config/config.php');
 
 session_start();
