@@ -78,12 +78,8 @@
     $CalSelNormal = "selected";
     }
     
-    
-    
     // Server-Side Error Handling on Submit
     $url                  = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; // used in determining if we need to display errors
-    
-   
     
     // Initialize to state with no errors
     $errorInvalidPassword = false;
@@ -208,7 +204,6 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <!-- <a class="btn btn-danger" data-dismiss="modal" href="php/deleteAccount.php" role="button">Yes</a>-->
                 <a href="php/deleteAccount.php" class="btn btn-danger">Yes</a>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
             </div>

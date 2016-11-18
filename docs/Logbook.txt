@@ -132,3 +132,6 @@ Alex - moved attribution to footer (15 minutes)
 
 Nov 17
 Kenton - Requirements: Use Case #3 + justifications for Product Backlog changes (1)
+
+Nov 18
+Kenton - Resolved Issue #76: All errors now have same styling (0.5)

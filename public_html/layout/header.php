@@ -24,8 +24,6 @@
         <script src="js/jQueryFunctions.js"></script>
         <!-- Script to send email -->
         <script src="js/contact.js"></script>
-        <!-- Script to retrieve food data from API -->
-        <script src="foodquery.php"></script>
     </head>
     <body>
         <!-- Navbar setup -->

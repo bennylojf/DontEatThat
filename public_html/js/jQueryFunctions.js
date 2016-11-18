@@ -1,4 +1,3 @@
-/* TODO: CHANGE TO USE PLUGIN */
 /* Script used to validate food form */
 $(document).ready(function() {
 	$("#food-submit").click(function(event) {
@@ -20,7 +19,6 @@ $(document).ready(function() {
 	});
 });
 
-/* TODO: CHANGE TO USE PLUGIN */
 /* Script used to validate contact form */
 $(document).ready(function() {
 	$("#contact-submit").click(function(event) {

@@ -18,8 +18,8 @@
                         placeholder="Enter food item 2" size="40">
                 </div>
             </div>
-            <p id="foodFormError0" class="form-error">Please enter two food items</p>
-            <p id="foodFormError1" class="form-error">Please enter two different food items</p>
+            <label id="foodFormError0" class="form-error error">Please enter two food items</label>
+            <label id="foodFormError1" class="form-error error">Please enter two different food items</label>
             <div>
                 <button id="food-submit" type="submit" class="btn btn-primary compare-button">Compare</button>
             </div>
@@ -27,9 +27,6 @@
                 <button type="reset" class="btn btn-danger clear-button">Clear Choices</button>
             </div>
         </form>
-		<!-- Begin FatSecret Platform API HTML Attribution Snippet -->
-<!-- End FatSecret Platform API HTML Attribution Snippet -->
-<br>
     </div>
 </div>
 <!-- End of logo, input fields and buttons -->

@@ -16,14 +16,14 @@
                             <div class="form-group">
                                 <label for="form_name">First name</label>
                                 <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your first name">
-                                <p id="contactFormError0" class="form-error">First name is required.</p>
+                                <label id="contactFormError0" class="form-error error">First name is required.</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="form_lastname">Last name</label>
                                 <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your last name">
-                                <p id="contactFormError1" class="form-error">Last name is required.</p>
+                                <label id="contactFormError1" class="form-error error">Last name is required.</label>
                             </div>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                             <div class="form-group">
                                 <label for="form_email">Email</label>
                                 <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email">
-                                <p id="contactFormError2" class="form-error">Valid email is required.</p>
+                                <label id="contactFormError2" class="form-error error">Valid email is required.</label>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                             <div class="form-group">
                                 <label for="form_message">Message</label>
                                 <textarea id="form_message" name="message" class="form-control" placeholder="Your message" rows="4"></textarea>
-                                <p id="contactFormError3" class="form-error">Please enter your message.</p>
+                                <label id="contactFormError3" class="form-error error">Please enter your message.</label>
                             </div>
                         </div>
                         <div class="col-md-12">
