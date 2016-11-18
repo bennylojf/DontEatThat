@@ -78,10 +78,22 @@
     $CalSelNormal = "selected";
     }
     
+    
+    
     // Server-Side Error Handling on Submit
     $url                  = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; // used in determining if we need to display errors
+    
+   
+    
     // Initialize to state with no errors
     $errorInvalidPassword = false;
+    $errorPassword = false;
+    
+     
+    if (strpos($url, 'errorPassword=empty') !== false) {
+        $errorPassword = true;
+    }
+    
     // Determine if we need to display errors
     if (strpos($url, 'errorPassword=invalid') !== false) {
     $errorInvalidPassword = true;
@@ -113,10 +125,15 @@
                         <input class="form-control" type="password" placeholder="Enter Password" name="update-password">
                         <?php
                             // SERVER-SIDE VALIDATION FOR PASSWORD
-                            if ($errorInvalidPassword !== false) {
+                            if ($errorPassword !== false) {
+                                echo "<label class='error'>Please enter your password.</label>";
+                             }
+                            else if ($errorInvalidPassword !== false) {
                                 echo "<label class='error'>Password must be at least 6 characters long and contain only alphanumeric characters.</label>";
                             }
                             ?>
+                            
+                            
                     </div>
                 </div>
                 <!-- Meal Preference(s) -->
