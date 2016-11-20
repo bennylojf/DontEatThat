@@ -3,7 +3,7 @@
     include("layout/header.php"); 
 ?>
 <!-- Beginning of About content -->
-<div align="center" style="padding-top: 2%;">
+<div align="center">
    <div class="container-fluid">
       <h2>About Don't Eat That!</h2>
       <p align="left" class="about-description">

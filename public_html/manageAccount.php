@@ -91,7 +91,7 @@
     <div class="container-fluid">
         <form class="form-horizontal" action="php/accountUpdate.php" method="post">
             <h2 style="padding-left: 0;">Manage Account</h2>
-            <div style="padding-top: 40px; padding-left: 15px; padding-right: 15px" class="form-group">
+            <div style="padding-top: 0px; padding-left: 15px; padding-right: 15px" class="form-group">
                 <!-- FIRST NAME -->
                 <div class="form-group" >
                     <label class="col-sm-2 control-label">Name</label>

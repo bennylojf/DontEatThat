@@ -3,7 +3,7 @@
     include("layout/header.php"); 
     ?>
 <!-- Beginning of Feedback content -->
-<div align="center" style="padding-top: 5%;">
+<div align="center">
     <div class="container-fluid">
         <h2>How It Works</h2>
         <p align="left" class="about-description">
