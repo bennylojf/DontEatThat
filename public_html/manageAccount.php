@@ -65,17 +65,17 @@
     
     // CALCIUM
     if ($_SESSION['user_calcium'] == "High") {
-    $CalSelHigh = "selected";
-    $CalSelLow = "";
-    $CalSelNormal = "";
+    $CalcSelHigh = "selected";
+    $CalcSelLow = "";
+    $CalcSelNormal = "";
     } else if ($_SESSION['user_calcium'] == "Low") {
-    $CalSelHigh = "";
-    $CalSelLow = "selected";
-    $CalSelNormal = "";
+    $CalcSelHigh = "";
+    $CalcSelLow = "selected";
+    $CalcSelNormal = "";
     } else if ($_SESSION['user_calcium'] == "Normal") {
-    $CalSelHigh = "";
-    $CalSelLow = "";
-    $CalSelNormal = "selected";
+    $CalcSelHigh = "";
+    $CalcSelLow = "";
+    $CalcSelNormal = "selected";
     }
     
     // Server-Side Error Handling on Submit
@@ -158,9 +158,9 @@
                         <div class="col-sm-2">
                             <label class="col-sm-2">Calcium</label>
                             <select class="form-control" name="update-calcium">
-                                <option value = "Normal" <?php echo $CalSelNormal; ?> >Normal</option>
-                                <option value = "High" <?php echo $CalSelHigh; ?> >High</option>
-                                <option value = "Low" <?php echo $CalSelLow; ?> >Low</option>
+                                <option value = "Normal" <?php echo $CalcSelNormal; ?> >Normal</option>
+                                <option value = "High" <?php echo $CalcSelHigh; ?> >High</option>
+                                <option value = "Low" <?php echo $CalcSelLow; ?> >Low</option>
                             </select>
                         </div>
                     </div>
