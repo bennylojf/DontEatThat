@@ -36,8 +36,21 @@ Sirine
 - Make it a choice for the user (per grams or per serving)
 - add more explanation as to which is healthier
 
-Anonymous
+Jasper
 - Home page seems empty
 - queried items were different from input
+
+Aaron
+- on invalid queries, the redirection feels too long maybe 3 seconds would work better?
+- required fields should be starred (contact page)
+- instead of "Please Enter Food Items" maybe try "Please Enter TWO Food Items"
+- 100g of Lettuce is healthier than 100g of Beef, what does healthier mean?
+- maybe add "this application determines the healthier food relative to the two input food items" to How It Works page
+- What if someone wants full facts on an item? Consider a link for "More information"
+- if I enter numbers with my input e.g. chicken3, shouldn't the error say "Invalid input(s)"?
+- Would you allow special characters (i.e beef#, chicken@, etc)
+- flip table to have each food item in their own column
+- signup verification (for example choose 6 pictures of a certain category)
++ UI is simple
 
 Overall, everyone says the general layout is nice and clean

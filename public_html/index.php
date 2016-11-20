@@ -11,11 +11,11 @@
             <div>
                 <div class="form-group food1">
                     <input class="form-control" type="text" id="item1" name="item1"
-                        placeholder="Enter food item 1" size="40">
+                        placeholder="Enter food item 1" size="40" autocomplete="off">
                 </div>
                 <div class="form-group food2">
                     <input class="form-control" type="text" id="item2" name="item2"
-                        placeholder="Enter food item 2" size="40">
+                        placeholder="Enter food item 2" size="40" autocomplete="off">
                 </div>
             </div>
             <label id="foodFormError0" class="form-error error">Please enter two food items</label>
