@@ -90,7 +90,6 @@ $(document).ready(function() {
 			type : 'POST',
 			url : '../php/checkLogin.php',
 			data : data,
-			dataType : json,
 			success : function(response) {
 				if (response == "success") {
 					$("#login_button").html('<img src="/res/loginLoad.svg" /> &nbsp; Logging In ...');
@@ -120,7 +119,7 @@ $(document).ready(function() {
 				$("#item1").autocomplete({
 					source : json
 				});
-				console.log(json);
+				//console.log(json);
 			}
 		});
 	});
@@ -140,7 +139,7 @@ $(document).ready(function() {
 				$("#item2").autocomplete({
 					source : json
 				});
-				console.log(json);
+				//console.log(json);
 			}
 		});
 	});
