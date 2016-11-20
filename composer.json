@@ -1,4 +1,38 @@
 {
+    "name": "Alexmac22347/DontEatThat",
+
+    "description": "A website to help people select healthier food",
+
+    "homepage": "https://github.com/Alexmac22347/DontEatThat",
+
+    "authors": [
+        {
+            "name": "Alex Macdonald",
+            "homepage": "https://github.com/Alexmac22347",
+            "role": "Developer"
+        },
+        {
+            "name": "Kenton Ma",
+            "homepage": "https://github.com/KentonMa",
+            "role": "Developer"
+        },
+        {
+            "name": "Charn Rai",
+            "homepage": "https://github.com/charnrai",
+            "role": "Developer"
+        },
+        {
+            "name": "Benny Lo",
+            "homepage": "https://github.com/blo2569",
+            "role": "Developer"
+        },
+        {
+            "name": "Adil Kydyrbayev",
+            "homepage": "https://github.com/Adil9551",
+            "role": "Developer"
+        }
+    ],
+
     "require": {
         "atoum/atoum": "2.8.2"
     }
