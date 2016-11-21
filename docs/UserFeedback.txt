@@ -24,6 +24,7 @@ Chen
 - How it works page has too much writing.
 - Took a while to figure out the two charts
 - typing in apple should show different types of apples in autocomplete
++ Thought the countdown page was pretty cool (Quote: "Wow!")
   
 Sirine
 + Pretty clear
