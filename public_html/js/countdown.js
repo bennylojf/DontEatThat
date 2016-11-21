@@ -1,5 +1,5 @@
 var targetURL="http://donteatthat.ca";
-var count = 5;
+var count = 3;
 countdown(count);
 
 function countdown(timer) {
