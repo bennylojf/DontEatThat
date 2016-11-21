@@ -18,8 +18,9 @@
                         placeholder="Enter food item 2" size="40" autocomplete="off">
                 </div>
             </div>
-            <label id="foodFormError0" class="form-error error">Please enter two food items</label>
-            <label id="foodFormError1" class="form-error error">Please enter two different food items</label>
+            <label id="foodFormError0" class="form-error error">Please enter two food items.</label>
+            <label id="foodFormError1" class="form-error error">Please enter two different food items.</label>
+            <label id="foodFormError2" class="form-error error">Invalid input. Only alphabetical characters and spaces allowed.</label>
             <div>
                 <button id="food-submit" type="submit" class="btn btn-primary compare-button">Compare</button>
             </div>
