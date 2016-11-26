@@ -229,3 +229,19 @@ $(document).ready(function() {
 		});
 	}
 });
+
+/* Server-side password validation for Manage Account page */
+$(document).ready(function() {
+    $("#updateForm").validate({
+        rules: {
+            "update-password": {
+                pattern: /^[a-zA-Z0-9]{6,}$/
+            }
+        },
+        messages: {
+            "update-password": {
+                pattern: "Password must be at least 6 characters long and contain only alphanumeric characters."
+            }
+        }
+    });
+});
