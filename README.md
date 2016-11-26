@@ -8,6 +8,7 @@ and suggests the healthiest choice. We felt that the book did not have enough fo
 side by side comparison of two choices. Hence, this web application is designed so users can compare two food products side by 
 side and receive a recommendation.
 
+
 ## Getting Started
 
 The files in public_html should be placed in a folder which is hosted
@@ -38,6 +39,7 @@ API, you should recieve a consumer key and a secret key. Place these in the conf
 
 Also, DontEatThat! requires at least PHP 5.5 to run. This is because the function used to encrypt user passwords is only
 available in PHP 5.5 and above.
+
 
 ## Hosting on Linux
 
@@ -86,8 +88,8 @@ sudo /opt/lamp/xampp start
 You're done! Check out the website by going to 'localhost' on your web browser.   
 
 
-
 ## Running Tests
+
 Tests are run using Atoum. Make sure you have composer installed (https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx).
 In the home directory, run:
 ```
@@ -98,6 +100,19 @@ Atoum should now be installed. To run the tests, use the following command:
 ```
 php tests/*
 ```
+
+
+## Structure
+All the source files are contained in "public_html".  
+The php files inside public_html are actual webpages, which contain HTML and can be viewed.  
+```classes/```  Contains php helper classes.  
+```css/```  Contains mainstyle.css, which helps determine the "look" of the website.  
+```js/```  Contains various javascript helper functions. These are used in the php webpages.  
+```layout/```  Contains the header and footer, which are used in every php webpage.  
+```php/```  Contains various php scripts.  
+```res/```  Contains resources. Mostly images.  
+```vendors/```  Contains javascript libraries. We just used Bootstrap.  
+
 
 ## Authors
 Benny Lo - https://github.com/blo2569  
