@@ -12,6 +12,9 @@
         <link href="vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- Link to an external style sheet -->
         <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
+        <noscript>
+            <meta http-equiv="refresh" content="0; url=jsDisabled.php" />
+        </noscript>
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- jQuery Validation Plugin -->

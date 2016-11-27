@@ -166,3 +166,9 @@ Adil - Wrote the rest of the FoodComparer tests (1) (afb1d87acb5e5e81e352a35703f
 
 Nov 23
 Kenton - Resolved Issue #110: password format now checked (0.5)
+
+Nov 25
+Kenton - Design Doc (1)
+
+Nov 27
+Kenton - website now checks if user has JS enabled, redirects if user disabled JS (0.5)
