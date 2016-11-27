@@ -3,7 +3,7 @@ require_once('../classes/AutoCompleter.php');
 
 $config = include('../../config/config.php');
 
-$autoCompleter = new project\vendor\AutoCompleter($config['consumer_key'], $config['secret_key']);
+$autoCompleter = new vendor\project\AutoCompleter($config['consumer_key'], $config['secret_key']);
 
 $url  = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 if (strpos($url, 'item=1') !== false) {
