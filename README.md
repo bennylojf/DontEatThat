@@ -45,10 +45,14 @@ available in PHP 5.5 and above.
 
 Here's how to get the website running on localhost if you're a linux user.  
 1. First, install [XAMPP](https://www.apachefriends.org/download.html)  
-2. After installing, go to the folder /opt/lampp/htdocs  
-3. Remove everything in the folder htdocs, and copy all all the files and folders in DontEatThat/public_html into htdocs  
-4. Create a folder in /opt/lampp called config/  
-5. place your config.php in the config/ folder you just created. Heres the config.php I use:  
+2. In order for the website to properly work, you must suppress some warnings. Edit the file /opt/lampp/etc/php.ini, and replace the line  
+``` error_reporting=E_ALL & ~E_DEPRECATED & ~E_STRICT ```  
+with  
+``` error_reporting=E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR ```  
+3. After installing, go to the folder /opt/lampp/htdocs  
+4. Remove everything in the folder htdocs, and copy all all the files and folders in DontEatThat/public_html into htdocs  
+5. Create a folder in /opt/lampp called config/  
+6. place your config.php in the config/ folder you just created. Heres the config.php I use:  
 ```
 <?php
 
@@ -67,8 +71,8 @@ return array(
 
    Almost there! Now you need to setup the user database. 
 
-6. In a web browser, go to the url 'localhost/phpmyadmin'  
-7. Now, we have to create the user database  
+7. In a web browser, go to the url 'localhost/phpmyadmin'  
+8. Now, we have to create the user database  
   1. Create a new database called "Group14DB"  
   2. Create a new table in this database called "Users"  
   3. Go to the "Users" table, then click on the "Structures" tab  
@@ -81,7 +85,7 @@ return array(
     * Sodium (varchar(8))  
     * Protein (varchar(8))  
     * Calcium (varchar(8))  
-9. Now, start the XAMPP Webserver:  
+10. Now, start the XAMPP Webserver:  
 ```
 sudo /opt/lamp/xampp start
 ```
