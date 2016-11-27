@@ -43,6 +43,12 @@ class FoodFinder {
         // few basic facts like ID, sugar, some other stuff I forgot
         $searchResult = $this->client->SearchFood($searchTerm, false, false, $this->numberOfSearchTerms);
 
+        // This can happen if throttling occurs
+        if(isset($searchResult['error']['code'])) {
+            var_dump($searchResult);
+            return $searchResult;
+        }
+
         // If initial search failed, we're done
         if($searchResult['foods']['total_results'] == 0) {
             return null;
