@@ -6,6 +6,7 @@
     <head>
         <title><?php echo $title; ?> &#8226; Don't Eat That!</title>
         <meta charset="utf-8">
+        <link rel="icon" href="res/det-icon.png">
         <!-- Ensure proper rendering on mobile -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap -->
@@ -25,8 +26,6 @@
         <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
         <!-- Custom jquery functions -->
         <script src="js/jQueryFunctions.js"></script>
-        <!-- Script to send email -->
-        <script src="js/contact.js"></script>
 		<!-- JQuery UI libraries, used in auto complete -->
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
