@@ -221,7 +221,8 @@ class FoodComparer extends atoum\test
 
         $scoredFoodDatas = $foodComparer->getScores(array($beef, $apple), true);
 
-        $this->float($scoredFoodDatas[0]['score'])->isGreaterThan($scoredFoodDatas[1]['score']);
+        // Apples should be healthier than beef
+        $this->float($scoredFoodDatas[1]['score'])->isGreaterThan($scoredFoodDatas[0]['score']);
     }
 
 
