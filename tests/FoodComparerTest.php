@@ -23,14 +23,19 @@ class FoodComparer extends atoum\test
             "food_name" => "Ham & Swiss Panini",
             "metric_serving_unit" => "g",
             "metric_serving_amount" => "156.000",
-            "cholesterol" => "45", //mg
-            "calories" => "340", // kcal
-            "fat" => "10", // grams
-            "protein" => "23", // grams
-            "sodium" => "1130", // mg
-            "carbohydrate" => "42", // grams
-            "sugar" => "1", // grams
-            "calcium" => "15" // ???
+            "cholesterol" => "45",
+            "calories" => "340",
+            "fat" => "10",
+            "protein" => "23",
+            "sodium" => "1130",
+            "carbohydrate" => "42",
+            "sugar" => "1",
+            "calcium" => "15",
+            "potassium" => "134",
+            "fiber" => "3",
+            "vitamin_a" => "1",
+            "vitamin_c" => "10",
+            "iron" => "1"
         );
 
         $scoredFoodDatas = $foodComparer->getScores( array( $food1), true);
@@ -52,14 +57,19 @@ class FoodComparer extends atoum\test
             "food_name" => "Apples",
             "metric_serving_unit" => "g",
             "metric_serving_amount" => "125.000",
-            "cholesterol" => "0", //mg
-            "calories" => "65", // kcal
-            "fat" => "0.21", // grams
-            "protein" => "0.32", // grams
-            "sodium" => "1", // mg
-            "carbohydrate" => "17.26", // grams
-            "sugar" => "12.99", // grams
-            "calcium" => "1" //
+            "cholesterol" => "0",
+            "calories" => "65",
+            "fat" => "0.21",
+            "protein" => "0.32",
+            "sodium" => "1",
+            "carbohydrate" => "17.26",
+            "sugar" => "12.99",
+            "calcium" => "1",
+            "potassium" => "134",
+            "fiber" => "3",
+            "vitamin_a" => "1",
+            "vitamin_c" => "10",
+            "iron" => "1"
         );
 
         $chicken = array(
@@ -74,7 +84,12 @@ class FoodComparer extends atoum\test
             "sodium" => "340", // mg
             "carbohydrate" => "11.38", // grams
             "sugar" => "0.26", // grams
-            "calcium" => "2" //
+            "calcium" => "2", //
+            "potassium" => "257",
+            "fiber" => "0",
+            "vitamin_a" => "2",
+            "vitamin_c" => "0",
+            "iron" => "9"
         );
 
         $scoredFoodDatas = $foodComparer->getScores(array($apple, $chicken), true);
@@ -103,7 +118,12 @@ class FoodComparer extends atoum\test
             "sodium" => "824", // mg
             "carbohydrate" => "19.29", // grams
             "sugar" => NULL, // grams
-            "calcium" => "4" //
+            "calcium" => "4", //
+            "potassium" => "365",
+            "fiber" => "0",
+            "vitamin_a" => "4",
+            "vitamin_c" => "8",
+            "iron" => "11"
         );
 
         $rice = array(
@@ -118,7 +138,12 @@ class FoodComparer extends atoum\test
             "sodium" => "577", // mg
             "carbohydrate" => "44.08", // grams
             "sugar" => "0.08", // grams
-            "calcium" => "2" //
+            "calcium" => "2", //
+            "potassium" => "55",
+            "fiber" => "1",
+            "vitamin_a" => "0",
+            "vitamin_c" => "0",
+            "iron" => "10"
         );
 
         $apple = array(
@@ -133,7 +158,12 @@ class FoodComparer extends atoum\test
             "sodium" => "1", // mg
             "carbohydrate" => "17.26", // grams
             "sugar" => "12.99", // grams
-            "calcium" => "1" //
+            "calcium" => "1", //
+            "potassium" => "134",
+            "fiber" => "3",
+            "vitamin_a" => "1",
+            "vitamin_c" => "10",
+            "iron" => "1"
         );
 
         $scoredFoodDatas = $foodComparer->getScores(array($apple, $tuna, $rice), true);
@@ -155,28 +185,38 @@ class FoodComparer extends atoum\test
             "food_name" => "Apples",
             "metric_serving_unit" => "g",
             "metric_serving_amount" => "125.000",
-            "cholesterol" => "0", //mg
-            "calories" => "65", // kcal
-            "fat" => "0.21", // grams
-            "protein" => "0.32", // grams
-            "sodium" => "1", // mg
-            "carbohydrate" => "17.26", // grams
-            "sugar" => "12.99", // grams
-            "calcium" => "1" //
+            "cholesterol" => "0",
+            "calories" => "65",
+            "fat" => "0.21",
+            "protein" => "0.32",
+            "sodium" => "1",
+            "carbohydrate" => "17.26",
+            "sugar" => "12.99",
+            "calcium" => "1",
+            "potassium" => "134",
+            "fiber" => "3",
+            "vitamin_a" => "1",
+            "vitamin_c" => "10",
+            "iron" => "1"
         );
 
         $beef = array("food_id" => "1350",
             "food_name" => "Beef",
             "metric_serving_unit" => "g",
             "metric_serving_amount" => "28.350",
-            "cholesterol" => "25", //mg
-            "calories" => "82", // kcal
-            "fat" => "5.54", // grams
-            "protein" => "7.46", // grams
-            "sodium" => "109", // mg
-            "carbohydrate" => "0", // grams
-            "sugar" => "0", // grams
-            "calcium" => "0" //
+            "cholesterol" => "25",
+            "calories" => "82",
+            "fat" => "5.54",
+            "protein" => "7.46",
+            "sodium" => "109",
+            "carbohydrate" => "0",
+            "sugar" => "0",
+            "calcium" => "0", 
+            "potassium" => "89",
+            "fiber" => "0",
+            "vitamin_a" => "0",
+            "vitamin_c" => "0",
+            "iron" => "4"
         );
 
         $scoredFoodDatas = $foodComparer->getScores(array($beef, $apple), true);
@@ -193,14 +233,19 @@ class FoodComparer extends atoum\test
             "food_name" => "Cucumber (with Peel)",
             "metric_serving_unit" => "g",
             "metric_serving_amount" => "52.000",
-            "cholesterol" => "0", //mg
-            "calories" => "8", // kcal
-            "fat" => "0.06", // grams
-            "protein" => "0.34", // grams
-            "sodium" => "1", // mg
-            "carbohydrate" => "1.89", // grams
-            "sugar" => "0.87", // grams
-            "calcium" => "1" //
+            "cholesterol" => "0",
+            "calories" => "8",
+            "fat" => "0.06",
+            "protein" => "0.34",
+            "sodium" => "1",
+            "carbohydrate" => "1.89",
+            "sugar" => "0.87",
+            "calcium" => "1",
+            "potassium" => "76",
+            "fiber" => "0",
+            "vitamin_a" => "1",
+            "vitamin_c" => "2",
+            "iron" => "1"
         );
 
         $chicken = array(
@@ -208,14 +253,19 @@ class FoodComparer extends atoum\test
             "food_name" => "Baked or Fried Coated Chicken Breast with Skin",
             "metric_serving_unit" => "g",
             "metric_serving_amount" => "120.000",
-            "cholesterol" => "88", //mg
-            "calories" => "313", // kcal
-            "fat" => "15.92", // grams
-            "protein" => "29.36", // grams
-            "sodium" => "340", // mg
-            "carbohydrate" => "11.38", // grams
-            "sugar" => "0.26", // grams
-            "calcium" => "2" //
+            "cholesterol" => "88",
+            "calories" => "313",
+            "fat" => "15.92",
+            "protein" => "29.36",
+            "sodium" => "340",
+            "carbohydrate" => "11.38",
+            "sugar" => "0.26",
+            "calcium" => "2",
+            "potassium" => "257",
+            "fiber" => "0",
+            "vitamin_a" => "2",
+            "vitamin_c" => "0",
+            "iron" => "9"
         );
 
         $scoredFoodDatas = $foodComparer->getScores(array($chicken, $cucumber), true);
@@ -239,7 +289,12 @@ class FoodComparer extends atoum\test
             "sodium" => "1", // mg
             "carbohydrate" => "1.89", // grams
             "sugar" => "0.87", // grams
-            "calcium" => "1" //
+            "calcium" => "1", //
+            "potassium" => "76",
+            "fiber" => "0",
+            "vitamin_a" => "1",
+            "vitamin_c" => "2",
+            "iron" => "1"
         );
 
         $tuna = array(
@@ -254,9 +309,13 @@ class FoodComparer extends atoum\test
             "sodium" => "824", // mg
             "carbohydrate" => "19.29", // grams
             "sugar" => NULL, // grams
-            "calcium" => "4" //
+            "calcium" => "4", //
+            "potassium" => "67",
+            "fiber" => "0",
+            "vitamin_a" => "0",
+            "vitamin_c" => "0",
+            "iron" => "2"
         );
-
 
         $scoredFoodDatas = $foodComparer->getScores(array($cucumber, $tuna), true);
 
@@ -272,14 +331,19 @@ class FoodComparer extends atoum\test
             "food_name" => "Tuna Fish Salad",
             "metric_serving_unit" => "g",
             "metric_serving_amount" => "205.000",
-            "cholesterol" => "27", //mg
-            "calories" => "383", // kcal
-            "fat" => "18.98", // grams
-            "protein" => "32.88", // grams
-            "sodium" => "824", // mg
-            "carbohydrate" => "19.29", // grams
-            "sugar" => NULL, // grams
-            "calcium" => "4" //
+            "cholesterol" => "27",
+            "calories" => "383",
+            "fat" => "18.98",
+            "protein" => "32.88",
+            "sodium" => "824",
+            "carbohydrate" => "19.29",
+            "sugar" => NULL,
+            "calcium" => "4",
+            "potassium" => "67",
+            "fiber" => "0",
+            "vitamin_a" => "0",
+            "vitamin_c" => "0",
+            "iron" => "2"
         );
 
         $chicken = array(
@@ -287,14 +351,19 @@ class FoodComparer extends atoum\test
             "food_name" => "Baked or Fried Coated Chicken Breast with Skin",
             "metric_serving_unit" => "g",
             "metric_serving_amount" => "120.000",
-            "cholesterol" => "88", //mg
-            "calories" => "313", // kcal
-            "fat" => "15.92", // grams
-            "protein" => "29.36", // grams
-            "sodium" => "340", // mg
-            "carbohydrate" => "11.38", // grams
-            "sugar" => "0.26", // grams
-            "calcium" => "2" //
+            "cholesterol" => "88",
+            "calories" => "313",
+            "fat" => "15.92",
+            "protein" => "29.36",
+            "sodium" => "340",
+            "carbohydrate" => "11.38",
+            "sugar" => "0.26",
+            "calcium" => "2",
+            "potassium" => "257",
+            "fiber" => "0",
+            "vitamin_a" => "2",
+            "vitamin_c" => "0",
+            "iron" => "5"
         );
 
         $scoredFoodDatas = $foodComparer->getScores(array($chicken, $tuna), false);
