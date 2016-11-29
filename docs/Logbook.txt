@@ -178,3 +178,6 @@ Alex, Adil - finished Autocomplete testing (1.5) (a5e831517477e4b2af40cdc6e0ec29
 Alex - display error message if API throttling occurs (1) (22e5bb52178a119cac381d2d3016ba791078af77)
 Benny - work on algorithm, now uses more nutrients (2), work on design document (1), resolve API problem (5 minutes)
 Alex - Formatted Bennys code (.5)
+
+Nov 28
+Kenton, Benny - finish up design document - (2)
