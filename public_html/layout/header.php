@@ -92,7 +92,7 @@
                     </div>
                     <div class="modal-body">
                         <div id="loginErr"></div>
-                        <form id="loginForm" method="post" action="login.php" name="login_form">
+                        <form id="loginForm" method="post" name="login_form">
                             <div class="form-group">
                                 <label for="login-username">Username</label>
                                 <input id="login-username" class="form-control" type="text" placeholder="Enter Username" name="login-username" autofocus>
