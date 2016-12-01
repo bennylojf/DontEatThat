@@ -15,11 +15,11 @@
             These recommendations are made using an algorithm based on recommended daily values for calories, carbohydrates, protein, fat, cholesterol, sodium, potassium, fiber,
             sugar, Vitamin A, Vitamin C, calcium, and iron. During the planning phase of this project, much research about recommended eating habits was performed to help us develop 
             the most accurate recommendation algorithm possible. We consulted the following sources: <br><br>
-            1) https://www.eatforhealth.gov.au/food-essentials/fat-salt-sugars-and-alcohol <br>
-            2) https://health.gov/dietaryguidelines/dga2005/healthieryou/html/chapter8.html <br>
-            3) https://www.healthychildren.org/English/healthy-living/nutrition/Pages/Fat-Salt-and-Sugar-Not-All-Bad.aspx <br>
-            4) http://www.albertahealthservices.ca/assets/Infofor/hp/if-hp-ed-cdm-ns-3-1-3-food-drink-high-cal-fat-sugar-salt.pdf <br>
-            5) https://www.healthlinkbc.ca/healthy-eating/high-potassium <br>
+            1) https://www.eatforhealth.gov.au <br>
+            2) https://health.gov <br>
+            3) https://www.healthychildren.org <br>
+            4) http://www.albertahealthservices.ca <br>
+            5) https://www.healthlinkbc.ca <br>
             <br>
             The above sources recommended diets low in fat, salt, cholesterol, and sugar, but high in protein, iron, fiber, and vitamins. Our system reflects
             these recommendations and tries to produce a recommendation that is low in sodium, sugar, fat, and calories, but high in protien, iron, fiber, and vitamins. 
