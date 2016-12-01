@@ -12,7 +12,7 @@ $configs = include('../../config/config.php');
 // Reference: https://www.tutorialspoint.com/php/php_mysql_login.htm
 $username = $configs['database_username'];
 $password = $configs['database_password'];
-$host     = $configs['host'];
+$host     = $configs['database_hostname'];
 $dbname   = $configs['database_name'];
 
 // Create connection

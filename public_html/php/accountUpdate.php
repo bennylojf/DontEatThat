@@ -15,7 +15,7 @@ $configs = include('../../config/config.php');
 
 $username = $configs['database_username'];
 $password = $configs['database_password'];
-$host     = $configs['host'];
+$host     = $configs['database_hostname'];
 $dbname   = $configs['database_name'];
 
 // Create connection
