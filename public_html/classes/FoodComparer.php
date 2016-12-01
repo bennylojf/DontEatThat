@@ -109,45 +109,47 @@ class FoodComparer {
             $sodiumScale   = 1;
             $proteinScale  = 1;
             $calciumScale  = 1;
+			
+			$scaleFactor = 10; // used to scale for user preferences
 
             if ($this->userCalories == "High") {
-                $caloriesScale = -10;
+                $caloriesScale = -1*$scaleFactor;
             }
 
             if ($this->userCalories == "Low") {
-                $caloriesScale = 10;
+                $caloriesScale = 1*$scaleFactor;
             }
 
             if ($this->userSugar == "High") {
-                $sugarScale = -10;
+                $sugarScale = -1*$scaleFactor;
             }
 
             if ($this->userSugar == "Low") {
-                $sugarScale = 10;
+                $sugarScale = 1*$scaleFactor;
             }
 
             if ($this->userSodium == "High") {
-                $sodiumScale = -10;
+                $sodiumScale = -1*$scaleFactor;
             }
 
             if ($this->userSodium == "Low") {
-                $sodiumScale = 10;
+                $sodiumScale = 1*$scaleFactor;
             }
 
             if ($this->userProtein == "High") {
-                $proteinScale = 10;
+                $proteinScale = 1*$scaleFactor;
             }
 
             if ($this->userProtein == "Low") {
-                $proteinScale = -10;
+                $proteinScale = -1*$scaleFactor;
             }
 
             if ($this->userCalcium == "High") {
-                $calciumScale = 10;
+                $calciumScale = 1*$scaleFactor;
             }
 
             if ($this->userCalcium == "Low") {
-                $calciumScale = -10;
+                $calciumScale = -1*$scaleFactor;
             }
 
             // This really should be done to every field.
