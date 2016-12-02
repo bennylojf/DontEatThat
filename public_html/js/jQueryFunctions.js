@@ -121,7 +121,7 @@ $(document).ready(function() {
 			url : '../php/autocomplete.php?item=1',
 			data : data,
 			success : function(response) {
-				var json = JSON.parse(response).suggestions.suggestion;
+				var json = JSON.parse(response);
 				$("#item1").autocomplete({
 					source : json
 				});
@@ -140,7 +140,7 @@ $(document).ready(function() {
 			url : '../php/autocomplete.php?item=2',
 			data : data,
 			success : function(response) {
-				var json = JSON.parse(response).suggestions.suggestion;
+				var json = JSON.parse(response);
 				$("#item2").autocomplete({
 					source : json
 				});

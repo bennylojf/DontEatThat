@@ -11,11 +11,14 @@
 
 namespace vendor\project;
 
+require_once 'FoodFinder.php';
+
 class AutoCompleter {
     var $consumerKey;
     var $secretKey;
     var $numSuggestions = 6;
     var $format = 'json';
+    var $foodFinder; // Needed to check if autocomplete term is valid
 
 
     /**
@@ -26,6 +29,7 @@ class AutoCompleter {
     function __construct( $consumerKey, $secretKey ) {
         $this->consumerKey = $consumerKey;
         $this->secretKey = $secretKey;
+        $this->foodFinder = new FoodFinder($consumerKey, $secretKey);
     }
 
 
@@ -85,6 +89,10 @@ class AutoCompleter {
 
         list($output, $error, $info) = $this->loadFoods($url);
 
+        $output = json_decode($output, true);
+        $output = $this->filterOutUnusableFood($output);
+        $output = json_encode($output);
+
         if ($error == 0) {
             if ($info['http_code'] == '200') {
                 return $output;
@@ -97,6 +105,32 @@ class AutoCompleter {
             die('Status ERROR : ' . $error);
             return null;
         }
+    }
+
+    private function filterOutUnusableFood($response) {
+        $filteredArray = [];
+
+        // If the array has more than one element
+        if(isset($response['suggestions']['suggestion'][0])) {
+            for ($i = 0; $i < $this->numSuggestions; $i++) {
+                // This should be done asynchronously
+                $foodData = $this->foodFinder->runQuery($response['suggestions']['suggestion'][$i]);
+                if (isset($foodData)) {
+                    array_push($filteredArray, $foodData['food_name']);
+                }
+            }
+        }
+        // Else, autocomplete only found one thing
+        $foodData = $this->foodFinder->runQuery($response['suggestions']['suggestion']);
+        if (isset($foodData)) {
+            array_push($filteredArray, $foodData['food_name']);
+        }
+
+        // Filter out any copies
+        $filteredArray = array_unique($filteredArray);
+
+        return $filteredArray;
+
     }
 
 
