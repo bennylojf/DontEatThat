@@ -1,7 +1,7 @@
 <?php
 $title = "Results";
-include("layout/header.php");
 include('php/runQueries.php');
+include("layout/header.php");
 ?>
 
 <!-- Reference: http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_table_basic&stacked=h -->
