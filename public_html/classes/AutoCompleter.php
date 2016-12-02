@@ -91,7 +91,6 @@ class AutoCompleter {
 
         $output = json_decode($output, true);
         $output = $this->filterOutUnusableFood($output);
-        $output = json_encode($output);
 
         if ($error == 0) {
             if ($info['http_code'] == '200') {
@@ -116,18 +115,15 @@ class AutoCompleter {
                 // This should be done asynchronously
                 $foodData = $this->foodFinder->runQuery($response['suggestions']['suggestion'][$i]);
                 if (isset($foodData)) {
-                    array_push($filteredArray, $foodData['food_name']);
+                    array_push($filteredArray, $response['suggestions']['suggestion'][$i]);
                 }
             }
         }
         // Else, autocomplete only found one thing
         $foodData = $this->foodFinder->runQuery($response['suggestions']['suggestion']);
         if (isset($foodData)) {
-            array_push($filteredArray, $foodData['food_name']);
+            array_push($filteredArray, $response['suggestions']['suggestion']);
         }
-
-        // Filter out any copies
-        $filteredArray = array_unique($filteredArray);
 
         return $filteredArray;
 

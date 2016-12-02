@@ -12,5 +12,5 @@ if (strpos($url, 'item=1') !== false) {
     $searchTerm    = $_GET['item2'];
 }
 
-echo $autoCompleter->getSuggestions($searchTerm);
+echo json_encode($autoCompleter->getSuggestions($searchTerm))
 ?>

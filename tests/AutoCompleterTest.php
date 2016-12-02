@@ -16,7 +16,7 @@ class AutoCompleter extends atoum\test
 //        $config = include('config/config.php');
 //        $autoCompleter = new project\AutoCompleter($config['consumer_key'], $config['secret_key']);
 //
-//        $response = json_decode($autoCompleter->getSuggestions("App"), true);
+//        $response = $autoCompleter->getSuggestions("App");
 //
 //        $this->string($response[0])->isEqualTo("Apples");
 //        $this->integer(count($response))->isLessThanOrEqualTo(6);
@@ -26,7 +26,7 @@ class AutoCompleter extends atoum\test
 //        $config = include('config/config.php');
 //        $autoCompleter = new project\AutoCompleter($config['consumer_key'], $config['secret_key']);
 //        
-//        $response = json_decode($autoCompleter->getSuggestions("Ban"), true);
+//        $response = $autoCompleter->getSuggestions("Ban");
 //        
 //        $this->string($response[0])->isEqualTo("Bananas");
 //        $this->integer(count($response))->isLessThanOrEqualTo(6);
@@ -39,9 +39,9 @@ class AutoCompleter extends atoum\test
         
         $numSearchTerms = $autoCompleter->setNumSuggestions(1);
         
-        $response = json_decode($autoCompleter->getSuggestions("panc"), true);
+        $response = $autoCompleter->getSuggestions("panc");
         
-        $this->string($response[0])->isEqualTo("Plain Pancakes");
+        $this->string($response[0])->isEqualTo("pancake");
     }
 
 //    public function testTenSuggestions() {
@@ -50,7 +50,7 @@ class AutoCompleter extends atoum\test
 //        
 //        $numSearchTerms = $autoCompleter->setNumSuggestions(10);
 //        
-//        $response = json_decode($autoCompleter->getSuggestions("ap"), true);
+//        $response = $autoCompleter->getSuggestions("ap");
 //        
 //        $this->string($response[0])->isEqualTo("apple");
 //        $this->integer(count($response))->isEqualTo(10);
