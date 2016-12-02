@@ -15,7 +15,6 @@ class FoodComparer {
     // daily recommended intake
     // approximations only
     const DAILYCALORIES = 2300; // kcal
-    const DAILYCARBS = 300; // g
     const DAILYPROTEIN = 50; // g
     const DAILYFAT = 65; // g
     const DAILYCHOLESTEROL = 300; // mg
@@ -75,7 +74,6 @@ class FoodComparer {
         foreach ($foodDatas as &$foodData) {
 
             $calories    = $foodData['calories']; // bad
-            $carbs       = $foodData['carbohydrate']; // good
             $protein     = $foodData['protein']; // good
             $fat         = $foodData['fat']; // bad
             $cholesterol = $foodData['cholesterol']; // bad
@@ -90,7 +88,6 @@ class FoodComparer {
 
             if ($useNormalizeWeights) {
                 $calories    = $this->normalizeWeight($calories, $foodData['metric_serving_amount']);
-                $carbs       = $this->normalizeWeight($carbs, $foodData['metric_serving_amount']);
                 $protein     = $this->normalizeWeight($protein, $foodData['metric_serving_amount']);
                 $fat         = $this->normalizeWeight($fat, $foodData['metric_serving_amount']);
                 $cholesterol = $this->normalizeWeight($cholesterol, $foodData['metric_serving_amount']);

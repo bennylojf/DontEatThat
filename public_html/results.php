@@ -65,7 +65,7 @@ include("layout/header.php");
 						<th>Sugar</th>
 						<th>Sodium</th>
 						<th>Cholesterol</th>
-						
+						<th>Carbohydrates</th>
 						<th>Potassium</th>
 						<th>Fiber</th>
 						<th>Vitamin A</th>
@@ -142,7 +142,7 @@ echo '
                    <td>' . round($normalizedSugarFood0) . ' g</td>
                    <td>' . round($normalizedSodiumFood0) . ' mg</td>
 				   <td>' . round($normalizedCholestrolFood0) . ' mg</td>
-				   
+				   <td>' . round($normalizedCarbohydrateFood0) . ' g</td>
 				   <td>' . round($normalizedPotassiumFood0) . ' mg</td>
                    <td>' . round($normalizedFiberFood0) . ' g</td>
                    <td>' . round($normalizedVitaminAFood0) . ' %</td>
@@ -159,7 +159,7 @@ echo '
                    <td>' . round($normalizedSugarFood1) . ' g</td>
                    <td>' . round($normalizedSodiumFood1) . ' mg</td>
 				   <td>' . round($normalizedCholestrolFood1) . ' mg</td>
-				   
+				   <td>' . round($normalizedCarbohydrateFood1) . ' g</td>
 				   <td>' . round($normalizedPotassiumFood1) . ' mg</td>
                    <td>' . round($normalizedFiberFood1) . ' g</td>
                    <td>' . round($normalizedVitaminAFood1) . ' %</td>
@@ -218,7 +218,7 @@ if (!isset($_SESSION['user_username'])) {
 							<th>Sugar</th>
 							<th>Sodium</th>
 							<th>Cholesterol</th>
-							
+							<th>Carbohydrates</th>
 							<th>Potassium</th>
 							<th>Fiber</th>
 							<th>Vitamin A</th>
@@ -263,7 +263,7 @@ echo '
                    <td>' . round($resultData[0]['sugar']) . ' g</td>
                    <td>' . round($resultData[0]['sodium']) . ' mg</td>
 				   <td>' . round($resultData[0]['cholesterol']) . ' mg</td>
-				   
+				   <td>' . round($resultData[0]['carbohydrate']) . ' g</td>
 				   <td>' . round($resultData[0]['potassium']) . ' mg</td>
                    <td>' . round($resultData[0]['fiber']) . ' g</td>
                    <td>' . round($resultData[0]['vitamin_a']) . ' %</td>
@@ -281,7 +281,7 @@ echo '
                    <td>' . round($resultData[1]['sugar']) . ' g</td>
                    <td>' . round($resultData[1]['sodium']) . ' mg</td>
 				   <td>' . round($resultData[1]['cholesterol']) . ' mg</td>
-				   
+				   <td>' . round($resultData[1]['carbohydrate']) . ' g</td>
 				   <td>' . round($resultData[1]['potassium']) . ' mg</td>
                    <td>' . round($resultData[1]['fiber']) . ' g</td>
                    <td>' . round($resultData[1]['vitamin_a']) . ' %</td>
