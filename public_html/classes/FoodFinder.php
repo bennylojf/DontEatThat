@@ -37,14 +37,19 @@ class FoodFinder {
         // This initial search does not give us enough data. It only contains a
         // few basic facts like ID, sugar, some other stuff I forgot
         $searchResult = $this->client->SearchFood($searchTerm, false, false, $this->numberOfSearchTerms);
+
         // If initial search failed, we're done
         if ($searchResult['foods']['total_results'] == 0) {
             return null;
         }
 
         // Keep track of all the IDs found by the search
-        for ($i = 0; $i < $this->numberOfSearchTerms; $i++) {
-            $foodIDs[$i] = $searchResult['foods']['food'][$i]['food_id'];
+        if(isset($searchResult['foods']['food'][0])) {
+            for ($i = 0; $i < $this->numberOfSearchTerms; $i++) {
+                $foodIDs[$i] = $searchResult['foods']['food'][$i]['food_id'];
+            }
+        } else {
+            $foodIDs[0] = $searchResult['foods']['food']['food_id'];
         }
 
         // Get the first food which has an actual serving size
