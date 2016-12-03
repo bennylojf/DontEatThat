@@ -79,7 +79,7 @@ class FoodFinder {
         // we set the foodData to null so that whoever uses this knows
         // Eg, for fried chicken, yeild after cooking, bones removed, sliced, with bone, etc
 
-        if ($rawFoodData["food"]["servings"]["serving"][0] !== null) {
+        if (isset($rawFoodData["food"]["servings"]["serving"][0])) {
             $metric_serving_unit = $rawFoodData["food"]["servings"]["serving"][0]["metric_serving_unit"];
 
             // Some restaurant items dont have a measurable serving size. We cant use these
