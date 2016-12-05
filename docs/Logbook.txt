@@ -178,7 +178,8 @@ Alex, Adil - finished Autocomplete testing (1.5) (a5e831517477e4b2af40cdc6e0ec29
 Alex - display error message if API throttling occurs (1) (22e5bb52178a119cac381d2d3016ba791078af77)
 Benny - work on algorithm, now uses more nutrients (2), work on design document (1), resolve API problem (5 minutes)
 Alex - Formatted Bennys code (.5)
-
+Charn - Made pictures for design doc and user manaul and tested website features  (2)
+ 
 Nov 28
 Kenton, Benny - finish up design document - (2)
 
@@ -189,3 +190,6 @@ Alex - wrote database tests, updated readme, fixed a bug where someone was using
 Dec 1
 Alex - Fixed some hacky code (multiple session_starts()), fixed up the database tests. (1.5)
 Alex - Displaying tabs. Also refactored code at the same time (4) (9a41f0dbe080fa9564ce8eb517617059e086fae8 and a9427adb4d6730c1d1b93367e550ee3b6fd44aa7)
+
+Dec 1 to 5 
+Benny - wrote User Manual, Testing and Validation, and Reflections (6)
