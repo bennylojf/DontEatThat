@@ -108,6 +108,7 @@ Atoum should now be installed. To run the tests, run the following script:
 
 ## Running Database Tests
 
+WARNING: If two instances of MySQL are running (for example, XAMPP is running MySQL), these tests will not work!
 These tests are a little more complicated to setup. They involve creating/deleting accounts, and logging in/logging out.
 First, install mysql-server
 ```
